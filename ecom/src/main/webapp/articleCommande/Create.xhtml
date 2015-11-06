@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateArticleCommandeTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateArticleCommandeLabel_quantiteArticle}" for="quantiteArticle" />
+                    <h:inputText id="quantiteArticle" value="#{articleCommandeController.selected.quantiteArticle}" title="#{bundle.CreateArticleCommandeTitle_quantiteArticle}" required="true" requiredMessage="#{bundle.CreateArticleCommandeRequiredMessage_quantiteArticle}"/>
+                    <h:outputLabel value="#{bundle.CreateArticleCommandeLabel_commande}" for="commande" />
+                    <h:selectOneMenu id="commande" value="#{articleCommandeController.selected.commande}" title="#{bundle.CreateArticleCommandeTitle_commande}" required="true" requiredMessage="#{bundle.CreateArticleCommandeRequiredMessage_commande}">
+                        <f:selectItems value="#{commandeController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateArticleCommandeLabel_articleVendu}" for="articleVendu" />
+                    <h:selectOneMenu id="articleVendu" value="#{articleCommandeController.selected.articleVendu}" title="#{bundle.CreateArticleCommandeTitle_articleVendu}" required="true" requiredMessage="#{bundle.CreateArticleCommandeRequiredMessage_articleVendu}">
+                        <f:selectItems value="#{articleVenduController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{articleCommandeController.create}" value="#{bundle.CreateArticleCommandeSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{articleCommandeController.prepareList}" value="#{bundle.CreateArticleCommandeShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateArticleCommandeIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

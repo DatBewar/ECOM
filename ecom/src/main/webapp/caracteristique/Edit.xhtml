@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditCaracteristiqueTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditCaracteristiqueLabel_idCaracteristique}" for="idCaracteristique" />
+                    <h:inputText id="idCaracteristique" value="#{caracteristiqueController.selected.idCaracteristique}" title="#{bundle.EditCaracteristiqueTitle_idCaracteristique}" required="true" requiredMessage="#{bundle.EditCaracteristiqueRequiredMessage_idCaracteristique}"/>
+                    <h:outputLabel value="#{bundle.EditCaracteristiqueLabel_libelleCaracteristique}" for="libelleCaracteristique" />
+                    <h:inputText id="libelleCaracteristique" value="#{caracteristiqueController.selected.libelleCaracteristique}" title="#{bundle.EditCaracteristiqueTitle_libelleCaracteristique}" required="true" requiredMessage="#{bundle.EditCaracteristiqueRequiredMessage_libelleCaracteristique}"/>
+                    <h:outputLabel value="#{bundle.EditCaracteristiqueLabel_uniteCaracteristique}" for="uniteCaracteristique" />
+                    <h:inputText id="uniteCaracteristique" value="#{caracteristiqueController.selected.uniteCaracteristique}" title="#{bundle.EditCaracteristiqueTitle_uniteCaracteristique}" required="true" requiredMessage="#{bundle.EditCaracteristiqueRequiredMessage_uniteCaracteristique}"/>
+                    <h:outputLabel value="#{bundle.EditCaracteristiqueLabel_valeurCaracteristique}" for="valeurCaracteristique" />
+                    <h:inputText id="valeurCaracteristique" value="#{caracteristiqueController.selected.valeurCaracteristique}" title="#{bundle.EditCaracteristiqueTitle_valeurCaracteristique}" required="true" requiredMessage="#{bundle.EditCaracteristiqueRequiredMessage_valeurCaracteristique}"/>
+                </h:panelGrid>
+                <h:commandLink action="#{caracteristiqueController.update}" value="#{bundle.EditCaracteristiqueSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditCaracteristiqueViewLink}"/>
+                <br />
+                <h:commandLink action="#{caracteristiqueController.prepareList}" value="#{bundle.EditCaracteristiqueShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditCaracteristiqueIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateArticleTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateArticleLabel_idArticle}" for="idArticle" />
+                    <h:inputText id="idArticle" value="#{articleController.selected.idArticle}" title="#{bundle.CreateArticleTitle_idArticle}" required="true" requiredMessage="#{bundle.CreateArticleRequiredMessage_idArticle}"/>
+                    <h:outputLabel value="#{bundle.CreateArticleLabel_nomArticle}" for="nomArticle" />
+                    <h:inputText id="nomArticle" value="#{articleController.selected.nomArticle}" title="#{bundle.CreateArticleTitle_nomArticle}" required="true" requiredMessage="#{bundle.CreateArticleRequiredMessage_nomArticle}"/>
+                    <h:outputLabel value="#{bundle.CreateArticleLabel_descripArticle}" for="descripArticle" />
+                    <h:inputTextarea rows="4" cols="30" id="descripArticle" value="#{articleController.selected.descripArticle}" title="#{bundle.CreateArticleTitle_descripArticle}" required="true" requiredMessage="#{bundle.CreateArticleRequiredMessage_descripArticle}"/>
+                    <h:outputLabel value="#{bundle.CreateArticleLabel_stockArticle}" for="stockArticle" />
+                    <h:inputText id="stockArticle" value="#{articleController.selected.stockArticle}" title="#{bundle.CreateArticleTitle_stockArticle}" required="true" requiredMessage="#{bundle.CreateArticleRequiredMessage_stockArticle}"/>
+                    <h:outputLabel value="#{bundle.CreateArticleLabel_prixAchatArticle}" for="prixAchatArticle" />
+                    <h:inputText id="prixAchatArticle" value="#{articleController.selected.prixAchatArticle}" title="#{bundle.CreateArticleTitle_prixAchatArticle}" required="true" requiredMessage="#{bundle.CreateArticleRequiredMessage_prixAchatArticle}"/>
+                    <h:outputLabel value="#{bundle.CreateArticleLabel_prixVenteArticle}" for="prixVenteArticle" />
+                    <h:inputText id="prixVenteArticle" value="#{articleController.selected.prixVenteArticle}" title="#{bundle.CreateArticleTitle_prixVenteArticle}" required="true" requiredMessage="#{bundle.CreateArticleRequiredMessage_prixVenteArticle}"/>
+                    <h:outputLabel value="#{bundle.CreateArticleLabel_commentaire}" for="commentaire" />
+                    <h:selectOneMenu id="commentaire" value="#{articleController.selected.commentaire}" title="#{bundle.CreateArticleTitle_commentaire}" >
+                        <f:selectItems value="#{commentaireController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateArticleLabel_idCategorie}" for="idCategorie" />
+                    <h:selectOneMenu id="idCategorie" value="#{articleController.selected.idCategorie}" title="#{bundle.CreateArticleTitle_idCategorie}" required="true" requiredMessage="#{bundle.CreateArticleRequiredMessage_idCategorie}">
+                        <f:selectItems value="#{categorieController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{articleController.create}" value="#{bundle.CreateArticleSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{articleController.prepareList}" value="#{bundle.CreateArticleShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateArticleIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

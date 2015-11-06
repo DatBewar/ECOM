@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewCommentaireTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewCommentaireLabel_idCommentaire}"/>
+                    <h:outputText value="#{commentaireController.selected.idCommentaire}" title="#{bundle.ViewCommentaireTitle_idCommentaire}"/>
+                    <h:outputText value="#{bundle.ViewCommentaireLabel_noteCommentaire}"/>
+                    <h:outputText value="#{commentaireController.selected.noteCommentaire}" title="#{bundle.ViewCommentaireTitle_noteCommentaire}"/>
+                    <h:outputText value="#{bundle.ViewCommentaireLabel_idCompte}"/>
+                    <h:outputText value="#{commentaireController.selected.idCompte}" title="#{bundle.ViewCommentaireTitle_idCompte}"/>
+                    <h:outputText value="#{bundle.ViewCommentaireLabel_idArticle}"/>
+                    <h:outputText value="#{commentaireController.selected.idArticle}" title="#{bundle.ViewCommentaireTitle_idArticle}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{commentaireController.destroyAndView}" value="#{bundle.ViewCommentaireDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewCommentaireEditLink}"/>
+                <br />
+                <h:commandLink action="#{commentaireController.prepareCreate}" value="#{bundle.ViewCommentaireCreateLink}" />
+                <br />
+                <h:commandLink action="#{commentaireController.prepareList}" value="#{bundle.ViewCommentaireShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewCommentaireIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
