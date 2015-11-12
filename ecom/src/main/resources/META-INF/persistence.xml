@@ -3,6 +3,7 @@
   <persistence-unit name="com.groupecom2015_ecom_war_1.0-SNAPSHOTPU" transaction-type="JTA">
     <jta-data-source>bdEcom</jta-data-source>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
-    <properties/>
+    <properties>
+    </properties>
   </persistence-unit>
 </persistence>

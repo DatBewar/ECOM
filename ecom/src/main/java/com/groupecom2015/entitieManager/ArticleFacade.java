@@ -6,6 +6,7 @@
 package com.groupecom2015.entitieManager;
 
 import com.groupecom2015.entities.Article;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -28,4 +29,15 @@ public class ArticleFacade extends AbstractFacade<Article> {
         super(Article.class);
     }
     
+    public List<Article> getAllArticle(){
+       return em.createNamedQuery("Article.findAll").getResultList();
+    }
+    
+    public Article updateArticle(Article article){
+        return em.merge(article);
+    }
+    
+    public void persist(Article article){
+        em.persist(article);
+    }
 }
