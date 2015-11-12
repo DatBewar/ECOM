@@ -16,7 +16,7 @@ import javax.validation.constraints.NotNull;
  * @author malick
  */
 @Embeddable
-public class ArticleCommandePK implements Serializable {
+public class LigneDeCommandePK implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "idArticle")
@@ -26,10 +26,10 @@ public class ArticleCommandePK implements Serializable {
     @Column(name = "idCommande")
     private int idCommande;
 
-    public ArticleCommandePK() {
+    public LigneDeCommandePK() {
     }
 
-    public ArticleCommandePK(int idArticle, int idCommande) {
+    public LigneDeCommandePK(int idArticle, int idCommande) {
         this.idArticle = idArticle;
         this.idCommande = idCommande;
     }
@@ -61,10 +61,10 @@ public class ArticleCommandePK implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof ArticleCommandePK)) {
+        if (!(object instanceof LigneDeCommandePK)) {
             return false;
         }
-        ArticleCommandePK other = (ArticleCommandePK) object;
+        LigneDeCommandePK other = (LigneDeCommandePK) object;
         if (this.idArticle != other.idArticle) {
             return false;
         }
@@ -76,7 +76,7 @@ public class ArticleCommandePK implements Serializable {
 
     @Override
     public String toString() {
-        return "com.groupecom2015.entities.ArticleCommandePK[ idArticle=" + idArticle + ", idCommande=" + idCommande + " ]";
+        return "com.groupecom2015.entities.LigneDeCommandePK[ idArticle=" + idArticle + ", idCommande=" + idCommande + " ]";
     }
     
 }

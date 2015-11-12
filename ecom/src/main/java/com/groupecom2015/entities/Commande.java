@@ -47,7 +47,7 @@ public class Commande implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date dateCommande;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "commande")
-    private Collection<ArticleCommande> articleCommandeCollection;
+    private Collection<LigneDeCommande> ligneDeCommandeCollection;
 
     public Commande() {
     }
@@ -78,12 +78,12 @@ public class Commande implements Serializable {
     }
 
     @XmlTransient
-    public Collection<ArticleCommande> getArticleCommandeCollection() {
-        return articleCommandeCollection;
+    public Collection<LigneDeCommande> getLigneDeCommandeCollection() {
+        return ligneDeCommandeCollection;
     }
 
-    public void setArticleCommandeCollection(Collection<ArticleCommande> articleCommandeCollection) {
-        this.articleCommandeCollection = articleCommandeCollection;
+    public void setLigneDeCommandeCollection(Collection<LigneDeCommande> ligneDeCommandeCollection) {
+        this.ligneDeCommandeCollection = ligneDeCommandeCollection;
     }
 
     @Override

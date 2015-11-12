@@ -73,6 +73,8 @@ public class Article implements Serializable {
     private float prixVenteArticle;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "idArticle")
     private Commentaire commentaire;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "article")
+    private Collection<LigneDeCommande> ligneDeCommandeCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idArticle")
     private Collection<Photo> photoCollection;
     @JoinColumn(name = "idCategorie", referencedColumnName = "idCategorie")
@@ -149,6 +151,15 @@ public class Article implements Serializable {
 
     public void setCommentaire(Commentaire commentaire) {
         this.commentaire = commentaire;
+    }
+
+    @XmlTransient
+    public Collection<LigneDeCommande> getLigneDeCommandeCollection() {
+        return ligneDeCommandeCollection;
+    }
+
+    public void setLigneDeCommandeCollection(Collection<LigneDeCommande> ligneDeCommandeCollection) {
+        this.ligneDeCommandeCollection = ligneDeCommandeCollection;
     }
 
     @XmlTransient
