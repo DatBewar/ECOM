@@ -3,31 +3,32 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.groupecom2015.Manager;
+package com.groupecom2015.managerBean;
 
 import com.groupecom2015.entities.Article;
+import com.groupecom2015.entities.ArticlePanier;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateful;
 
 /**
  *
- * @author bewar
+ * @author Erwan
  */
 @Stateful
 public class PanierManager {
 
-    private List<Article> listArt;
+    private List<ArticlePanier> listArt;
     
     public PanierManager(){
-        listArt = new ArrayList<Article>() {};
+        listArt = new ArrayList<ArticlePanier>();
     }
     
-    public void ajoutArticle(Article a){
-        
+    public void ajoutArticle(ArticlePanier a){
+        listArt.add(a);
     }
     
-    public List<Article> getPanier(){
-        return null;
+    public List<ArticlePanier> getPanier(){
+        return this.listArt;
     }
 }
