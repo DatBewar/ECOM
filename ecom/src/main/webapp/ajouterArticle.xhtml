@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+          
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        
+         <f:view>
+
+
+             <h:form>
+                 <h1><h:outputText value="Create/Edit"/></h1>
+                 <h:panelGrid columns="2">
+                     <h:outputLabel value="NomArticle:" for="nomArticle" />
+                     <h:inputText id="nomArticle" value="#{articleManager.article.nomArticle}" title="NomArticle" required="true" requiredMessage="The NomArticle field is required."/>
+                     <h:outputLabel value="DescripArticle:" for="descripArticle" />
+                     <h:inputTextarea rows="4" cols="30" id="descripArticle" value="#{articleManager.article.descripArticle}" title="DescripArticle" required="true" requiredMessage="The DescripArticle field is required."/>
+                     <h:outputLabel value="StockArticle:" for="stockArticle" />
+                     <h:inputText id="stockArticle" value="#{articleManager.article.stockArticle}" title="StockArticle" required="true" requiredMessage="The StockArticle field is required."/>
+                     <h:outputLabel value="PrixAchatArticle:" for="prixAchatArticle" />
+                     <h:inputText id="prixAchatArticle" value="#{articleManager.article.prixAchatArticle}" title="PrixAchatArticle" required="true" requiredMessage="The PrixAchatArticle field is required."/>
+                     <h:outputLabel value="PrixVenteArticle:" for="prixVenteArticle" />
+                     <h:inputText id="prixVenteArticle" value="#{articleManager.article.prixVenteArticle}" title="PrixVenteArticle" required="true" requiredMessage="The PrixVenteArticle field is required."/>
+                     <p:selectOneMenu id="car" value="#{selectOneMenuView.car}">
+                         <f:selectItem itemLabel="choisir categorie" itemValue="" />
+                         <f:selectItems value="#{categorieManager.listCategorie}" />
+                     </p:selectOneMenu>
+
+                     <h:commandButton action="#{articleManager.addArticle()}" value="Ajouter"/>
+                     
+                 </h:panelGrid>
+             </h:form>
+
+         </f:view>
+    </h:body>
+</html>
+
+
+

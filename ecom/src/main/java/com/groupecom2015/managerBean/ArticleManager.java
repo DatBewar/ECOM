@@ -20,8 +20,9 @@ import javax.enterprise.context.RequestScoped;
  */
 @Named(value = "articleManager")
 @ManagedBean
+@RequestScoped
 public class ArticleManager {
-    
+    private Article article;
     private List<Article> articleList;
     @EJB
     private ArticleFacade articleFacade;
@@ -29,6 +30,7 @@ public class ArticleManager {
     
     
     public ArticleManager() {
+        article = new Article();
     }
     
     public List<Article> getAllArticles(){
@@ -37,6 +39,16 @@ public class ArticleManager {
         }
         return articleList;
     }
+    
+    public String addArticle(){
+        articleFacade.create(article);
+        return "messageArticleAjouter";
+    } 
+
+    public Article getArticle() {
+        return article;
+    }
+    
     
     public Article getArticleById(){
         return null;
