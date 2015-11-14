@@ -26,12 +26,12 @@
                      <h:inputText id="prixAchatArticle" value="#{articleManager.article.prixAchatArticle}" title="PrixAchatArticle" required="true" requiredMessage="The PrixAchatArticle field is required."/>
                      <h:outputLabel value="PrixVenteArticle:" for="prixVenteArticle" />
                      <h:inputText id="prixVenteArticle" value="#{articleManager.article.prixVenteArticle}" title="PrixVenteArticle" required="true" requiredMessage="The PrixVenteArticle field is required."/>
-                     <p:selectOneMenu id="car" value="#{selectOneMenuView.car}">
+                     <h:selectOneMenu id="idCategorie" value="#{articleManager.article.idCategorie}">
                          <f:selectItem itemLabel="choisir categorie" itemValue="" />
                          <f:selectItems value="#{categorieManager.listCategorie}" />
-                     </p:selectOneMenu>
+                     </h:selectOneMenu>
 
-                     <h:commandButton action="#{articleManager.addArticle()}" value="Ajouter"/>
+                     <h:commandButton action="#{categorieManager.addCategorie()}" value="Ajouter"/>
                      
                  </h:panelGrid>
              </h:form>
@@ -40,5 +40,5 @@
     </h:body>
 </html>
 
-
+      
 

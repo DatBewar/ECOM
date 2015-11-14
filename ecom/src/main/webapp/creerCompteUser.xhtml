@@ -21,7 +21,7 @@
                         <h:inputTextarea rows="4" cols="30" id="adresse" value="#{compteUserView.compte.adresse}" title="Adresse" required="true" requiredMessage="The Adresse field is required."/>
                         <h:outputLabel value="Telephone:" for="telephone" />
                         <h:inputText id="telephone" value="#{compteUserView.compte.telephone}" title="Telephone" required="true" requiredMessage="The Telephone field is required."/>
-
+                        <h:commandButton action="#{compteUserView.addUser()}" value="s'inscrire"></h:commandButton>
                     </h:panelGrid>
                </h:form>
              </f:view>

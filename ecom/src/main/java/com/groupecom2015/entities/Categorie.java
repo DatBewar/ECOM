@@ -31,10 +31,12 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "Categorie")
 @XmlRootElement
 @NamedQueries({
+    @NamedQuery(name = "Categorie.findAllIdCategorie", query = "SELECT c.idCategorie FROM Categorie c"),
     @NamedQuery(name = "Categorie.findAll", query = "SELECT c FROM Categorie c"),
     @NamedQuery(name = "Categorie.findByIdCategorie", query = "SELECT c FROM Categorie c WHERE c.idCategorie = :idCategorie"),
     @NamedQuery(name = "Categorie.findByNomCategorie", query = "SELECT c FROM Categorie c WHERE c.nomCategorie = :nomCategorie")})
 public class Categorie implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -105,10 +107,11 @@ public class Categorie implements Serializable {
         }
         return true;
     }
-
+    
+    
     @Override
     public String toString() {
         return "com.groupecom2015.entities.Categorie[ idCategorie=" + idCategorie + " ]";
     }
-    
+
 }
