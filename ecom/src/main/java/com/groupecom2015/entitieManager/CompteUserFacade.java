@@ -9,6 +9,7 @@ import com.groupecom2015.entities.CompteUser;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -27,5 +28,21 @@ public class CompteUserFacade extends AbstractFacade<CompteUser> {
     public CompteUserFacade() {
         super(CompteUser.class);
     }
+        
+    //Fiston, to find an account by Email
+    public CompteUser findByEmail(String email){
+        CompteUser compte = new CompteUser();
+        Query q = em.createQuery("SELECT * FROM CompteUser WHERE email ='"+email+"'");
+       // System.out.println(query);
+       // Query q = em.createQuery(query);
+        System.out.println(q);
+        //compte = q.getSingleResult();        
+        return compte;
+    }
     
+    //Fiston, Authentification 
+    public boolean signIn(String email, String pwd){
+        CompteUser compte = findByEmail(email);
+        return compte.getMotDePasse().equals(pwd);
+    }
 }
