@@ -10,6 +10,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -39,5 +40,15 @@ public class ArticleFacade extends AbstractFacade<Article> {
     
     public void persist(Article article){
         em.persist(article);
+    }
+     //Fiston, une fonction - requete pour rechercher par les mots clé (dans sa description et son nom-libellé
+    public List<Article> findByKeyWords(String keyWords){
+        List<Article> articles;
+        //String strQuery ="SELECT * FROM Article descripArticle like %"+keyWords+"% or nom like %"+keyWord+"%";
+        String strQuery ="SELECT * FROM Article descripArticle = ''";
+        Query q = em.createQuery(strQuery);
+        System.out.println(q);
+        articles = q.getResultList();
+        return articles;
     }
 }
