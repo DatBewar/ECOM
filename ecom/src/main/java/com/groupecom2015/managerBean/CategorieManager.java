@@ -21,8 +21,16 @@ import javax.enterprise.context.RequestScoped;
 public class CategorieManager {
     @EJB
     private CategorieFacade categorieFacade;
-    private Categorie categorie;
-   
+    private Categorie categorie = new Categorie();
+
+    public CategorieFacade getCategorieFacade() {
+        return categorieFacade;
+    }
+
+    public void setCategorieFacade(CategorieFacade categorieFacade) {
+        this.categorieFacade = categorieFacade;
+    }
+       
     public CategorieManager() {
         categorie = new  Categorie();
     }
@@ -36,11 +44,7 @@ public class CategorieManager {
         return "messageAjoutCategorie";
     }
     
-    public List<Categorie> getListCategorie(){
-        
-        return categorieFacade.findAll();
-        
-    }
-    
-    
+    public List<Categorie> getListCategorie(){        
+        return categorieFacade.findAll();        
+    }    
 }
