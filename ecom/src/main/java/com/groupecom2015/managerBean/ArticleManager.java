@@ -3,54 +3,80 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package com.groupecom2015.managerBean;
 
 import com.groupecom2015.entitieManager.ArticleFacade;
 import com.groupecom2015.entities.Article;
+import java.util.ArrayList;
 import java.util.List;
-import javax.annotation.ManagedBean;
 import javax.ejb.EJB;
-import javax.enterprise.context.Dependent;
-import javax.inject.Named;
-import javax.enterprise.context.RequestScoped;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 
 /**
  *
- * @author umar
+ * @author BXDN
  */
-@Named(value = "articleManager")
 @ManagedBean
 @RequestScoped
 public class ArticleManager {
-    private Article article;
-    private List<Article> articleList;
     @EJB
     private ArticleFacade articleFacade;
-
-    
+    private List<Article> articles = new ArrayList<>();
+    private Article article = new Article();
     
     public ArticleManager() {
-        article = new Article();
     }
-    
-    public List<Article> getAllArticles(){
-        if(articleList == null){
-            articleList = articleFacade.getAllArticle();
-        }
-        return articleList;
+
+    public ArticleFacade getArticleFacade() {
+        return articleFacade;
     }
-    
-    public String addArticle(){
-        articleFacade.create(article);
-        return "messageArticleAjouter";
-    } 
+
+    public void setArticleFacade(ArticleFacade articleFacade) {
+        this.articleFacade = articleFacade;
+    }
+
+    public List<Article> getArticles() {
+        articles = articleFacade.findAll();
+        return articles;
+    }
+
+    public void setArticles(List<Article> articles) {
+        this.articles = articles;
+    }   
 
     public Article getArticle() {
         return article;
     }
+
+    public void setArticle(Article article) {
+        this.article = article;
+    }
     
+    public List<Article> getAllArticles(){
+        if(articles == null){
+            articles = articleFacade.getAllArticle();
+        }
+        return articles;
+    }
     
-    public Article getArticleById(){
+    //Fiston, je cherche un article par son ID
+    public String getArticleById(int _articleId){
+        article = articleFacade.find(_articleId);
         return null;
+    }
+    //Fiston, une recherche avancée par les mots clés
+    public String getArticlesByKeyWords(String keyWord){        
+        articles = articleFacade.findByKeyWords(keyWord);
+        return "";
+    }
+    //Fiston, recherche par categories
+    public String getArticlesByCategory(int idCategorie){        
+        return "";
+    }
+    public String addArticle(){
+        articleFacade.create(article);
+        return "index";
     }
 }

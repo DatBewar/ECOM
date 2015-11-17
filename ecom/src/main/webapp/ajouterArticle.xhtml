@@ -28,10 +28,10 @@
                      <h:inputText id="prixVenteArticle" value="#{articleManager.article.prixVenteArticle}" title="PrixVenteArticle" required="true" requiredMessage="The PrixVenteArticle field is required."/>
                      <h:selectOneMenu id="idCategorie" value="#{articleManager.article.idCategorie}">
                          <f:selectItem itemLabel="choisir categorie" itemValue="" />
-                         <f:selectItems value="#{categorieManager.listCategorie}" />
+                         <f:selectItems value="#{categorieManager.categories}"/>
                      </h:selectOneMenu>
 
-                     <h:commandButton action="#{categorieManager.addCategorie()}" value="Ajouter"/>                     
+                     <h:commandButton action="#{articleManager.addArticle()}" value="Ajouter article"/>                     
                  </h:panelGrid>
              </h:form>
 
