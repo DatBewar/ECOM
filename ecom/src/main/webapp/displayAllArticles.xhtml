@@ -13,10 +13,27 @@
                 <p:inputText id="login" value="#{articleManager.keyWord}" title="Votre email" />
             </div>               
             <button type="submit">
-                <h:commandLink action="#{articleManager.getArticlesByKeyWords}" value="Valider"/>
+                <h:commandLink action="#{articleManager.getArticlesByKeyWords}" value="Recherche par mot clé"/>
+            </button>
+        </h:form>
+        <br/><br/>
+        <h:form>
+            <div class="form-group">
+                <p:inputText id="login" value="#{articleManager.aux_cat}" title="Id categorie"/>
+            </div>
+            <button type="submit">
+                <h:commandLink action="#{articleManager.getArticlesByCategory}" value="Recherche categorie id"/>
             </button>
         </h:form>
         <br/> <br/> <br/>
+        <h:form>
+            <div class="form-group">
+                <p:inputText id="login" value="#{articleManager.article.idArticle}" title="Id article" />
+            </div>
+            <button type="submit">
+                <h:commandLink action="#{articleManager.getArticleById}" value="Recherche Article id"/>
+            </button>
+        </h:form>
         <b>La liste de tous les Articles</b> <hr/>
         <p:dataTable var="item" value="#{articleManager.articles}">
             <p:column headerText="Id article">
