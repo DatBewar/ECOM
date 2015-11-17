@@ -24,11 +24,21 @@ public class ArticleManager {
     @EJB
     private ArticleFacade articleFacade;
     private List<Article> articles = new ArrayList<>();
+    private List<Article> articles_ = new ArrayList<>();
     private Article article = new Article();
+    private String keyWord = new String();
     
     public ArticleManager() {
     }
 
+    public List<Article> getArticles_() {
+        return articles_;
+    }
+
+    public void setArticles_(List<Article> articles_) {
+        this.articles_ = articles_;
+    }
+    
     public ArticleFacade getArticleFacade() {
         return articleFacade;
     }
@@ -52,13 +62,13 @@ public class ArticleManager {
 
     public void setArticle(Article article) {
         this.article = article;
+    }   
+    public String getKeyWord() {
+        return keyWord;
     }
-    
-    public List<Article> getAllArticles(){
-        if(articles == null){
-            articles = articleFacade.getAllArticle();
-        }
-        return articles;
+
+    public void setKeyWord(String keyWord) {
+        this.keyWord = keyWord;
     }
     
     //Fiston, je cherche un article par son ID
@@ -67,13 +77,13 @@ public class ArticleManager {
         return null;
     }
     //Fiston, une recherche avancée par les mots clés
-    public String getArticlesByKeyWords(String keyWord){        
-        articles = articleFacade.findByKeyWords(keyWord);
-        return "";
+    public String getArticlesByKeyWords(){
+        articles_ = articleFacade.findByKeyWords(keyWord);
+        return "searchResult";
     }
     //Fiston, recherche par categories
     public String getArticlesByCategory(int idCategorie){        
-        return "";
+        return "searchResult";
     }
     public String addArticle(){
         articleFacade.create(article);
