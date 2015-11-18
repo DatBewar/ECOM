@@ -6,6 +6,7 @@
 package com.groupecom2015.entitieManager;
 
 import com.groupecom2015.entities.CompteUser;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -31,18 +32,23 @@ public class CompteUserFacade extends AbstractFacade<CompteUser> {
         
     //Fiston, to find an account by Email
     public CompteUser findByEmail(String email){
-        CompteUser compte = new CompteUser();
-        Query q = em.createQuery("SELECT * FROM CompteUser WHERE email ='"+email+"'");
-       // System.out.println(query);
-       // Query q = em.createQuery(query);
-        System.out.println(q);
-        //compte = q.getSingleResult();        
-        return compte;
+        List<CompteUser> comptes;
+        Query q = em.createQuery("SELECT c FROM CompteUser c WHERE c.email ='"+email+"'");       
+        comptes = q.getResultList();     
+        return comptes.get(0);
     }
     
     //Fiston, Authentification 
     public boolean signIn(String email, String pwd){
         CompteUser compte = findByEmail(email);
         return compte.getMotDePasse().equals(pwd);
+    }
+    //Fiston, update compte
+    public void updateCompte(CompteUser c){
+        em.persist(c);
+        // flush em - save to DB
+        em.flush();
+        // commit transaction at all
+        em.getTransaction().commit();
     }
 }
