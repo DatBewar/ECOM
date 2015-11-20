@@ -9,15 +9,21 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
     <h:body>
-        <p:dataTable var="item" value="#{PanierManager.listArt}">
+        <h1>test panier</h1>
+        <f:view>
+        <p:dataTable var="item" value="#{PanierManager.getPanier()}">
             <p:column headerText="Nom article">
                 <p:dataTable var="art" value="item.article">
-                <h:outputText value="#{art.getArticle}" />
+                    <h:outputText value="#{art.getArticle}" />
                 </p:dataTable>
             </p:column>
             <p:column headerText="Quantité">
                 <h:outputText value="#{item.getNumArticle}" />
             </p:column>
         </p:dataTable>
+        </f:view>
+        <h:form>
+            <h:commandButton action="#{PanierManager.viderPanier()}" value="Vider panier"/>
+        </h:form>
     </h:body>
 </html>

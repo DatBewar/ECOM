@@ -26,9 +26,14 @@ public class PanierManager {
         this.listArt = new ArrayList<ArticlePanier>();
     }
     
-    public void ajoutArticle(Article a){
+    public String ajoutArticle(Article a){
         ArticlePanier ap = new ArticlePanier(1,a);
         this.listArt.add(ap);
+        return "article ajouté au panier";
+    }
+    
+    public void viderPanier(){
+        this.listArt.clear();
     }
     
     public List<ArticlePanier> getPanier(){
