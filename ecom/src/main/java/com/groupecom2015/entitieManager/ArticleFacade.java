@@ -40,4 +40,8 @@ public class ArticleFacade extends AbstractFacade<Article> {
     public void persist(Article article){
         em.persist(article);
     }
+    
+    public List<Article> searchArticleById(int id){
+       return em.createNamedQuery("Article.findByIdArticle").setParameter("idArticle", id).getResultList();
+    }
 }
