@@ -47,7 +47,7 @@ public class Caracteristique implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "uniteCaracteristique")
-    private int uniteCaracteristique;
+    private String uniteCaracteristique;
     @Basic(optional = false)
     @NotNull
     @Column(name = "valeurCaracteristique")
@@ -60,7 +60,7 @@ public class Caracteristique implements Serializable {
         this.idCaracteristique = idCaracteristique;
     }
 
-    public Caracteristique(Integer idCaracteristique, String libelleCaracteristique, int uniteCaracteristique, int valeurCaracteristique) {
+    public Caracteristique(Integer idCaracteristique, String libelleCaracteristique, String uniteCaracteristique, int valeurCaracteristique) {
         this.idCaracteristique = idCaracteristique;
         this.libelleCaracteristique = libelleCaracteristique;
         this.uniteCaracteristique = uniteCaracteristique;
@@ -83,11 +83,11 @@ public class Caracteristique implements Serializable {
         this.libelleCaracteristique = libelleCaracteristique;
     }
 
-    public int getUniteCaracteristique() {
+    public String getUniteCaracteristique() {
         return uniteCaracteristique;
     }
 
-    public void setUniteCaracteristique(int uniteCaracteristique) {
+    public void setUniteCaracteristique(String uniteCaracteristique) {
         this.uniteCaracteristique = uniteCaracteristique;
     }
 
