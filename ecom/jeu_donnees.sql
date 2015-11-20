@@ -33,12 +33,12 @@ INSERT INTO ecomBd.Article (idArticle, descripArticle, nomArticle, prixAchatArti
 INSERT INTO ecomBd.Article (idArticle, descripArticle, nomArticle, prixAchatArticle, prixVenteArticle, stockArticle, categorieId) 
 	VALUES (50021, "Souris sans fil bluetooth", "Souris hp" , 50, 90, 20, 1002);
 
-INSERT INTO ecomBd.CompteUser (/*nom, prenom, */email, adresse, idCompte, motDePasse, telephone) 
-	VALUES (/*"tom", "smith", */"tom.smith@yahoo.com", "New York", 91000, "tom.smith", "0612345678");
-INSERT INTO ecomBd.CompteUser (email, adresse, idCompte, motDePasse, telephone) 
-	VALUES (/*azerty", "azerty",*/"azerty@gmail.com", "Paris", 92000, "azerty", "0612345678");
-INSERT INTO ecomBd.CompteUser (email, adresse, idCompte, motDePasse, telephone) 
-	VALUES (/*"qwerty","qwerty",*/"qwerty@hotmail.com", "Grenoble", 93000, "qwerty", "0612345678");
+INSERT INTO ecomBd.CompteUser (NOM, PRENOM, email, adresse, idCompte, motDePasse, telephone) 
+	VALUES ("tom", "smith", "tom.smith@yahoo.com", "New York", 91000, "tom.smith", "0612345678");
+INSERT INTO ecomBd.CompteUser (NOM, PRENOM, email, adresse, idCompte, motDePasse, telephone) 
+	VALUES ("azerty", "azerty","azerty@gmail.com", "Paris", 92000, "azerty", "0612345678");
+INSERT INTO ecomBd.CompteUser (NOM, PRENOM, email, adresse, idCompte, motDePasse, telephone) 
+	VALUES ("qwerty","qwerty","qwerty@hotmail.com", "Grenoble", 93000, "qwerty", "0612345678");
 
 INSERT INTO ecomBd.Commande (idCommande, dateCommande) 
 	VALUES (45000, '2015-11-13');
@@ -46,12 +46,12 @@ INSERT INTO ecomBd.Commande (idCommande, dateCommande)
 INSERT INTO ecomBd.LigneDeCommande(prixVente, quantite, idArticle, idCommande)
 	VALUES(300, 1, 5001, 45000);
 
-INSERT INTO ecomBd.Commentaire (idCommentaire, noteCommentaire, idCompte, idArticle/*, libelle*/) 
-	VALUES (121, 1, 91000, 5001/*, "pas satisfait !"*/);
-INSERT INTO ecomBd.Commentaire (idCommentaire, noteCommentaire, idCompte, idArticle/*, libelle*/) 
-	VALUES (122, 2, 91000, 50020/*, "plutot satisfait"*/);
-INSERT INTO ecomBd.Commentaire (idCommentaire, noteCommentaire, idCompte, idArticle/*, libelle*/) 
-	VALUES (123, 3, 92000, 5003/*, "tres satisfait"*/);
+INSERT INTO ecomBd.Commentaire (idCommentaire, noteCommentaire, idCompte, idArticle, LIBELLE) 
+	VALUES (121, 1, 91000, 5001, "pas satisfait !");
+INSERT INTO ecomBd.Commentaire (idCommentaire, noteCommentaire, idCompte, idArticle, LIBELLE) 
+	VALUES (122, 2, 91000, 50020, "plutot satisfait");
+INSERT INTO ecomBd.Commentaire (idCommentaire, noteCommentaire, idCompte, idArticle, LIBELLE) 
+	VALUES (123, 3, 92000, 5003, "tres satisfait");
 
 INSERT INTO ecomBd.Caracteristique (idCaracteristique, libelleCaracteristique, uniteCaracteristique, valeurCaracteristique) 
 	VALUES (501, "libelle de la Caracteristique", 5, 1);
