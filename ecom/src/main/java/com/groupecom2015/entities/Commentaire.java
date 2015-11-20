@@ -49,7 +49,8 @@ public class Commentaire implements Serializable {
     @JoinColumn(name = "idArticle", referencedColumnName = "idArticle")
     @ManyToOne(optional = false)
     private Article idArticle;
-
+    private String libelle;
+    
     public Commentaire() {
     }
 
@@ -68,6 +69,14 @@ public class Commentaire implements Serializable {
 
     public void setIdCommentaire(Integer idCommentaire) {
         this.idCommentaire = idCommentaire;
+    }
+
+    public String getLibelle() {
+        return libelle;
+    }
+
+    public void setLibelle(String libelle) {
+        this.libelle = libelle;
     }
 
     public int getNoteCommentaire() {

@@ -7,6 +7,7 @@ package com.groupecom2015.managerBean;
 
 import com.groupecom2015.entitieManager.ArticleFacade;
 import com.groupecom2015.entities.Article;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -34,13 +35,32 @@ public class ArticleManager {
     public ArticleManager() {
         article = new Article();
     }
-    
-    public List<Article> getAllArticles(){
+
+    public List<Article> getArticleList() {
         if(articleList == null){
             articleList = articleFacade.getAllArticle();
         }
         return articleList;
     }
+
+    public void setArticleList(List<Article> articleList) {
+        this.articleList = articleList;
+    }
+
+    public ArticleFacade getArticleFacade() {
+        return articleFacade;
+    }
+
+    public void setArticleFacade(ArticleFacade articleFacade) {
+        this.articleFacade = articleFacade;
+    }
+    
+    /*public List<Article> getAllArticles(){
+        if(articleList == null){
+            articleList = articleFacade.getAllArticle();
+        }
+        return articleList;
+    }*/
     
     public String addArticle(){
         try{
@@ -63,4 +83,13 @@ public class ArticleManager {
     public Article getArticleById(){
         return null;
     }
+    
+    public List<Article> searchArticleById(int id){
+       return articleFacade.searchArticleById(id);
+    }
+    /*
+    public String getArticleById(){
+        articleList.add(articleFacade.findById(article.getIdArticle()));
+        return "searchResult";
+    }*/
 }

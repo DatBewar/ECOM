@@ -5,17 +5,18 @@
  */
 package com.groupecom2015.entitieManager;
 
-import com.groupecom2015.entities.Categorie;
+import com.groupecom2015.entities.Caracteristique;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 /**
  *
- * @author malick
+ * @author umar
  */
 @Stateless
-public class CategorieFacade extends AbstractFacade<Categorie> {
+public class CaracteristiqueFacade extends AbstractFacade<Caracteristique> {
+
     @PersistenceContext(unitName = "com.groupecom2015_ecom_war_1.0-SNAPSHOTPU")
     private EntityManager em;
 
@@ -24,8 +25,9 @@ public class CategorieFacade extends AbstractFacade<Categorie> {
         return em;
     }
 
-    public CategorieFacade() {
-        super(Categorie.class);
+    public CaracteristiqueFacade() {
+        super(Caracteristique.class);
     }
     
+   
 }

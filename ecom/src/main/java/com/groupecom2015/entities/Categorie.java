@@ -50,7 +50,7 @@ public class Categorie implements Serializable {
     private String nomCategorie;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "categorie")
     private Collection<Article> articleCollection;
-
+    
     public Categorie() {
     }
 

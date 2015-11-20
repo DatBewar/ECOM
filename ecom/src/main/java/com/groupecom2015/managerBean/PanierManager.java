@@ -10,22 +10,25 @@ import com.groupecom2015.entities.ArticlePanier;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateful;
+import javax.inject.Named;
 
 /**
  *
  * @author Erwan
  */
+@Named(value = "PanierManager")
 @Stateful
 public class PanierManager {
 
     private List<ArticlePanier> listArt;
     
     public PanierManager(){
-        listArt = new ArrayList<ArticlePanier>();
+        this.listArt = new ArrayList<ArticlePanier>();
     }
     
-    public void ajoutArticle(ArticlePanier a){
-        listArt.add(a);
+    public void ajoutArticle(Article a){
+        ArticlePanier ap = new ArticlePanier(1,a);
+        this.listArt.add(ap);
     }
     
     public List<ArticlePanier> getPanier(){

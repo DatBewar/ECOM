@@ -19,8 +19,16 @@ import javax.faces.convert.FacesConverter;
  */
 @FacesConverter("categorieConverter")
 public class CategorieConverter implements Converter {
+    //malick 
 
-    @Override
+    /**
+     *convertir un string en objet categorie
+     * @param context
+     * @param component
+     * @param value
+     * @return categorie
+     */ // malick
+        @Override
     public Object getAsObject(FacesContext context, UIComponent component, String value) {
        
         if(value==null ||value.trim().length()==0)
@@ -45,6 +53,13 @@ public class CategorieConverter implements Converter {
         return categorie;   
     }
 
+    /**
+     * Convertie un objet categorie 
+     * @param context
+     * @param component
+     * @param value
+     * @return un string
+     */ //malick
     @Override
     public String getAsString(FacesContext context, UIComponent component, Object value) {
         return ((Categorie)value).toString();

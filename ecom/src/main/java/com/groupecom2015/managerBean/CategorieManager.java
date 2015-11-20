@@ -9,7 +9,7 @@ import com.groupecom2015.entitieManager.CategorieFacade;
 import com.groupecom2015.entities.Categorie;
 import java.util.List;
 import javax.ejb.EJB;
-import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
 /**
@@ -17,18 +17,18 @@ import javax.inject.Named;
  * @author malick
  */
 @Named(value = "categorieManager")
-@ApplicationScoped
+@RequestScoped
 public class CategorieManager {
 
     @EJB
     private CategorieFacade categorieFacade;
     private Categorie categorie;
 
-    
     public CategorieManager() {
         categorie = new Categorie();
-      
     }
+
+
 
     public void setCategorie(Categorie categorie) {
         this.categorie = categorie;
@@ -38,31 +38,30 @@ public class CategorieManager {
         return categorie;
     }
 
+    
     //malick
     public String addCategorie() {
         categorieFacade.create(categorie);
         return "messageAjoutCategorie";
     }
 
-    //malick
+
     public List<Categorie> getListCategorie() {
 
         return categorieFacade.findAll();
 
     }
 
-/*
-    //malick
-    public List<SelectItem> getListCategorieSelectItem() {
-        List<SelectItem> categories = new LinkedList<>();
-        List<Categorie> l = categorieFacade.findAll();
-        for (Categorie cat : l) {
-            categories.add(new SelectItem(cat, cat.getNomCategorie()));
-        }
-            return categories;
-    }
-  */  
-    
-   
-
+    /*
+     //malick
+     public List<SelectItem> getListCategorieSelectItem() {
+     List<SelectItem> categories = new LinkedList<>();
+     List<Categorie> l = categorieFacade.findAll();
+     for (Categorie cat : l) {
+     categories.add(new SelectItem(cat, cat.getNomCategorie()));
+     }
+     return categories;
+     }
+     */
+ 
 }
