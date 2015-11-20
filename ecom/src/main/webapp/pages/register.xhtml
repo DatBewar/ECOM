@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://primefaces.org/ui">
+	<h:head>
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+                <h:outputStylesheet name="./css/style.css"/>  
+                <h:outputStylesheet name="./css/bootstrap.css"/> 
+                <h:outputScript name="./js/jquery-2.1.4.min.js"/>
+                <h:outputScript name="./js/bootstrap.js"/>      
+	</h:head>
+	<h:body>
+		<section id="registerbg">
+			<div id="register">
+				
+				<div class="col-md-5 col-md-offset-1">
+					<h1>Welcome to join us</h1>
+				</div>
+				<div class="col-md-4 col-md-offset-2">
+					<h:form>
+						<div class="col-md-10">
+							<div class="form-group" style="text-align: left;">
+								<h:outputLabel style="color: whitesmoke;" value="Email:" for="email" />
+                                                                <h:inputText id="email" class="form-control" value="#{compteUserManager.compte.email}" title="Email" required="true" requiredMessage="The Email field is required."/>
+				
+							</div>
+							<div class="form-group" style="text-align: left;">
+                                                                <h:outputLabel style="color: whitesmoke;" value="Password" for="password" />
+                                                                <h:inputSecret class="form-control" id="motDePasse" value="#{compteUserManager.compte.motDePasse}" title="MotDePasse" required="true" requiredMessage="The MotDePasse field is required."/>
+								
+							</div>
+
+							<div class="form-group" style="text-align: left;">
+                                                                <h:outputLabel style="color: whitesmoke;" value="Telephone:" for="telephone" />
+								<h:inputText class="form-control" id="telephone" value="#{compteUserManager.compte.telephone}" title="Telephone" required="true" requiredMessage="The Telephone field is required."/>
+								
+							</div>
+							
+							<div class="form-group" style="text-align: left;">
+                                                            
+                                                             <h:outputLabel style="color: whitesmoke;" value="Adresse:" for="adresse" />
+                                                             <h:inputTextarea class="form-control" rows="3" cols="30" id="adresse" value="#{compteUserManager.compte.adresse}" title="Adresse" required="true" requiredMessage="The Adresse field is required."/>
+								
+							</div>
+
+							<div class="form-group" style="text-align: left;">
+                                                              <h:commandButton class="btn btn-skin pull-right" action="#{compteUserManager.addUser()}" value="s'inscrire"></h:commandButton>
+			
+
+							</div>
+
+						</div>
+                                        </h:form>>
+
+				</div>
+
+			</div>
+
+		</section>
+	</h:body>
+
+</html>
