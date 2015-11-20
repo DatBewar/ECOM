@@ -41,7 +41,6 @@
             </h:form>
         </f:view>
         <h:form>
-            <h:outputLabel value="Titre de l'article:" for="Titre de l'article:" /> 
             <h:inputText id="nomCategorie" value="#{articleManager.article.nomArticle}"  required="true" requiredMessage="Nom article nécesaire."/> 
             <h:commandLink action="#{articleManager.getArticlesByKeyWords}" value="Rechercher par titre" />
         </h:form>
