@@ -15,7 +15,7 @@
                 <h:panelGrid columns="2">
                     <h:outputLabel value="NomCategorie:" for="nomCategorie" />
                     <h:inputText id="nomCategorie" value="#{categorieManager.categorie.nomCategorie}" title="NomCategorie" required="true" requiredMessage="The NomCategorie field is required."/>
-                    <h:commandButton action="#{categorieManager.addCategorie()}" value="Ajouter"></h:commandButton>
+                    <h:commandButton action="#{categorieManager.addCategorie}" value="Ajouter"></h:commandButton>
                 </h:panelGrid>
             </h:form>
         </f:view>

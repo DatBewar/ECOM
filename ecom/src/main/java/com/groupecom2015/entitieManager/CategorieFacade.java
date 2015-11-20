@@ -36,8 +36,6 @@ public class CategorieFacade extends AbstractFacade<Categorie> {
      */
     public List<Integer> getListIdCategorie(){
         Query query = em.createQuery("SELECT c.idCategorie FROM Categorie c");
-        return  (List<Integer>)query.getResultList();
-       
+        return  (List<Integer>)query.getResultList();  
     }
-
 }

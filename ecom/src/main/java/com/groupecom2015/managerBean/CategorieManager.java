@@ -7,6 +7,7 @@ package com.groupecom2015.managerBean;
 
 import com.groupecom2015.entitieManager.CategorieFacade;
 import com.groupecom2015.entities.Categorie;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -21,10 +22,28 @@ import javax.enterprise.context.RequestScoped;
 public class CategorieManager {
     @EJB
     private CategorieFacade categorieFacade;
-    private Categorie categorie;
-   
+    private Categorie categorie = new Categorie();
+    private List<Categorie> categories = new ArrayList<>();
+
+    public CategorieFacade getCategorieFacade() {
+        return categorieFacade;
+    }
+
+    public void setCategorieFacade(CategorieFacade categorieFacade) {
+        this.categorieFacade = categorieFacade;
+    }
+    
     public CategorieManager() {
         categorie = new  Categorie();
+    }
+
+    public List<Categorie> getCategories() {
+        categories = categorieFacade.findAll();
+        return categories;
+    }
+
+    public void setCategories(List<Categorie> categories) {
+        this.categories = categories;
     }
     
     public Categorie getCategorie(){
@@ -36,11 +55,7 @@ public class CategorieManager {
         return "messageAjoutCategorie";
     }
     
-    public List<Categorie> getListCategorie(){
-        
-        return categorieFacade.findAll();
-        
+    public List<Categorie> getListCategorie(){        
+        return categorieFacade.findAll();        
     }
-    
-    
 }

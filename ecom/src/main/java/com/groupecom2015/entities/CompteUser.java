@@ -65,6 +65,8 @@ public class CompteUser implements Serializable {
     private String telephone;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCompte")
     private Collection<Commentaire> commentaireCollection;
+    private String nom;
+    private String prenom;
 
     public CompteUser() {
     }
@@ -81,6 +83,22 @@ public class CompteUser implements Serializable {
         this.telephone = telephone;
     }
 
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public String getPrenom() {
+        return prenom;
+    }
+
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
+    
     public int getIdCompte() {
         return idCompte;
     }
