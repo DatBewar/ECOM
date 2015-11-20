@@ -53,4 +53,8 @@ public class ArticleManager {
     public Article getArticleById(){
         return null;
     }
+    
+    public List<Article> searchArticleById(int id){
+       return articleFacade.searchArticleById(id);
+    }
 }
