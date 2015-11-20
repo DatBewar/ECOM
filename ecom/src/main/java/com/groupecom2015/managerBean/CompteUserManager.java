@@ -53,10 +53,10 @@ public class CompteUserManager {
     }
     
     //Fiston, find a compte by email
-    public String getCompteByEmail(){
-        if(!compte.getEmail().equals("")){
-            compte = compteUserFacade.findByEmail(compte.getEmail());
-            return "creerCompteUser";
+    public String getCompteByEmail(String email){
+        if(!email.equals("")){
+            compte = compteUserFacade.findByEmail(email);
+            return "modifierCompteUser";
         }
         else{
             compte = new CompteUser();

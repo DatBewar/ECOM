@@ -19,9 +19,7 @@
                 <h:outputLabel value="Adresse:" for="adresse" />
                 <h:inputTextarea rows="4" cols="30" id="adresse" value="#{compteUserManager.compte.adresse}" title="Adresse" required="true" requiredMessage="The Adresse field is required."/>
                 <h:outputLabel value="Telephone:" for="telephone" />
-                <h:inputText id="telephone" value="#{compteUserManager.compte.telephone}" title="Telephone" required="true" requiredMessage="The Telephone field is required."/>
-                <h:commandButton action="#{compteUserManager.addUser()}" value="s'inscrire"></h:commandButton>
-                <br/><br/>
+                <h:inputText id="telephone" value="#{compteUserManager.compte.telephone}" title="Telephone" required="true" requiredMessage="The Telephone field is required."/>                
                 <h:commandButton action="#{compteUserManager.updateCompte()}" value="Mettre à jour"></h:commandButton>
             </h:panelGrid>
         </h:form>
