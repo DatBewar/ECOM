@@ -10,11 +10,13 @@ import com.groupecom2015.entities.ArticlePanier;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateful;
+import javax.inject.Named;
 
 /**
  *
  * @author Erwan
  */
+@Named(value = "PanierManager")
 @Stateful
 public class PanierManager {
 
