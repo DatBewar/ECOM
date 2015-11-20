@@ -15,7 +15,7 @@
         <f:view>
                 <h:form>
                     <h1><h:outputText value=""/></h1>
-                    <h:dataTable value="#{articleManager.articleList}" var="item">
+                    <h:dataTable value="#{articleManager.getArticleList()}" var="item">
                         <h:column>
                             <f:facet name="header">
                                  <h:outputText value="Id "/>

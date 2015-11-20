@@ -24,13 +24,13 @@ INSERT INTO ecomBd.Categorie (idCategorie, nomCategorie)
 INSERT INTO ecomBd.Categorie (idCategorie, nomCategorie) 
 	VALUES (1004, "Cable USB");
 
-INSERT INTO ecomBd.Article (idArticle, descripArticle, nomArticle, prixAchatArticle, prixVenteArticle, stockArticle, idCategorie) 
+INSERT INTO ecomBd.Article (idArticle, descripArticle, nomArticle, prixAchatArticle, prixVenteArticle, stockArticle, categorieId) 
 	VALUES (5001, "Ecran 15p PC portable", "Ecran 15p ASUS" , 150, 300, 40, 1001);
-INSERT INTO ecomBd.Article (idArticle, descripArticle, nomArticle, prixAchatArticle, prixVenteArticle, stockArticle, idCategorie) 
+INSERT INTO ecomBd.Article (idArticle, descripArticle, nomArticle, prixAchatArticle, prixVenteArticle, stockArticle, categorieId) 
 	VALUES (50020, "Clavier externe pour PC", "Clavier externe" , 50, 100, 20, 1002);
-INSERT INTO ecomBd.Article (idArticle, descripArticle, nomArticle, prixAchatArticle, prixVenteArticle, stockArticle, idCategorie) 
+INSERT INTO ecomBd.Article (idArticle, descripArticle, nomArticle, prixAchatArticle, prixVenteArticle, stockArticle, categorieId) 
 	VALUES (5003, "Souris avec cable USB", "Souris hp" , 15, 30, 200, 1003);
-INSERT INTO ecomBd.Article (idArticle, descripArticle, nomArticle, prixAchatArticle, prixVenteArticle, stockArticle, idCategorie) 
+INSERT INTO ecomBd.Article (idArticle, descripArticle, nomArticle, prixAchatArticle, prixVenteArticle, stockArticle, categorieId) 
 	VALUES (50021, "Souris sans fil bluetooth", "Souris hp" , 50, 90, 20, 1002);
 
 INSERT INTO ecomBd.CompteUser (/*nom, prenom, */email, adresse, idCompte, motDePasse, telephone) 
