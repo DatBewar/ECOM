@@ -63,8 +63,10 @@
                         </f:facet>
                         <h:outputText value="#{item.categorie}"/>
                     </h:column>
+                    <h:column>
+                        <h:commandButton action="#{PanierManager.ajoutArticle(item.idArticle)}" value="Ajouter au panier"/>
+                    </h:column>
                 </h:dataTable>
-                <h:commandButton action="#{PanierManager.ajoutArticle(articleManager.searchArticleById(id))}" value="Ajouter au panier"/>
                 <br></br>
             </h:form>
         </f:view>

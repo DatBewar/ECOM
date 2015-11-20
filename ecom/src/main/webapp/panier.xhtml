@@ -11,6 +11,9 @@
     <h:body>
         <h1>test panier</h1>
         <f:view>
+            <h:outputText value="#{PanierManager.getPanier().size()}" />
+        </f:view>
+        <f:view>
         <p:dataTable var="item" value="#{PanierManager.getPanier()}">
             <p:column headerText="Nom article">
                 <p:dataTable var="art" value="item.article">

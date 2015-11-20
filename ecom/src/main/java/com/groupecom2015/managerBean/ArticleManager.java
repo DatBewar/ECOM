@@ -69,7 +69,6 @@ public class ArticleManager {
         return article;
     }
     
-    
     public Article getArticleById(){
         return null;
     }

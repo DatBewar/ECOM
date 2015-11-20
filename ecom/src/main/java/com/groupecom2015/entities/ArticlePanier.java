@@ -14,30 +14,39 @@ import javax.ejb.Stateless;
 @Stateless
 public class ArticlePanier {
 
-    private int numArt;
-    private Article article;
+    private int quantArt;
+    private int idArticle;
 
     public ArticlePanier() {
     }
     
-    public ArticlePanier(int n, Article a){
-        this.numArt = n;
-        this.article = a;
+    public ArticlePanier(int n, int id){
+        this.quantArt = n;
+        this.idArticle = id;
     }
     
-    public int getNumArticle(){
-        return this.numArt;
+    public int getQuantArticle(){
+        return this.quantArt;
     }
     
-    public Article getArticle(){
-        return this.article;
+    public int getArticle(){
+        return this.idArticle;
     }
     
     public void setNumArticle(int n){
-        this.numArt = n;
+        this.quantArt = n;
     }
     
-    public void setArticle(Article a){
-        this.article = a;
+    public void setArticle(int id){
+        this.idArticle = id;
+    }
+    
+    public void incrQuantite(){
+        this.quantArt++;
+    }
+    
+    public void decrQuantite(){
+        if(this.quantArt>0)
+            this.quantArt--;
     }
 }
