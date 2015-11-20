@@ -47,7 +47,7 @@ public class Commentaire implements Serializable {
     @ManyToOne(optional = false)
     private CompteUser idCompte;
     @JoinColumn(name = "idArticle", referencedColumnName = "idArticle")
-    @OneToOne(optional = false)
+    @ManyToOne(optional = false)
     private Article idArticle;
 
     public Commentaire() {

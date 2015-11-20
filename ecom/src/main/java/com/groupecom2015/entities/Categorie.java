@@ -48,7 +48,7 @@ public class Categorie implements Serializable {
     @Size(min = 1, max = 200)
     @Column(name = "nomCategorie")
     private String nomCategorie;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCategorie")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "categorie")
     private Collection<Article> articleCollection;
 
     public Categorie() {
@@ -111,7 +111,7 @@ public class Categorie implements Serializable {
     
     @Override
     public String toString() {
-        return "com.groupecom2015.entities.Categorie[ idCategorie=" + idCategorie + " ]";
+        return idCategorie+"-"+nomCategorie;
     }
 
 }

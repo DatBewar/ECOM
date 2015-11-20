@@ -8,9 +8,11 @@ package com.groupecom2015.managerBean;
 import com.groupecom2015.entitieManager.ArticleFacade;
 import com.groupecom2015.entities.Article;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.ManagedBean;
 import javax.ejb.EJB;
-import javax.enterprise.context.Dependent;
+import javax.ejb.EJBException;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 
@@ -41,7 +43,15 @@ public class ArticleManager {
     }
     
     public String addArticle(){
+        try{
         articleFacade.create(article);
+        }catch(EJBException e){
+            try {
+                throw e.getCausedByException();
+            } catch (Exception ex) {
+                Logger.getLogger(ArticleManager.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
         return "messageArticleAjouter";
     } 
 

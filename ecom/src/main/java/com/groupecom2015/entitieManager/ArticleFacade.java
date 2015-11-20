@@ -40,4 +40,5 @@ public class ArticleFacade extends AbstractFacade<Article> {
     public void persist(Article article){
         em.persist(article);
     }
+   
 }
