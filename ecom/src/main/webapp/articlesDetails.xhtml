@@ -70,6 +70,8 @@
                         <h:outputText value="#{item.idCategorie}"/>
                     </h:column>
                 </h:dataTable>
+                <br></br>
+                <h:commandButton action="#{PanierManager.ajoutArticle(item)}" value="Ajouter au panier"/>
             </h:form>
         </f:view>
 

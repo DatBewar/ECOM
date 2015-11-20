@@ -23,11 +23,12 @@ public class PanierManager {
     private List<ArticlePanier> listArt;
     
     public PanierManager(){
-        listArt = new ArrayList<ArticlePanier>();
+        this.listArt = new ArrayList<ArticlePanier>();
     }
     
-    public void ajoutArticle(ArticlePanier a){
-        listArt.add(a);
+    public void ajoutArticle(Article a){
+        ArticlePanier ap = new ArticlePanier(1,a);
+        this.listArt.add(ap);
     }
     
     public List<ArticlePanier> getPanier(){
