@@ -9,7 +9,7 @@
     </h:head>
     <h:body>
         <b>La liste de tous les Articles</b> <hr/>
-        <p:dataTable var="item" value="#{articleManager.articles_}">
+        <p:dataTable var="item" value="#{articleManager.articleList}">
             <p:column headerText="Id article">
                 <h:outputText value="#{item.idArticle}" />
             </p:column>

@@ -47,7 +47,6 @@ public class CategorieManager {
 
 
     public List<Categorie> getListCategorie() {
-
         return categorieFacade.findAll();
 
     }

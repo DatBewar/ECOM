@@ -76,9 +76,9 @@ public class ArticleManager {
     public List<Article> searchArticleById(int id){
        return articleFacade.searchArticleById(id);
     }
-    /*
-    public String getArticleById(){
-        articleList.add(articleFacade.findById(article.getIdArticle()));
+    //Fiston, une recherche avancée par les mots clés
+    public String getArticlesByKeyWords(){
+        articleList = articleFacade.findByKeyWords(article.getNomArticle());
         return "searchResult";
-    }*/
+    }
 }
