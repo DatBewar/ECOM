@@ -7,11 +7,10 @@ package com.groupecom2015.managerBean;
 
 import com.groupecom2015.entitieManager.CategorieFacade;
 import com.groupecom2015.entities.Categorie;
-import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
-import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Named;
 
 /**
  *
@@ -20,42 +19,49 @@ import javax.enterprise.context.RequestScoped;
 @Named(value = "categorieManager")
 @RequestScoped
 public class CategorieManager {
+
     @EJB
     private CategorieFacade categorieFacade;
-    private Categorie categorie = new Categorie();
-    private List<Categorie> categories = new ArrayList<>();
+    private Categorie categorie;
 
-    public CategorieFacade getCategorieFacade() {
-        return categorieFacade;
-    }
-
-    public void setCategorieFacade(CategorieFacade categorieFacade) {
-        this.categorieFacade = categorieFacade;
-    }
-    
     public CategorieManager() {
-        categorie = new  Categorie();
+        categorie = new Categorie();
     }
 
-    public List<Categorie> getCategories() {
-        categories = categorieFacade.findAll();
-        return categories;
+
+
+    public void setCategorie(Categorie categorie) {
+        this.categorie = categorie;
     }
 
-    public void setCategories(List<Categorie> categories) {
-        this.categories = categories;
-    }
-    
-    public Categorie getCategorie(){
+    public Categorie getCategorie() {
         return categorie;
     }
+
     
-    public String addCategorie(){
+    //malick
+    public String addCategorie() {
         categorieFacade.create(categorie);
         return "messageAjoutCategorie";
     }
-    
-    public List<Categorie> getListCategorie(){        
-        return categorieFacade.findAll();        
+
+
+    public List<Categorie> getListCategorie() {
+
+        return categorieFacade.findAll();
+
     }
+
+    /*
+     //malick
+     public List<SelectItem> getListCategorieSelectItem() {
+     List<SelectItem> categories = new LinkedList<>();
+     List<Categorie> l = categorieFacade.findAll();
+     for (Categorie cat : l) {
+     categories.add(new SelectItem(cat, cat.getNomCategorie()));
+     }
+     return categories;
+     }
+     */
+ 
 }

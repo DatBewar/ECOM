@@ -34,14 +34,6 @@ public class ArticleFacade extends AbstractFacade<Article> {
        return em.createNamedQuery("Article.findAll").getResultList();
     }
     
-    public Article updateArticle(Article article){
-        return em.merge(article);
-    }
-    
-    public void persist(Article article){
-        em.persist(article);
-    }
-    
     public List<Article> searchArticleById(int id){
        return em.createNamedQuery("Article.findByIdArticle").setParameter("idArticle", id).getResultList();
     }

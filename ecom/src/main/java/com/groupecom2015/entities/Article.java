@@ -20,7 +20,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -71,15 +70,15 @@ public class Article implements Serializable {
     @NotNull
     @Column(name = "prixVenteArticle")
     private float prixVenteArticle;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "idArticle")
-    private Commentaire commentaire;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idArticle")
+    private Collection<Commentaire> commentaireCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "article")
     private Collection<LigneDeCommande> ligneDeCommandeCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idArticle")
     private Collection<Photo> photoCollection;
-    @JoinColumn(name = "idCategorie", referencedColumnName = "idCategorie")
+    @JoinColumn(name = "categorieId", referencedColumnName = "idCategorie")
     @ManyToOne(optional = false)
-    private Categorie idCategorie;
+    private Categorie categorie;
 
     public Article() {
     }
@@ -100,6 +99,8 @@ public class Article implements Serializable {
     public Integer getIdArticle() {
         return idArticle;
     }
+
+    
 
     public void setIdArticle(Integer idArticle) {
         this.idArticle = idArticle;
@@ -145,12 +146,13 @@ public class Article implements Serializable {
         this.prixVenteArticle = prixVenteArticle;
     }
 
-    public Commentaire getCommentaire() {
-        return commentaire;
+    @XmlTransient
+    public Collection<Commentaire> getCommentaireCollection() {
+        return commentaireCollection;
     }
 
-    public void setCommentaire(Commentaire commentaire) {
-        this.commentaire = commentaire;
+    public void setCommentaireCollection(Collection<Commentaire> commentaireCollection) {
+        this.commentaireCollection = commentaireCollection;
     }
 
     @XmlTransient
@@ -171,12 +173,12 @@ public class Article implements Serializable {
         this.photoCollection = photoCollection;
     }
 
-    public Categorie getIdCategorie() {
-        return idCategorie;
+    public Categorie getCategorie() {
+        return categorie;
     }
 
-    public void setIdCategorie(Categorie idCategorie) {
-        this.idCategorie = idCategorie;
+    public void setCategorie(Categorie categorie) {
+        this.categorie = categorie;
     }
 
     @Override

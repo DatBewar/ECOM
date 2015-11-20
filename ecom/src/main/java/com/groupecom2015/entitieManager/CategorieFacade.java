@@ -6,11 +6,9 @@
 package com.groupecom2015.entitieManager;
 
 import com.groupecom2015.entities.Categorie;
-import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 
 /**
  *
@@ -30,12 +28,4 @@ public class CategorieFacade extends AbstractFacade<Categorie> {
         super(Categorie.class);
     }
     
-    /**
-     *
-     * @return La liste des id de categories
-     */
-    public List<Integer> getListIdCategorie(){
-        Query query = em.createQuery("SELECT c.idCategorie FROM Categorie c");
-        return  (List<Integer>)query.getResultList();  
-    }
 }

@@ -13,9 +13,10 @@
             <h:form>
                 <h1><h:outputText value="Create/Edit"/></h1>
                 <h:panelGrid columns="2">
-                    <h:outputLabel value="NomCategorie:" for="nomCategorie" />
-                    <h:inputText id="nomCategorie" value="#{categorieManager.categorie.nomCategorie}" title="NomCategorie" required="true" requiredMessage="The NomCategorie field is required."/>
-                    <h:commandButton action="#{categorieManager.addCategorie}" value="Ajouter"></h:commandButton>
+                    <h:outputLabel value="NomCategorie:" for="nomCategorie" /> 
+                    <h:inputText id="nomCategorie" value="#{categorieManager.categorie.nomCategorie}" title="NomCategorie" required="true" requiredMessage="The NomCategorie field is required."/> 
+                    <h:message id="nomCategorieMessage" for="nomCategorie" errorClass="erreur" />
+                    <h:commandButton action="#{categorieManager.addCategorie()}" value="Ajouter"></h:commandButton>
                 </h:panelGrid>
             </h:form>
         </f:view>
