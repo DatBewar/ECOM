@@ -27,10 +27,20 @@ public class ArticleManager {
     private List<Article> articles_ = new ArrayList<>();
     private Article article = new Article();
     private String keyWord = new String();
+    private int aux_cat;
     
     public ArticleManager() {
     }
 
+    public int getAux_cat() {
+        return aux_cat;
+    }
+
+    public void setAux_cat(int aux_cat) {
+        this.aux_cat = aux_cat;
+    }
+
+    
     public List<Article> getArticles_() {
         return articles_;
     }
@@ -72,9 +82,10 @@ public class ArticleManager {
     }
     
     //Fiston, je cherche un article par son ID
-    public String getArticleById(int _articleId){
-        article = articleFacade.find(_articleId);
-        return null;
+    public String getArticleById(){
+        articles_ = new ArrayList<>();
+        articles_.add(articleFacade.findById(article.getIdArticle()));
+        return "searchResult";
     }
     //Fiston, une recherche avancée par les mots clés
     public String getArticlesByKeyWords(){
@@ -82,7 +93,8 @@ public class ArticleManager {
         return "searchResult";
     }
     //Fiston, recherche par categories
-    public String getArticlesByCategory(int idCategorie){        
+    public String getArticlesByCategory(){
+        articles_ = articleFacade.findByCategorie(aux_cat);
         return "searchResult";
     }
     public String addArticle(){

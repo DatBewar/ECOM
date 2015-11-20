@@ -17,13 +17,13 @@ import javax.enterprise.context.RequestScoped;
  *
  * @author malick
  */
-@Named(value = "compteUserView")
+@Named(value = "compteUserManager")
 @RequestScoped
 public class CompteUserManager {
     @EJB
     private CompteUserFacade compteUserFacade;
     private List<CompteUser> comptes = new ArrayList<>();
-    private CompteUser compte;
+    private CompteUser compte = new CompteUser();
 
     
     public CompteUserManager() {
@@ -53,13 +53,20 @@ public class CompteUserManager {
     }
     
     //Fiston, find a compte by email
-    public String getCompteByEmail(String email){
-        compte = compteUserFacade.findByEmail(email);
-        return null;
+    public String getCompteByEmail(){
+        if(!compte.getEmail().equals("")){
+            compte = compteUserFacade.findByEmail(compte.getEmail());
+            return "creerCompteUser";
+        }
+        else{
+            compte = new CompteUser();
+         return null;   
+        }        
     }
     //Fiston, update compte infos
-    public String updateCompte(CompteUser compte){
-        compteUserFacade.edit(compte);   
-        return null;
+    public String updateCompte(){
+        compteUserFacade.updateCompte(compte);
+        compte = new CompteUser();
+        return "index";
     }
 }
