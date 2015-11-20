@@ -32,6 +32,7 @@ public class ArticleManager {
     
     public ArticleManager() {
         article = new Article();
+        this.articleList = null;
     }
 
     public List<Article> getArticleList() {
