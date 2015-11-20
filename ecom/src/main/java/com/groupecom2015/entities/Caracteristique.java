@@ -98,7 +98,7 @@ public class Caracteristique implements Serializable {
     public void setValeurCaracteristique(int valeurCaracteristique) {
         this.valeurCaracteristique = valeurCaracteristique;
     }
-
+    
     @Override
     public int hashCode() {
         int hash = 0;
