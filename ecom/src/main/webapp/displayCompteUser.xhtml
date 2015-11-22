@@ -1,16 +1,46 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>TODO supply a title</title>
-        <meta name="viewport" content="width=device-width"/>
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Tous les Articles</title>
+    </h:head>
+    <h:body>
+
+        <br/> <br/> <br/>
+        <b>La liste de tous les Articles</b> <hr/>
+            <h:form>
+                <h1><h:outputText value=""/></h1>
+                <h:dataTable value="#{compteUserManager.comptes}" var="item">
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="ID"/>
+                        </f:facet>                        
+                            <h:outputText value="#{item.idCompte}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Prénom"/>
+                        </f:facet>
+                        <h:outputText value="#{item.nom}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Prénom"/>
+                        </f:facet>
+                        <h:outputText value="#{item.prenom}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Selectionner compte"/>
+                        </f:facet>
+                        <h:commandButton action="#{compteUserManager.getCompteByID(item.idCompte)}" value="Cliquer ici">
+                            <f:param name="idCompte" value="#{item.idCompte}"></f:param>
+                        </h:commandButton>
+                    </h:column>
+                </h:dataTable>
+            </h:form>
+    </h:body>
 </html>

@@ -37,7 +37,13 @@ public class CompteUserFacade extends AbstractFacade<CompteUser> {
         comptes = q.getResultList();     
         return comptes.get(0);
     }
-    
+    //Fiston, to find an account by Email
+    public CompteUser findById(int idCompte){        
+        List<CompteUser> comptes;
+        Query q = em.createQuery("SELECT c FROM CompteUser c WHERE c.idCompte = "+idCompte+"");       
+        comptes = q.getResultList();     
+        return comptes.get(0);
+    }
     //Fiston, Authentification 
     public boolean signIn(String email, String pwd){
         CompteUser compte = findByEmail(email);

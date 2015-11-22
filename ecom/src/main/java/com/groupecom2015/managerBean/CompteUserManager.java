@@ -25,7 +25,6 @@ public class CompteUserManager {
     private List<CompteUser> comptes = new ArrayList<>();
     private CompteUser compte = new CompteUser();
 
-    
     public CompteUserManager() {
         compte = new CompteUser();
     }
@@ -33,40 +32,55 @@ public class CompteUserManager {
     public CompteUser getCompte() {
         return compte;
     }
-    
-    public String addUser(){
+
+    public CompteUserFacade getCompteUserFacade() {
+        return compteUserFacade;
+    }
+
+    public void setCompteUserFacade(CompteUserFacade compteUserFacade) {
+        this.compteUserFacade = compteUserFacade;
+    }
+
+    public String addUser() {
         compteUserFacade.create(compte);
         return "messageInscription";
     }
-    
+
     public List<CompteUser> getComptes() {
+        comptes = compteUserFacade.findAll();
         return comptes;
     }
 
     public void setComptes(List<CompteUser> comptes) {
         this.comptes = comptes;
     }
+
     //Fiston, find a compte by id  
-    public String getCompteByID(int compteId){
-        compte = compteUserFacade.find(compteId);
-        return null;
+    public String getCompteByID(int compteId) {
+        compte = compteUserFacade.findById(compteId);
+        return "modifierCompteUser";
     }
-    
+
     //Fiston, find a compte by email
-    public String getCompteByEmail(String email){
-        if(!email.equals("")){
+    public String getCompteByEmail(String email) {
+        if (!email.equals("")) {
             compte = compteUserFacade.findByEmail(email);
             return "modifierCompteUser";
-        }
-        else{
+        } else {
             compte = new CompteUser();
-         return null;   
-        }        
+            return null;
+        }
     }
+
     //Fiston, update compte infos
     public String updateCompte(){
-        compteUserFacade.updateCompte(compte);
-        compte = new CompteUser();
-        return "index";
+        
+        System.out.println("***********************\n "+compte.toString()+"\n*************************");
+        /*if (compte.getEmail() != null) {
+            compteUserFacade.updateCompte(compte);
+            compte = new CompteUser();
+            return "displayComputerUser";
+        }    */    
+        return "displayCompteUser";
     }
 }
