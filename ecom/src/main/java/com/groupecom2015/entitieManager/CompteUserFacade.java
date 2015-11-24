@@ -3,17 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.groupecom2015.entitieManager;
 
 import com.groupecom2015.entities.CompteUser;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
- * @author BXDN
+ * @author malick
  */
 @Stateless
 public class CompteUserFacade extends AbstractFacade<CompteUser> {
@@ -28,5 +29,24 @@ public class CompteUserFacade extends AbstractFacade<CompteUser> {
     public CompteUserFacade() {
         super(CompteUser.class);
     }
-    
+        
+    //Fiston, to find an account by Email
+    public CompteUser findByEmail(String email){
+        List<CompteUser> comptes;
+        Query q = em.createQuery("SELECT c FROM CompteUser c WHERE c.email ='"+email+"'");       
+        comptes = q.getResultList();     
+        return comptes.get(0);
+    }
+    //Fiston, to find an account by Email
+    public CompteUser findById(int idCompte){        
+        List<CompteUser> comptes;
+        Query q = em.createQuery("SELECT c FROM CompteUser c WHERE c.idCompte = "+idCompte+"");       
+        comptes = q.getResultList();     
+        return comptes.get(0);
+    }
+    //Fiston, Authentification 
+    public boolean signIn(String email, String pwd){
+        CompteUser compte = findByEmail(email);
+        return compte.getMotDePasse().equals(pwd);
+    }
 }

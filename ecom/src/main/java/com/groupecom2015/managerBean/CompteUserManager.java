@@ -17,11 +17,9 @@ import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
 
-
 @Named("compteUserManager")
 @SessionScoped
 public class CompteUserManager implements Serializable {
-
 
     private CompteUser compte;
     private DataModel comptes = null;
@@ -31,12 +29,20 @@ public class CompteUserManager implements Serializable {
 
     public CompteUserManager() {
     }
-    
+
+    public CompteUserFacade getCompteUserFacade() {
+        return compteUserFacade;
+    }
+
+    public void setCompteUserFacade(CompteUserFacade compteUserFacade) {
+        this.compteUserFacade = compteUserFacade;
+    }
+
     public String addUser() {
         compteUserFacade.create(compte);
         return "messageInscription";
     }
-    
+
     public CompteUser getCompte() {
         if (compte == null) {
             compte = new CompteUser();
@@ -47,6 +53,7 @@ public class CompteUserManager implements Serializable {
     private CompteUserFacade getFacade() {
         return compteUserFacade;
     }
+
     public PaginationHelper getPagination() {
         if (pagination == null) {
             pagination = new PaginationHelper(10) {
@@ -58,7 +65,7 @@ public class CompteUserManager implements Serializable {
 
                 @Override
                 public DataModel createPageDataModel() {
-                    return new ListDataModel(getFacade().findRange(new int[]{getPageFirstItem(), getPageFirstItem()+getPageSize()}));
+                    return new ListDataModel(getFacade().findRange(new int[]{getPageFirstItem(), getPageFirstItem() + getPageSize()}));
                 }
             };
         }
@@ -69,8 +76,9 @@ public class CompteUserManager implements Serializable {
         recreateModel();
         return "displayCompteUser";
     }
+
     public String prepareEdit() {
-        compte = (CompteUser)getComptes().getRowData();
+        compte = (CompteUser) getComptes().getRowData();
         return "modifierCompteUser";
     }
 
@@ -106,15 +114,15 @@ public class CompteUserManager implements Serializable {
         return compteUserFacade.find(id);
     }
 
-    
-    @FacesConverter(forClass=CompteUser.class)
+    @FacesConverter(forClass = CompteUser.class)
     public static class compteUserManagerConverter implements Converter {
+
         @Override
         public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
             if (value == null || value.length() == 0) {
                 return null;
             }
-            CompteUserManager controller = (CompteUserManager)facesContext.getApplication().getELResolver().
+            CompteUserManager controller = (CompteUserManager) facesContext.getApplication().getELResolver().
                     getValue(facesContext.getELContext(), null, "compteUserManager");
             return controller.getCompteUser(getKey(value));
         }
@@ -140,9 +148,8 @@ public class CompteUserManager implements Serializable {
                 CompteUser o = (CompteUser) object;
                 return getStringKey(o.getEmail());
             } else {
-                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: "+CompteUser.class.getName());
+                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + CompteUser.class.getName());
             }
         }
-
     }
 }
