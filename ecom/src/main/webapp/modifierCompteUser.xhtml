@@ -1,32 +1,35 @@
-<?xml version='1.0' encoding='UTF-8' ?> 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"      
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width"/>
     </h:head>
         <h:outputText value="Modification d'un compte"></h:outputText>
     <h:body>
-        <h1>Modification d'un compte</h1>
-            <h:panelGroup id="messagePanel" layout="block">
-                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-            </h:panelGroup>
-            <h:form>
+        <h:form>
                 <h:panelGrid columns="2">
                     <h:outputLabel value="Nom" for="nom" />
                     <h:inputText id="nom" value="#{compteUserManager.compte.nom}" title="" />
                     <h:outputLabel value="Prénom" for="prenom" />
                     <h:inputText id="prenom" value="#{compteUserManager.compte.prenom}" title="" />
                     <h:outputLabel value="ID Compte" for="idCompte" />
-                    <h:inputText id="idCompte" value="#{compteUserManager.compte.idCompte}" title=""/>
+                    <h:inputText id="idCompte" value="#{compteUserManager.compte.idCompte}" title="" required="true" requiredMessage=""/>
                     <h:outputLabel value="Email" for="email" />
-                    <h:inputText id="email" value="#{compteUserManager.compte.email}" title="" required="true" requiredMessage="Il faut adresse email"/>
-                    <h:outputLabel value="Mot de Passe" for="motDePasse" />
-                    <h:inputText id="motDePasse" value="#{compteUserManager.compte.motDePasse}" title="" required="true" requiredMessage="il faut un mot de passe"/>
+                    <h:inputText id="email" value="#{compteUserManager.compte.email}" title="" required="true" requiredMessage=""/>
+                    <h:outputLabel value="Mot de passe" for="motDePasse" />
+                    <h:inputText id="motDePasse" value="#{compteUserManager.compte.motDePasse}" title="" required="true" requiredMessage=""/>
                     <h:outputLabel value="Adresse" for="adresse" />
-                    <h:inputTextarea rows="4" cols="30" id="adresse" value="#{compteUserManager.compte.adresse}" title=""/>
-                    <h:outputLabel value="Téléphone" for="telephone" />
-                    <h:inputText id="telephone" value="#{compteUserManager.compte.telephone}" title=""/>
+                    <h:inputTextarea rows="4" cols="30" id="adresse" value="#{compteUserManager.compte.adresse}" title="" required="true" requiredMessage=""/>
+                    <h:outputLabel value="Télephone" for="telephone" />
+                    <h:inputText id="telephone" value="#{compteUserManager.compte.telephone}" title="" required="true" requiredMessage=""/>
                 </h:panelGrid>
                 <h:commandLink action="#{compteUserManager.update}" value="Enregistre"/>
                 <br/><br/>
