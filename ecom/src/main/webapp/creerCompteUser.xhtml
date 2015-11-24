@@ -13,9 +13,9 @@
             <h1><h:outputText value="creer un compte"/></h1>
             <h:panelGrid columns="2">
                 <h:outputLabel value="Nom" for="Nom" />
-                <h:inputText id="email" value="#{compteUserManager.compte.nom}" title="Nom" required="true"/>
+                <h:inputText id="nom" value="#{compteUserManager.compte.nom}" title="Nom" required="true"/>
                 <h:outputLabel value="Nom" for="Prenom" />
-                <h:inputText id="email" value="#{compteUserManager.compte.prenom}" title="Nom" required="true"/>
+                <h:inputText id="prenom" value="#{compteUserManager.compte.prenom}" title="Nom" required="true"/>
                 <h:outputLabel value="Email:" for="email" />
                 <h:inputText id="email" value="#{compteUserManager.compte.email}" title="Email" required="true" requiredMessage="The Email field is required."/>
                 <h:outputLabel value="MotDePasse:" for="motDePasse" />

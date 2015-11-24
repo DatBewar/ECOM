@@ -1,27 +1,39 @@
-<?xml version='1.0' encoding='UTF-8' ?>
+<?xml version='1.0' encoding='UTF-8' ?> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
     <h:head>
-        <title>Facelet Title</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     </h:head>
+        <h:outputText value="Modification d'un compte"></h:outputText>
     <h:body>
-
-        <h:form>
-            <h1><h:outputText value="creer un compte"/></h1>
-            <h:panelGrid columns="2">
-                <h:outputLabel value="Email:" for="email" />
-                <h:inputText id="email" value="#{compteUserManager.compte.email}" title="Email" required="true" requiredMessage="The Email field is required."/>
-                <h:outputLabel value="MotDePasse:" for="motDePasse" />
-                <h:inputSecret id="motDePasse" value="#{compteUserManager.compte.motDePasse}" title="MotDePasse" required="true" requiredMessage="The MotDePasse field is required."/>
-                <h:outputLabel value="Adresse:" for="adresse" />
-                <h:inputTextarea rows="4" cols="30" id="adresse" value="#{compteUserManager.compte.adresse}" title="Adresse" required="true" requiredMessage="The Adresse field is required."/>
-                <h:outputLabel value="Telephone:" for="telephone" />
-                <h:inputText id="telephone" value="#{compteUserManager.compte.telephone}" title="Telephone" required="true" requiredMessage="The Telephone field is required."/>                
-                <h:commandButton action="#{compteUserManager.updateCompte()}" value="Mettre à jour"></h:commandButton>
-            </h:panelGrid>
-        </h:form>
+        <h1>Modification d'un compte</h1>
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="Nom" for="nom" />
+                    <h:inputText id="nom" value="#{compteUserManager.compte.nom}" title="" />
+                    <h:outputLabel value="Prénom" for="prenom" />
+                    <h:inputText id="prenom" value="#{compteUserManager.compte.prenom}" title="" />
+                    <h:outputLabel value="ID Compte" for="idCompte" />
+                    <h:inputText id="idCompte" value="#{compteUserManager.compte.idCompte}" title=""/>
+                    <h:outputLabel value="Email" for="email" />
+                    <h:inputText id="email" value="#{compteUserManager.compte.email}" title="" required="true" requiredMessage="Il faut adresse email"/>
+                    <h:outputLabel value="Mot de Passe" for="motDePasse" />
+                    <h:inputText id="motDePasse" value="#{compteUserManager.compte.motDePasse}" title="" required="true" requiredMessage="il faut un mot de passe"/>
+                    <h:outputLabel value="Adresse" for="adresse" />
+                    <h:inputTextarea rows="4" cols="30" id="adresse" value="#{compteUserManager.compte.adresse}" title=""/>
+                    <h:outputLabel value="Téléphone" for="telephone" />
+                    <h:inputText id="telephone" value="#{compteUserManager.compte.telephone}" title=""/>
+                </h:panelGrid>
+                <h:commandLink action="#{compteUserManager.update}" value="Enregistre"/>
+                <br/><br/>
+                <h:commandLink action="#{compteUserManager.prepareList}" value="Liste des comptes" immediate="true"/>
+                <br/>
+                <br/>
+                <h:link outcome="/index" value="Page d'accueil" />
+            </h:form>
     </h:body>
 </html>
