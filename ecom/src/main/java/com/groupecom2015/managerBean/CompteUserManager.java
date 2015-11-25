@@ -4,11 +4,11 @@ import com.groupecom2015.entities.CompteUser;
 import com.groupecom2015.managerBean.util.JsfUtil;
 import com.groupecom2015.managerBean.util.PaginationHelper;
 import com.groupecom2015.entitieManager.CompteUserFacade;
-
+import com.groupecom2015.managerBean.util.SessionManager;
 import java.io.Serializable;
 import javax.ejb.EJB;
-import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
+import javax.inject.Named;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
@@ -41,6 +41,25 @@ public class CompteUserManager implements Serializable {
     public String addUser() {
         compteUserFacade.create(compte);
         return "messageInscription";
+    }
+
+    public String connecter() {
+        if (compte.getEmail() != null && compte.getMotDePasse() != null) {
+            boolean valide = compteUserFacade.connect(compte);
+            if (valide) {
+                SessionManager session = SessionManager.getInstance();
+                session.set("email", compte.getEmail());
+                return "deconnecter";
+            }
+        }
+        return "login";
+    }
+
+    public String deconnecter() {
+        SessionManager session = SessionManager.getInstance();
+        session.set("auth", null);
+        compte = null;
+        return "login";
     }
 
     public CompteUser getCompte() {
