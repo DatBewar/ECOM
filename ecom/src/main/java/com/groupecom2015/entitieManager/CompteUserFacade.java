@@ -46,7 +46,15 @@ public class CompteUserFacade extends AbstractFacade<CompteUser> {
     }
     //Fiston, Authentification 
     public boolean connect(CompteUser c){
-        CompteUser compte = findByEmail(c.getEmail());
-        return compte.getMotDePasse().equals(c.getMotDePasse());
+        CompteUser compte = find(c.getEmail());
+        if(compte == null) return false;
+        else{
+            if(compte.getMotDePasse().equals(c.getMotDePasse())){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
     }
 }

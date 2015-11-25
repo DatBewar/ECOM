@@ -9,7 +9,9 @@
     <body>
         <h1>Welcome " #{compteUserManager.compte.email} "</h1>
         <h:form>
-            <h:commandButton action="#{compteUserManager.deconnecter()}" value="Déconnection"></h:commandButton>            
+            <h:commandButton action="#{compteUserManager.deconnecter()}" value="Déconnection"></h:commandButton>
+            <br/><br/>
+            <h:commandButton action="#{compteUserManager.supprimerCompteUser()}" value="Supprimer ce compte"></h:commandButton>
         </h:form>
     </body>
 </html>

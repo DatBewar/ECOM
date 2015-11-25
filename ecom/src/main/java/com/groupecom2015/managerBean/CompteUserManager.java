@@ -46,9 +46,9 @@ public class CompteUserManager implements Serializable {
     public String connecter() {
         if (compte.getEmail() != null && compte.getMotDePasse() != null) {
             boolean valide = compteUserFacade.connect(compte);
-            if (valide) {
+            if (valide){
                 SessionManager session = SessionManager.getInstance();
-                session.set("email", compte.getEmail());
+                session.set("email",compte.getEmail());
                 return "deconnecter";
             }
         }
@@ -57,11 +57,17 @@ public class CompteUserManager implements Serializable {
 
     public String deconnecter() {
         SessionManager session = SessionManager.getInstance();
-        session.set("auth", null);
+        session.set("email",null);
         compte = null;
         return "login";
     }
-
+    public String supprimerCompteUser(){
+        SessionManager session = SessionManager.getInstance();
+        String email = session.get("email").toString();
+        compteUserFacade.remove(compteUserFacade.find(email));
+        deconnecter();
+        return "login";
+    }
     public CompteUser getCompte() {
         if (compte == null) {
             compte = new CompteUser();
