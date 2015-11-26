@@ -8,11 +8,13 @@ package com.groupecom2015.managerBean;
 
 import com.groupecom2015.entitieManager.ArticleFacade;
 import com.groupecom2015.entities.Article;
+import com.groupecom2015.managerBean.util.JsfUtil;
 import java.util.List;
 import javax.annotation.ManagedBean;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.model.SelectItem;
 
 /**
  *
@@ -26,12 +28,20 @@ public class ArticleManager {
     private List<Article> articleList;
     @EJB
     private ArticleFacade articleFacade;
-
+    private int auxStock;
     
     
     public ArticleManager() {
         article = new Article();
         this.articleList = null;
+    }
+
+    public int getAuxStock() {
+        return auxStock;
+    }
+
+    public void setAuxStock(int auxStock) {
+        this.auxStock = auxStock;
     }
 
     public List<Article> getArticleList() {
@@ -80,5 +90,14 @@ public class ArticleManager {
     public String getArticlesByKeyWords(){
         articleList = articleFacade.findByKeyWords(article.getNomArticle());
         return "searchResult";
+    }
+    public String updateArticle(){
+        int updatedStock = article.getStockArticle()+getAuxStock();
+        article.setStockArticle(updatedStock);
+        articleFacade.edit(article);
+        return "index";
+    }
+    public SelectItem[] getItemsAvailableSelectOne() {
+        return JsfUtil.getSelectItems(articleFacade.findAll(), true);
     }
 }
