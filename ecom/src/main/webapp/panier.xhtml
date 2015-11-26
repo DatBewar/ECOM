@@ -10,23 +10,34 @@
     </h:head>
     <h:body>
         <h1>test panier</h1>
+
         <f:view>
-            <h:outputText value="#{PanierManager.getPanier().size()}" />
-        </f:view>
-        <f:view>
-        <p:dataTable var="item" value="#{PanierManager.getPanier()}">
-            <p:column headerText="Nom article">
-                <p:dataTable var="art" value="item.article">
-                    <h:outputText value="#{art.getArticle}" />
+            <h:form>
+                <p:dataTable value="#{panierManager.listArt}" var="var" >
+                    <p:column headerText="Nom article">
+                        <h:outputText value="#{var.article.nomArticle}" />
+                    </p:column>
+                    <p:column headerText="Quantité" style="center">
+                        <h:commandButton value="-" action="#{var.decrQuantite()}"/>
+                        <h:outputText value="#{var.quantite}" />
+                        <h:commandButton value="+" action="#{var.incrQuantite()}"/>
+                    </p:column> 
+                    <p:column headerText="Prix">
+                        <h:outputText value="#{var.article.prixVenteArticle}" />
+                    </p:column>
+                    <p:column headerText="Supprimer">
+                        <h:commandButton  image="#{resource['img/deleteArticle.jpg']}" action="#{panierManager.deleteArticle(var.article)}"  style="width:40px;height:35px" />
+                    </p:column>
+                    <f:facet name="footer">
+                        <h:outputText value="Prix Total"/> #{panierManager.prixTotal}  
+                    </f:facet>
                 </p:dataTable>
-            </p:column>
-            <p:column headerText="Quantité">
-                <h:outputText value="#{item.getNumArticle}" />
-            </p:column>
-        </p:dataTable>
+
+                <p:commandButton action="#{panierManager.viderPanier()}" value="Vider panier"/> <br/> <br/>
+                <p:commandButton action="#{panierManager.continuerAchat()}" value="Continuer mes achats"/>
+
+            </h:form>
         </f:view>
-        <h:form>
-            <h:commandButton action="#{PanierManager.viderPanier()}" value="Vider panier"/>
-        </h:form>
+
     </h:body>
 </html>

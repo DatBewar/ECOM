@@ -5,48 +5,47 @@
  */
 package com.groupecom2015.entities;
 
-import javax.ejb.Stateless;
 
 /**
  *
  * @author Erwan
  */
-@Stateless
+
 public class ArticlePanier {
 
-    private int quantArt;
-    private int idArticle;
+    private int quantite;
+    private Article article;
 
     public ArticlePanier() {
     }
     
-    public ArticlePanier(int n, int id){
-        this.quantArt = n;
-        this.idArticle = id;
+    public ArticlePanier(int n, Article article){
+        this.quantite = n;
+        this.article = article;
     }
     
-    public int getQuantArticle(){
-        return this.quantArt;
+    public int getQuantite(){
+        return this.quantite;
     }
     
-    public int getArticle(){
-        return this.idArticle;
+    public Article getArticle(){
+        return this.article;
     }
+
+    public void setQuantite(int quantite) {
+        this.quantite = quantite;
+    }   
     
-    public void setNumArticle(int n){
-        this.quantArt = n;
-    }
-    
-    public void setArticle(int id){
-        this.idArticle = id;
+    public void setArticle(Article article){
+        this.article = article;
     }
     
     public void incrQuantite(){
-        this.quantArt++;
+        this.quantite++;
     }
     
     public void decrQuantite(){
-        if(this.quantArt>0)
-            this.quantArt--;
+        if(this.quantite>0)
+            this.quantite--;
     }
 }
