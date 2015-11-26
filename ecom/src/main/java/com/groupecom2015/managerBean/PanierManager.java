@@ -80,6 +80,10 @@ public class PanierManager {
     public String continuerAchat(){
         return "displayAllArticles";
     }
+    
+    public void validerPanier(){
+        
+    }
 
     /*
      public List<ArticlePanierAffichage> getPanier(){

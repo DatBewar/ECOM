@@ -18,9 +18,9 @@
                         <h:outputText value="#{var.article.nomArticle}" />
                     </p:column>
                     <p:column headerText="Quantité" style="center">
-                        <h:commandButton value="-" action="#{var.decrQuantite()}"/>
-                        <h:outputText value="#{var.quantite}" />
-                        <h:commandButton value="+" action="#{var.incrQuantite()}"/>
+                        <h:commandButton image="#{resource['img/moins.png']}" action="#{var.decrQuantite()}" style="width:20px;height:20px"/> &nbsp;
+                        <h:outputText value="#{var.quantite}" /> &nbsp;
+                        <h:commandButton image="#{resource['img/plus.png']}" action="#{var.incrQuantite()}" style="width:20px;height:20px"/>
                     </p:column> 
                     <p:column headerText="Prix">
                         <h:outputText value="#{var.article.prixVenteArticle}" />
@@ -34,8 +34,8 @@
                 </p:dataTable>
 
                 <p:commandButton action="#{panierManager.viderPanier()}" value="Vider panier"/> <br/> <br/>
-                <p:commandButton action="#{panierManager.continuerAchat()}" value="Continuer mes achats"/>
-
+                <p:commandButton action="#{panierManager.continuerAchat()}" value="Continuer mes achats"/> <br/> <br/>
+                <p:commandButton action="#{panierManager.validerPanier()}" value="valider ma commande" style="background-position: right" /> 
             </h:form>
         </f:view>
 
