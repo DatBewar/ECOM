@@ -6,6 +6,7 @@
 package com.groupecom2015.entitieManager;
 
 import com.groupecom2015.entities.Caracteristique;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -27,6 +28,10 @@ public class CaracteristiqueFacade extends AbstractFacade<Caracteristique> {
 
     public CaracteristiqueFacade() {
         super(Caracteristique.class);
+    }
+    
+    public List<Caracteristique> getAllCaracteristique(){
+        return em.createNamedQuery("Caracteristique.findAll").getResultList();
     }
     
    
