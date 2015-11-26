@@ -35,7 +35,10 @@
                             <h:outputText value="Prix"/>
                         </f:facet>
                         <h:outputText value="#{item.prixVenteArticle}"/>
-                    </h:column>                        
+                    </h:column>    
+                    <h:column>
+                        <h:commandButton action="#{panierManager.addArticle(item)}" value="Ajouter au panier" />               
+                    </h:column>
                 </h:dataTable>
             </h:form>
         </f:view>

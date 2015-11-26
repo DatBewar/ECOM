@@ -5,16 +5,16 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <f:metadata>
-            <f:viewParam name="idArticle" value="#{articleBackingBean.idArticle}"/>
-        </f:metadata>
+        <f:viewParam name="idArticle" value="#{articleBackingBean.idArticle}"/>
+    </f:metadata>
     <h:head>
         <title>Details article</title>
     </h:head>
     <h:body>
-       <h:form>
-    <c:set var="id" value="#{articleBackingBean.idArticle}" scope="request" />
-</h:form>
-       
+        <h:form>
+            <c:set var="id" value="#{articleBackingBean.idArticle}" scope="request" />
+        </h:form>
+
         <f:view>
 
 
@@ -59,12 +59,25 @@
                     </h:column>
                     <h:column>
                         <f:facet name="header">
+                            <h:outputText value="categorieId"/>
+                        </f:facet>
+                        <h:outputText value="#{item.categorie}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
                             <h:outputText value="IdCategorie"/>
                         </f:facet>
                         <h:outputText value="#{item.categorie}"/>
                     </h:column>
                     <h:column>
-                        <h:commandButton action="#{PanierManager.ajoutArticle(item.idArticle)}" value="Ajouter au panier"/>
+
+                        <h:commandButton action="#{panierManager.ajoutArticle(item)}" value="Ajouter au panier" />
+                         <!--   <f:setPropertyActionListener value="#{item.idArticle}" target="#{panierManager.article.idArticle}" /> 
+                            <f:setPropertyActionListener value="#{item.nomArticle}" target="#{panierManager.article.nomArticle}" /> 
+                            <f:setPropertyActionListener value="#{item.descripArticle}" target="#{panierManager.article.descripArticle}" />
+                            <f:setPropertyActionListener value="#{item.prixVenteArticle}" target="#{panierManager.article.prixAchatArticle}" />
+                        </h:commandButton> -->
+
                     </h:column>
                 </h:dataTable>
                 <br></br>
