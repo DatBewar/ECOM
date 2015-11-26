@@ -11,25 +11,18 @@
     <h:body>
         <h:form>
             <h2>Modifier quantité article</h2>
-            <p:panelGrid columns="2">
-                <p:outputLabel value="Articles" for="articles" />
-                <p:selectOneMenu id="mobile" value="#{articleManager.article.idArticle}">
-                    <f:selectItems value="#{mobileController.itemsAvailableSelectOne}"/>
-                </p:selectOneMenu>
-                <p:outputLabel value="Quantité actuel" for="quantite" />
-                <p:outputLabel value="#{articleManager.article.stockArticle}"/>
-                <br/><br/>
-                <p:outputLabel value="Quantité à ajouter" for="description" />
+            <p:panelGrid columns="2">                
+                <p:inputText id="idArticle" value="#{articleManager.article.idArticle}" style="display: none"/><br/>                                         
+                <p:outputLabel value="Nom de l'article:  "/>
+                <p:outputLabel>#{articleManager.article.nomArticle}</p:outputLabel>                
+                <p:outputLabel value="Quantité sotck actuelle:  "/>
+                <p:outputLabel id="stockArticle" value="#{articleManager.article.stockArticle}"/>                
+                <p:outputLabel value="Quantité à ajouter" for="quantite" />
                 <p:inputText id="quantite" value="#{articleManager.auxStock}" title="Quantité à ajouter" />               
             </p:panelGrid>
             <br/>
-            <p:commandLink action="#{articleManager.updateArticle()}" value="#{bundle.CreateGPSSaveLink}" />
-            <br />
-            <br />
-            <p:commandLink action="#{gPSController.prepareList}" value="Tous les GPS" immediate="true"/>
+            <p:commandLink action="#{articleManager.updateArticle()}" value="Modifier cette article" />           
         </h:form>
-
-        </f:view>
     </h:body>
 </html>
 
