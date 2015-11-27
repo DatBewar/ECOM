@@ -4,77 +4,105 @@
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <h:outputStylesheet name="./css/style.css"/>  
-        <h:outputStylesheet name="./css/bootstrap.css"/> 
+        <h:outputStylesheet name="./css/bootstrap.css"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
         <h:outputScript name="./js/jquery-2.1.4.min.js"/>
-        <h:outputScript name="./js/bootstrap.js"/>      
+        <h:outputScript name="./js/bootstrap.js"/>  
+        <h:outputScript name="./js/my.js"/>       
     </h:head>
     <h:body id ="generation">
-        <ul id="myTab" class="nav nav-tabs  col-lg-8 col-lg-offset-2">
-            <li class="active"><a href="#article" data-toggle="tab">
-                    add article</a>
-            </li>
-            <li><a href="#category" data-toggle="tab">add category</a></li>
-
-        </ul>
-        <div id="myTabContent" class="tab-content col-lg-8 col-lg-offset-2">
-            <div class="tab-pane fade in active" id="article">
-                <h:form>
-                    <div class="col-md-10 col-md-offset-1">
-                        <div class="form-group" style="text-align: left;">
-                            <h:outputLabel  style="color: #245580;" value="ArticleName:" for="nomArticle" />
-                            <h:inputText id="nomArticle" class="form-control"  value="#{articleManager.article.nomArticle}" title="NomArticle" required="true" requiredMessage="The NomArticle field is required."/>
-
-                        </div>
-                        <div class="form-group" style="text-align: left;">
-                            <h:outputLabel style="color: #245580;" value="Category" for="category" />
-                            <h:selectOneMenu class="form-control" id="idCategorie" value="#{articleManager.article.idCategorie}">
-                                <f:selectItem itemLabel="choisir categorie" itemValue="" />
-                                <f:selectItems value="#{categorieManager.categories}"/>
-                            </h:selectOneMenu>
-
-                        </div>
-
-                        <div class="form-group" style="text-align: left;">
-                            <h:outputLabel style="color: #245580;" value="StockArticle:" for="stockArticle" />
-                            <h:inputText class="form-control" id="stockArticle" value="#{articleManager.article.stockArticle}" title="StockArticle" required="true" requiredMessage="The StockArticle field is required."/>
-                        </div>
-                        <div class="form-group" style="text-align: left;">
-                            <h:outputLabel style="color: #245580;" value="PrixAchatArticle:" for="prixAchatArticle" />
-                            <h:inputText class="form-control"  id="prixAchatArticle" value="#{articleManager.article.prixAchatArticle}" title="PrixAchatArticle" required="true" requiredMessage="The PrixAchatArticle field is required."/>
-
-                        </div>
-                        <div class="form-group" style="text-align: left;">
-                            <h:outputLabel style="color: #245580;" value="PrixVenteArticle:" for="prixVenteArticle" />
-                            <h:inputText class="form-control"  id="prixVenteArticle" value="#{articleManager.article.prixVenteArticle}" title="PrixVenteArticle" required="true" requiredMessage="The PrixVenteArticle field is required."/>
-                        </div>
-
-                        <div class="form-group" style="text-align: left;">
-                            <h:outputLabel style="color: #245580;" value="DescripArticle:" for="descripArticle" />
-                            <h:inputTextarea rows="4" cols="30" class="form-control" id="descripArticle" value="#{articleManager.article.descripArticle}" title="DescripArticle" required="true" requiredMessage="The DescripArticle field is required."/>
-                        </div>
-
-                        <div class="form-group" style="text-align: left;">
-                            <h:commandButton class="btn btn-skin pull-right" action="#{articleManager.addArticle()}" value="Add article"/>
-                        </div>
-
-                    </div>
-                </h:form>
-
-            </div>
-            <div class="tab-pane fade" id="category">
-                <h:form>
-                    <div class="col-md-10 col-md-offset-1">
-                        <div class="form-group" style="text-align: left;">
-                            <h:outputLabel value="NomCategorie:" style="color: #245580;" for="nomCategorie" />
-                            <h:inputText class="form-control" id="nomCategorie" value="#{categorieManager.categorie.nomCategorie}" title="NomCategorie" required="true" requiredMessage="The NomCategorie field is required."/>
-                        </div>
-                        <div class="form-group" style="text-align: left;">
-                            <h:commandButton class="btn btn-skin pull-right" action="{categorieManager.addCategorie}" value="Add category"/>
-                        </div>
-                    </div>
-                </h:form>
-            </div>
+        <div class="container" style="width: 76%;" >
+            <IFRAME id="top" onload="autoHeight(id);"  frameBorder="0" scrolling="no" src="top.xhtml" width="100%" height="0"></IFRAME>
         </div>
+
+        <div class="container" style="width:73.5%;padding: 10px 0 100px 0;background-color:#F9F9F9;">
+
+            <div class="row">
+                <ul id="myTab" class="nav nav-pills nav-stacked col-md-3 " style="padding-left: 40px;">
+                    <li class="active"><a href="#article" data-toggle="tab">
+                            add article</a>
+                    </li>
+                    <li><a href="#category" data-toggle="tab">add category</a></li>
+
+                </ul>
+
+
+
+
+                <div id="myTabContent" class="tab-content col-md-8" style="padding-left: 70px">
+                    <div class="tab-pane fade in active" id="article">
+                        <h:form>
+                            <div class="col-md-10 col-md-offset-1">
+                                <div class="form-group" style="text-align: left;">
+                                    <h:outputLabel  style="color: #245580;" value="ArticleName:" for="nomArticle" />
+                                    <h:inputText id="nomArticle" class="form-control"  value="#{articleManager.article.nomArticle}" title="NomArticle" required="true" requiredMessage="The NomArticle field is required."/>
+
+                                </div>
+                                <div class="form-group" style="text-align: left;">
+                                    <h:outputLabel  style="color: #245580;" value="Categorie:" for="idCategorie" />
+                                    <h:selectOneMenu  class="form-control" id="idCategorie" value="#{articleManager.article.categorie}" converter="categorieConverter" title="IdCategorie" required="true" requiredMessage="The IdCategorie field is required.">
+                                        <f:selectItems  value="#{categorieManager.listCategorie}" var="cat" itemLabel="#{cat.nomCategorie}" itemValue="#{cat}" />
+                                    </h:selectOneMenu>
+                                </div>
+
+
+
+
+                                <div class="form-group" style="text-align: left;">
+                                    <h:outputLabel style="color: #245580;" value="StockArticle:" for="stockArticle" />
+                                    <h:inputText class="form-control" id="stockArticle" value="#{articleManager.article.stockArticle}" title="StockArticle" required="true" requiredMessage="The StockArticle field is required."/>
+                                </div>
+                                <div class="form-group" style="text-align: left;">
+                                    <h:outputLabel style="color: #245580;" value="PrixAchatArticle:" for="prixAchatArticle" />
+                                    <h:inputText class="form-control"  id="prixAchatArticle" value="#{articleManager.article.prixAchatArticle}" title="PrixAchatArticle" required="true" requiredMessage="The PrixAchatArticle field is required."/>
+
+                                </div>
+                                <div class="form-group" style="text-align: left;">
+                                    <h:outputLabel style="color: #245580;" value="PrixVenteArticle:" for="prixVenteArticle" />
+                                    <h:inputText class="form-control"  id="prixVenteArticle" value="#{articleManager.article.prixVenteArticle}" title="PrixVenteArticle" required="true" requiredMessage="The PrixVenteArticle field is required."/>
+                                </div>
+
+                                <div class="form-group" style="text-align: left;">
+                                    <h:outputLabel style="color: #245580;" value="DescripArticle:" for="descripArticle" />
+                                    <h:inputTextarea rows="4" cols="30" class="form-control" id="descripArticle" value="#{articleManager.article.descripArticle}" title="DescripArticle" required="true" requiredMessage="The DescripArticle field is required."/>
+                                </div>
+
+                                <div class="form-group" style="text-align: left;">
+                                    <h:message id="idCategorieMessage" for="idCategorie" errorClass="erreur" /> 
+                                </div>
+
+                                <div class="form-group" style="text-align: left;">
+                                    <h:commandButton class="btn btn-skin pull-right" action="#{articleManager.addArticle()}" value="Add article"/>
+                                </div>
+
+                            </div>
+                        </h:form>
+
+                    </div>
+                    <div class="tab-pane fade" id="category">
+                        <h:form>
+                            <div class="col-md-10 col-md-offset-1">
+                                <div class="form-group" style="text-align: left;">
+                                    <h:outputLabel value="NomCategorie:" style="color: #245580;" for="nomCategorie" />
+                                    <h:inputText class="form-control" id="nomCategorie" value="#{categorieManager.categorie.nomCategorie}" title="NomCategorie" required="true" requiredMessage="The NomCategorie field is required."/>
+                                </div>
+                                <div class="form-group" style="text-align: left;">
+                                    <h:commandButton class="btn btn-skin pull-right" action="#{categorieManager.addCategorie()}" value="Add category"/>
+                                </div>
+                            </div>
+                        </h:form>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>   
+
+        <div class="container" style="width: 76%;" >
+            <IFRAME id="bottom" onload="autoHeight(id);"  frameBorder="0" scrolling="no" src="bottom.xhtml" width="100%" height="0"></IFRAME>
+        </div>
+
     </h:body>
 
 </html>
