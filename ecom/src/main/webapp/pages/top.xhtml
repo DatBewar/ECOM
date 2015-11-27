@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <h:outputStylesheet name="./css/style.css"/>  
+        <h:outputStylesheet name="./css/bootstrap.css"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
+        <h:outputScript name="./js/jquery-2.1.4.min.js"/>
+        <h:outputScript name="./js/bootstrap.js"/>  
+
+    </h:head>
+    <h:body style="background-color:#F9F9F9" >
+        <header>
+
+            <div class="row">
+                <div class="col-md-3">
+                    <a  onclick="window.parent.window.location.href = 'index.xhtml'" title="return to index"><img id="logo" src="../resources/img/logo.png" /></a>
+                </div>
+
+                <div id="search"  class="col-md-7 row">
+                    
+                    
+                    <h:form>
+                        <div class="col-md-10">
+                            <h:inputText class="form-control" id="nomCategorie" value="#{articleManager.article.nomArticle}"  required="true" requiredMessage="Nom article nécesaire."/>
+                        </div>
+                        <div class="col-md-2">
+                            <h:commandButton style="text-shadow: black 5px 3px 3px;color: floralwhite;" class="btn btn-skin pull-right" action="#{articleManager.addArticle()}" value="Search"/>
+                        </div>
+
+
+                    </h:form>
+                </div>
+
+
+
+                <div class="col-md-2 " id="small-icon">
+                    <div class="row">
+                        <div class="col-md-4 ">
+                            <a  onclick="window.parent.window.location.href = 'login.xhtml'"><i class="fa fa-4x fa-fw fa-user"></i></a>
+                        </div>
+                        <div class="col-md-4 ">
+                            <a><i class="fa fa-4x fa-fw fa-cart-plus"></i></a>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <nav class="navbar navbar-inverse" role="navigation">
+
+            <div>
+                <ul class="nav navbar-nav">
+                    <li class="active"><a  onclick="window.parent.window.location.href = 'index.xhtml'" href="#"><b>Accueil</b></a></li>
+                    <li><a href="#"><b>informatique</b></a></li>
+                    <li><a href="#"><b>image&amp;son</b></a></li>
+                    <li><a href="#"><b>telephone</b></a></li>
+                    <li><a href="#"><b>jeux&amp;consoles</b></a></li>
+                </ul>
+            </div>
+        </nav>
+
+
+
+    </h:body>
+
+</html>
