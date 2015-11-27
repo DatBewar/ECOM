@@ -42,20 +42,18 @@ public class CaracteristiqueManager {
     
     public String addCaracteristique(){
         caracteristiqueFacade.create(caracteristique);
-        return "addCaracteristics";
+        return "manageCaracteristics";
     }
     
     public List<Caracteristique> getAllCaracteristique(){
         if(caracteristiqueList == null){
-            caracteristiqueList = caracteristiqueFacade.findAll();
+            caracteristiqueList = caracteristiqueFacade.getAllCaracteristique();
         }
         return caracteristiqueList;
     } 
     
-    public void delCaracteristique(Caracteristique c){
-        caracteristiqueList = caracteristiqueFacade.findAll();
-        if(caracteristiqueList.contains(c))
-        caracteristiqueFacade.remove(c);
+    public void delCaracteristique(){
+        caracteristiqueFacade.remove(caracteristique);
     }
     
     

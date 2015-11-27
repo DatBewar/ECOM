@@ -47,15 +47,15 @@ public class Article implements Serializable {
     @Basic(optional = false)
     @Column(name = "idArticle")
     private Integer idArticle;
-    @Basic(optional = false)
-    @NotNull
+    @Basic(optional = false)    
     @Size(min = 1, max = 200)
+    @NotNull
     @Column(name = "nomArticle")
     private String nomArticle;
-    @Basic(optional = false)
-    @NotNull
+    @Basic(optional = false)    
     @Lob
     @Size(min = 1, max = 65535)
+    @NotNull
     @Column(name = "descripArticle")
     private String descripArticle;
     @Basic(optional = false)
