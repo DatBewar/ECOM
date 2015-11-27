@@ -8,7 +8,10 @@ package com.groupecom2015.managerBean;
 import com.groupecom2015.entitieManager.ArticleFacade;
 import com.groupecom2015.entities.Article;
 import com.groupecom2015.entities.ArticlePanier;
+import com.groupecom2015.entities.Commande;
+import com.groupecom2015.entities.LigneDeCommande;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateful;
@@ -28,8 +31,17 @@ public class PanierManager {
     @EJB
     private ArticleFacade articleFacade;
 
+    private CommandeManager commandeManager;
+
+    private LigneDeCommandeManager ligneCommandeManager;
+
+    private ArticleManager articleManager;
+
     public PanierManager() {
-        this.listArt = new ArrayList<ArticlePanier>();
+        listArt = new ArrayList<ArticlePanier>();
+        commandeManager = new CommandeManager();
+        ligneCommandeManager = new LigneDeCommandeManager();
+        articleManager = new ArticleManager();
     }
 
     public List<ArticlePanier> getListArt() {
@@ -43,7 +55,7 @@ public class PanierManager {
     public float getPrixTotal() {
         float prixTotal = 0;
         for (ArticlePanier l : listArt) {
-            prixTotal += (l.getArticle().getPrixVenteArticle()*l.getQuantite());
+            prixTotal += (l.getArticle().getPrixVenteArticle() * l.getQuantite());
         }
         return prixTotal;
     }
@@ -62,10 +74,10 @@ public class PanierManager {
 
         return "panier";
     }
-    
-    public String deleteArticle(Article article){
+
+    public String deleteArticle(Article article) {
         for (ArticlePanier l : listArt) {
-            if(l.getArticle().getIdArticle()==article.getIdArticle()){
+            if (l.getArticle().getIdArticle() == article.getIdArticle()) {
                 listArt.remove(l);
                 return "panier";
             }
@@ -73,18 +85,40 @@ public class PanierManager {
         return "panier";
     }
 
-    public void viderPanier() {
+    public String  viderPanier() {
         this.listArt.clear();
-    }
-    
-    public String continuerAchat(){
-        return "displayAllArticles";
-    }
-    
-    public void validerPanier(){
-        
+        return "panier";
     }
 
+    public String continuerAchat() {
+        return "displayAllArticles";
+    }
+/*
+    public String validerPanier() {
+  
+        java.sql.Date date = new java.sql.Date(Calendar.getInstance().getTime().getTime());
+        Commande c = new Commande();
+        LigneDeCommande lc = new LigneDeCommande();
+
+        c.setDateCommande(date);
+        commandeManager.addCommande(c);
+
+        for (ArticlePanier l : listArt) {
+            
+            lc.setArticle(l.getArticle());
+            lc.setCommande(c);
+            lc.setPrixVente(l.getArticle().getPrixVenteArticle());
+            lc.setQuantite(l.getQuantite());
+            ligneCommandeManager.addLigneCommande(lc);
+            
+            //Décrementer le stock de chaque article
+           // l.getArticle().setStockArticle(l.getArticle().getStockArticle() - l.getQuantite());
+        } 
+        listArt.clear();
+        
+        return "index";
+    }
+*/
     /*
      public List<ArticlePanierAffichage> getPanier(){
      List<ArticlePanierAffichage> newList = new ArrayList<ArticlePanierAffichage>();
