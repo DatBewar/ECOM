@@ -3,11 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package com.groupecom2015.managerBean;
 
 import com.groupecom2015.entitieManager.CommentaireFacade;
 import com.groupecom2015.entities.Commentaire;
 import java.util.List;
+import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
@@ -18,11 +20,10 @@ import javax.faces.bean.RequestScoped;
 @ManagedBean
 @RequestScoped
 public class CommentaireManager {
-
+    @EJB
     private CommentaireFacade commentaireFacade;
     private List<Commentaire> commentaires;
     private Commentaire commentaire;
-
     /**
      * Creates a new instance of CommentaireManager
      */
@@ -53,9 +54,8 @@ public class CommentaireManager {
     public void setCommentaire(Commentaire commentaire) {
         this.commentaire = commentaire;
     }
-
-    public List<Commentaire> getCommentaireByArticle(int idArticle) {
+    public String afficherCommentaire(int idArticle){
         commentaires = commentaireFacade.findByArticleId(idArticle);
-        return commentaires;
+        return "displayCommentaires";
     }
 }

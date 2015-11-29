@@ -31,7 +31,7 @@ public class CommentaireFacade extends AbstractFacade<Commentaire> {
     }
     public List<Commentaire> findByArticleId(int idArticle){
         List<Commentaire> commentaires;
-        String query = "SELECT c FROM Commentaire c WHERE c.idArticle =' "+idArticle+"'";
+        String query = "SELECT c FROM Commentaire c WHERE c.idArticle ="+idArticle;
         Query q = em.createQuery(query); 
         commentaires = q.getResultList();
         System.out.println("La nombres de mes commentaires "+commentaires.size()+
