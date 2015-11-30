@@ -5,6 +5,7 @@
  */
 package com.groupecom2015.entitieManager;
 
+import com.groupecom2015.entities.Article;
 import com.groupecom2015.entities.Commentaire;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -29,13 +30,12 @@ public class CommentaireFacade extends AbstractFacade<Commentaire> {
     public CommentaireFacade() {
         super(Commentaire.class);
     }
-    public List<Commentaire> findByArticleId(int idArticle){
+    public List<Commentaire> findByArticle(int IdArticle){
         List<Commentaire> commentaires;
-        String query = "SELECT c FROM Commentaire c WHERE c.idArticle ="+idArticle;
+        String query = "SELECT c FROM Commentaire c WHERE c.idArticle.idArticle = "+IdArticle;
         Query q = em.createQuery(query); 
         commentaires = q.getResultList();
-        System.out.println("La nombres de mes commentaires "+commentaires.size()+
-                "\n ***********************************\n");
+        System.out.println("La nombres de "+query+" mes commentaires "+commentaires.size()+"***********************************\n");
         return commentaires;
     }
 }

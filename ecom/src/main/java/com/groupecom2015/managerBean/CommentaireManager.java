@@ -7,6 +7,7 @@
 package com.groupecom2015.managerBean;
 
 import com.groupecom2015.entitieManager.CommentaireFacade;
+import com.groupecom2015.entities.Article;
 import com.groupecom2015.entities.Commentaire;
 import java.util.List;
 import javax.ejb.EJB;
@@ -54,8 +55,8 @@ public class CommentaireManager {
     public void setCommentaire(Commentaire commentaire) {
         this.commentaire = commentaire;
     }
-    public String afficherCommentaire(int idArticle){
-        commentaires = commentaireFacade.findByArticleId(idArticle);
-        return "displayCommentaires";
+    public List<Commentaire> afficherCommentaire(int article){
+        commentaires = commentaireFacade.findByArticle(article);
+        return commentaires;
     }
 }
