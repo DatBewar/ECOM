@@ -41,9 +41,8 @@ public class PanierManager {
 
     private List<ArticlePanier> listArt;
 
-
     public PanierManager() {
-        
+
         commandeFacade = new CommandeFacade();
         ligneDeCommandeFacade = new LigneDeCommandeFacade();
         listArt = new ArrayList<ArticlePanier>();
@@ -100,34 +99,35 @@ public class PanierManager {
     }
 
     public String validerPanier() {
-        
+
         Date date = new Date(System.currentTimeMillis());
         Article article;
         Commande c = new Commande();
         LigneDeCommande lc = new LigneDeCommande();
-       // LigneDeCommandePK pk;
+        // LigneDeCommandePK pk;
         // inserer d'abord dans la table commande
         c.setIdCommande(0);
         c.setDateCommande(date);
         commandeFacade.create(c);
-        
+
         // Recuperer l'id de la commande qu'on viens d'inserer
         c = commandeFacade.getCommandeByDate(date);
 
         for (ArticlePanier l : listArt) {
-         article = l.getArticle();
-         lc.setLigneDeCommandePK( new LigneDeCommandePK(article.getIdArticle(), c.getIdCommande()));
-         lc.setPrixVente(article.getPrixVenteArticle());
-         lc.setQuantite(l.getQuantite());
-         ligneDeCommandeFacade.create(lc);
-         
-         //Décrementer le stock de chaque article
-         article.setStockArticle(article.getStockArticle() - l.getQuantite());
-         articleFacade.edit(article);
-         
-        }        
-         listArt.clear();
-        
+            article = l.getArticle();
+            lc.setLigneDeCommandePK(new LigneDeCommandePK(article.getIdArticle(), c.getIdCommande()));
+            lc.setPrixVente(article.getPrixVenteArticle());
+            lc.setQuantite(l.getQuantite());
+            ligneDeCommandeFacade.create(lc);
+
+            //Décrementer le stock de chaque article
+            if (article.getStockArticle() > l.getQuantite()) {
+                article.setStockArticle(article.getStockArticle() - l.getQuantite());
+                articleFacade.edit(article);
+            }
+        }
+        listArt.clear();
+
         return "index";
     }
 
