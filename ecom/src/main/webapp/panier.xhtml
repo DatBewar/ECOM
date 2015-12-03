@@ -12,7 +12,7 @@
         <h1>test panier</h1>
 
         <f:view>
-            <h:form>
+            <h:form id="test">
                 <p:dataTable value="#{panierManager.listArt}" var="var" >
                     <p:column headerText="Nom article">
                         <h:outputText value="#{var.article.nomArticle}" />
@@ -33,9 +33,10 @@
                     </f:facet>
                 </p:dataTable>
 
-                <p:commandButton action="#{panierManager.viderPanier()}" value="Vider panier"/> <br/> <br/>
-                <p:commandButton action="#{panierManager.continuerAchat()}" value="Continuer mes achats"/> <br/> <br/>
-                <p:commandButton action="#{panierManager.validerPanier()}" value="valider ma commande" style="background-position: right" /> 
+                <h:commandButton action="#{panierManager.viderPanier()}" value="Vider panier"/> <br/> <br/>
+                <h:commandButton action="#{panierManager.continuerAchat()}" value="Continuer mes achats"/> <br/> <br/>
+                <h:commandButton action="#{panierManager.validerPanier()}" value="valider ma commande"  /> 
+               
             </h:form>
         </f:view>
 

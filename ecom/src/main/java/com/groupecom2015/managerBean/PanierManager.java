@@ -6,9 +6,15 @@
 package com.groupecom2015.managerBean;
 
 import com.groupecom2015.entitieManager.ArticleFacade;
+import com.groupecom2015.entitieManager.CommandeFacade;
+import com.groupecom2015.entitieManager.LigneDeCommandeFacade;
 import com.groupecom2015.entities.Article;
 import com.groupecom2015.entities.ArticlePanier;
+import com.groupecom2015.entities.Commande;
+import com.groupecom2015.entities.LigneDeCommande;
+import com.groupecom2015.entities.LigneDeCommandePK;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateful;
@@ -24,12 +30,22 @@ import javax.inject.Named;
 @Stateful
 public class PanierManager {
 
-    private List<ArticlePanier> listArt;
+    @EJB
+    private LigneDeCommandeFacade ligneDeCommandeFacade;
+
+    @EJB
+    private CommandeFacade commandeFacade;
+
     @EJB
     private ArticleFacade articleFacade;
 
+    private List<ArticlePanier> listArt;
+
     public PanierManager() {
-        this.listArt = new ArrayList<ArticlePanier>();
+
+        commandeFacade = new CommandeFacade();
+        ligneDeCommandeFacade = new LigneDeCommandeFacade();
+        listArt = new ArrayList<ArticlePanier>();
     }
 
     public List<ArticlePanier> getListArt() {
@@ -43,7 +59,7 @@ public class PanierManager {
     public float getPrixTotal() {
         float prixTotal = 0;
         for (ArticlePanier l : listArt) {
-            prixTotal += (l.getArticle().getPrixVenteArticle()*l.getQuantite());
+            prixTotal += (l.getArticle().getPrixVenteArticle() * l.getQuantite());
         }
         return prixTotal;
     }
@@ -62,10 +78,10 @@ public class PanierManager {
 
         return "panier";
     }
-    
-    public String deleteArticle(Article article){
+
+    public String deleteArticle(Article article) {
         for (ArticlePanier l : listArt) {
-            if(l.getArticle().getIdArticle()==article.getIdArticle()){
+            if (l.getArticle().getIdArticle() == article.getIdArticle()) {
                 listArt.remove(l);
                 return "panier";
             }
@@ -73,16 +89,46 @@ public class PanierManager {
         return "panier";
     }
 
-    public void viderPanier() {
+    public String viderPanier() {
         this.listArt.clear();
+        return "panier";
     }
-    
-    public String continuerAchat(){
+
+    public String continuerAchat() {
         return "displayAllArticles";
     }
-    
-    public void validerPanier(){
-        
+
+    public String validerPanier() {
+
+        Date date = new Date(System.currentTimeMillis());
+        Article article;
+        Commande c = new Commande();
+        LigneDeCommande lc = new LigneDeCommande();
+        // LigneDeCommandePK pk;
+        // inserer d'abord dans la table commande
+        c.setIdCommande(0);
+        c.setDateCommande(date);
+        commandeFacade.create(c);
+
+        // Recuperer l'id de la commande qu'on viens d'inserer
+        c = commandeFacade.getCommandeByDate(date);
+
+        for (ArticlePanier l : listArt) {
+            article = l.getArticle();
+            lc.setLigneDeCommandePK(new LigneDeCommandePK(article.getIdArticle(), c.getIdCommande()));
+            lc.setPrixVente(article.getPrixVenteArticle());
+            lc.setQuantite(l.getQuantite());
+            ligneDeCommandeFacade.create(lc);
+
+            //Décrementer le stock de chaque article
+            if (article.getStockArticle() > l.getQuantite()) {
+                article.setStockArticle(article.getStockArticle() - l.getQuantite());
+                articleFacade.edit(article);
+            }
+        }
+        listArt.clear();
+
+        return "index";
     }
 
     /*

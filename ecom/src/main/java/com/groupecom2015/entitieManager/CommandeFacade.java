@@ -5,18 +5,19 @@
  */
 package com.groupecom2015.entitieManager;
 
-import com.groupecom2015.entities.Caracteristique;
-import java.util.List;
+import com.groupecom2015.entities.Commande;
+import java.util.Date;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
- * @author umar
+ * @author malick
  */
 @Stateless
-public class CaracteristiqueFacade extends AbstractFacade<Caracteristique> {
+public class CommandeFacade extends AbstractFacade<Commande> {
 
     @PersistenceContext(unitName = "com.groupecom2015_ecom_war_1.0-SNAPSHOTPU")
     private EntityManager em;
@@ -26,13 +27,15 @@ public class CaracteristiqueFacade extends AbstractFacade<Caracteristique> {
         return em;
     }
 
-    public CaracteristiqueFacade() {
-        super(Caracteristique.class);
+    public CommandeFacade() {
+        super(Commande.class);
     }
-    
-    public List<Caracteristique> getAllCaracteristique(){
-        return em.createNamedQuery("Caracteristique.findAll").getResultList();
+
+    public Commande getCommandeByDate(Date date) {
+        Query q = em.createQuery("SELECT c FROM Commande c WHERE c.dateCommande = :dateCommande");
+        q.setParameter("dateCommande", date);
+               
+        return (Commande)q.getSingleResult();
+             
     }
-    
-   
 }

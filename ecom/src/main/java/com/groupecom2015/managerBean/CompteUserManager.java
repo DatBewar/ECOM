@@ -65,8 +65,9 @@ public class CompteUserManager implements Serializable {
         SessionManager session = SessionManager.getInstance();
         String email = session.get("email").toString();
         compteUserFacade.remove(compteUserFacade.find(email));
-        deconnecter();
-        return "login";
+        compte = null;
+        //deconnecter();        
+        return "index";
     }
     public CompteUser getCompte() {
         if (compte == null) {
@@ -102,8 +103,8 @@ public class CompteUserManager implements Serializable {
         return "displayCompteUser";
     }
 
-    public String prepareEdit() {
-        compte = (CompteUser) getComptes().getRowData();
+    public String prepareEdit() {        
+        compte = compteUserFacade.find(compte.getEmail());
         return "modifierCompteUser";
     }
 

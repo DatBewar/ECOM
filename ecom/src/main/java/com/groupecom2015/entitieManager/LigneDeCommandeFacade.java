@@ -5,19 +5,17 @@
  */
 package com.groupecom2015.entitieManager;
 
-import com.groupecom2015.entities.Caracteristique;
-import java.util.List;
+import com.groupecom2015.entities.LigneDeCommande;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 /**
  *
- * @author umar
+ * @author malick
  */
 @Stateless
-public class CaracteristiqueFacade extends AbstractFacade<Caracteristique> {
-
+public class LigneDeCommandeFacade extends AbstractFacade<LigneDeCommande> {
     @PersistenceContext(unitName = "com.groupecom2015_ecom_war_1.0-SNAPSHOTPU")
     private EntityManager em;
 
@@ -26,13 +24,8 @@ public class CaracteristiqueFacade extends AbstractFacade<Caracteristique> {
         return em;
     }
 
-    public CaracteristiqueFacade() {
-        super(Caracteristique.class);
+    public LigneDeCommandeFacade() {
+        super(LigneDeCommande.class);
     }
     
-    public List<Caracteristique> getAllCaracteristique(){
-        return em.createNamedQuery("Caracteristique.findAll").getResultList();
-    }
-    
-   
 }
