@@ -26,7 +26,7 @@ import javax.faces.model.SelectItem;
 public class ArticleManager {
 
     private Article article;
-    private List<Article> articleList;
+    private List<Article> articleList;    
     @EJB
     private ArticleFacade articleFacade;
     private int auxStock, auxIdArticle;
@@ -36,6 +36,14 @@ public class ArticleManager {
         this.articleList = null;
     }
 
+    public int getAuxIdArticle() {
+        return auxIdArticle;
+    }
+
+    public void setAuxIdArticle(int auxIdArticle) {
+        this.auxIdArticle = auxIdArticle;
+    }
+    
     public int getAuxStock() {
         return auxStock;
     }
@@ -72,8 +80,8 @@ public class ArticleManager {
         return article;
     }
 
-    public Article getArticleById() {
-        return null;
+    public void setArticleById(int id){
+        article = articleFacade.find(id);        
     }
 
     public List<Article> searchArticleById(int id) {
@@ -102,5 +110,5 @@ public class ArticleManager {
 
     public SelectItem[] getItemsAvailableSelectOne() {
         return JsfUtil.getSelectItems(articleFacade.findAll(), true);
-    }
+    }    
 }

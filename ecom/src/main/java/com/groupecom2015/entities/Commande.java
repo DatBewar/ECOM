@@ -6,12 +6,15 @@
 package com.groupecom2015.entities;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -22,6 +25,7 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import org.eclipse.persistence.jpa.jpql.parser.DateTime;
 
 /**
  *
@@ -35,16 +39,18 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Commande.findByIdCommande", query = "SELECT c FROM Commande c WHERE c.idCommande = :idCommande"),
     @NamedQuery(name = "Commande.findByDateCommande", query = "SELECT c FROM Commande c WHERE c.dateCommande = :dateCommande")})
 public class Commande implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @NotNull
     @Column(name = "idCommande")
     private Integer idCommande;
     @Basic(optional = false)
-    @NotNull
+   
     @Column(name = "dateCommande")
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date dateCommande;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "commande")
     private Collection<LigneDeCommande> ligneDeCommandeCollection;
@@ -56,7 +62,7 @@ public class Commande implements Serializable {
         this.idCommande = idCommande;
     }
 
-    public Commande(Integer idCommande, Date dateCommande) {
+    public Commande(Integer idCommande, Timestamp dateCommande) {
         this.idCommande = idCommande;
         this.dateCommande = dateCommande;
     }
@@ -110,5 +116,5 @@ public class Commande implements Serializable {
     public String toString() {
         return "com.groupecom2015.entities.Commande[ idCommande=" + idCommande + " ]";
     }
-    
+
 }
