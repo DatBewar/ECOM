@@ -34,6 +34,15 @@ public class ArticleFacade extends AbstractFacade<Article> {
        return em.createNamedQuery("Article.findAll").getResultList();
     }
     
+    public List<Article> getArticleFrom(int db, int fin){
+        List<Article> articles;
+        String strQuery ="SELECT a FROM Article a LIMIT "+ db + " OFFSET " + fin;
+        Query q = em.createQuery(strQuery);        
+        articles = q.getResultList();
+        //System.out.println(strQuery+"\n"+articles.size()+"\n Notre resultat");
+        return articles;
+    }
+    
     public List<Article> searchArticleById(int id){
        return em.createNamedQuery("Article.findByIdArticle").setParameter("idArticle", id).getResultList();
     }
