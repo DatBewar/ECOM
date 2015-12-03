@@ -55,8 +55,8 @@ public class CommentaireManager {
     public void setCommentaire(Commentaire commentaire) {
         this.commentaire = commentaire;
     }
-    public List<Commentaire> afficherCommentaire(int article){
+    public String afficherCommentaire(int article){
         commentaires = commentaireFacade.findByArticle(article);
-        return commentaires;
+        return "displayCommentaires";
     }
 }

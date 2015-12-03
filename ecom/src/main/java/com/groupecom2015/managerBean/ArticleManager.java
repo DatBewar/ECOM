@@ -80,8 +80,8 @@ public class ArticleManager {
         return article;
     }
 
-    public Article getArticleById() {
-        return null;
+    public void setArticleById(int id){
+        article = articleFacade.find(id);        
     }
 
     public List<Article> searchArticleById(int id) {
