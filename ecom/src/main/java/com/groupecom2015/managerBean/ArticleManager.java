@@ -136,4 +136,8 @@ public class ArticleManager {
      public List<Article> getArticleFiltre(){
          return articleFiltre;
      }
+     public String getArticle(int idArticle){
+         article = articleFacade.find(idArticle);
+         return "displayCommentaires";
+     }
 }
