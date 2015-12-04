@@ -67,6 +67,7 @@ public class CompteUser implements Serializable {
     private Collection<Commentaire> commentaireCollection;
     private String nom;
     private String prenom;
+    private String typeCompte;
 
     public CompteUser() {
     }
@@ -75,12 +76,13 @@ public class CompteUser implements Serializable {
         this.email = email;
     }
 
-    public CompteUser(String email, int idCompte, String motDePasse, String adresse, String telephone) {
+    public CompteUser(String email, int idCompte, String motDePasse, String adresse, String telephone, String typeCompte) {
         this.email = email;
         this.idCompte = idCompte;
         this.motDePasse = motDePasse;
         this.adresse = adresse;
         this.telephone = telephone;
+        this.typeCompte = typeCompte;
     }
 
     public String getNom() {
@@ -139,6 +141,14 @@ public class CompteUser implements Serializable {
         this.telephone = telephone;
     }
 
+    public String getTypeCompte() {
+        return typeCompte;
+    }
+
+    public void setTypeCompte(String typeCompte) {
+        this.typeCompte = typeCompte;
+    }
+    
     @XmlTransient
     public Collection<Commentaire> getCommentaireCollection() {
         return commentaireCollection;
@@ -171,6 +181,5 @@ public class CompteUser implements Serializable {
     @Override
     public String toString() {
         return "com.groupecom2015.entities.CompteUser[ email=" + email + " ]";
-    }
-    
+    }   
 }
