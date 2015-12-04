@@ -1,14 +1,17 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://primefaces.org/ui">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
-
+        <h:outputStylesheet name="./css/style.css"/>  
         <h:outputStylesheet name="./css/bootstrap.css"/>
-        <h:outputStylesheet name="./css/style.css"/> 
+        <h:outputStylesheet name="./css/bootstrap.min.css"/>
+
+
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
         <h:outputScript name="./js/jquery-2.1.4.min.js"/>
-        <h:outputScript name="./js/bootstrap.js"/>  
+        <h:outputScript name="./js/bootstrap.js"/> 
         <h:outputScript name="./js/my.js"/>  
 
     </h:head>
@@ -17,146 +20,145 @@
         <div class="container" style="width: 76%;" >
             <IFRAME id="top" onload="autoHeight(id);"  frameBorder="0" scrolling="no" src="top.xhtml" width="100%" height="0"></IFRAME>
         </div>
-        <div class="container" style="width: 73.7%;background-color:white">
-            <div>
-                <ol class="breadcrumb" style="background-color:white">
-                    <li><a href="index.xhtml">Home</a></li>
-                    <li class="active">ce produit</li>
-                </ol>
-            </div>
-            <div class="row">
-                <div class="col-md-6" >
-                    <a href="#" title="zoom"><img  id="produit"  src="../resources/img/1.JPG" /></a>
+
+        <div class="container main" style="width: 77%; padding-top: 0.8%;">
+
+            <ol class="breadcrumb center-block col"  style="background-color:white; width: 99%;">
+                <li><a href="index.xhtml">Search</a></li>
+                <li class="active">"xxx"</li>
+
+            </ol>
+
+            <div class="row center-block">
+
+                <div class="col left-column" >
+
+                    <div class="checkbox" id="checkbox">
+                        <h4><p>marque</p></h4>
+                        <label style=" width: 100%">
+                            <input type="checkbox" value=""/>
+                            <p>lenovo</p>   
+                        </label>
+
+                        <label>
+                            <input type="checkbox" value=""/>
+                            <p>apple&nbsp;&nbsp;&nbsp;</p>
+                        </label>
+                        <label>
+                            <input type="checkbox" value=""/>
+                            <p>acer&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                        </label>
+                        <label>
+                            <input type="checkbox" value=""/>
+                            <p>sony</p>
+                        </label>
+
+                    </div>  
+
+                    <div class="checkbox" id="checkbox">
+                        <h4><p>CPU</p></h4>
+                        <label>
+                            <input type="checkbox" value=""/>
+                            <p>Intel i7</p>   
+                        </label>
+
+                        <label>
+                            <input type="checkbox" value=""/>
+                            <p>Intel i5</p>
+                        </label>
+                        <label>
+                            <input type="checkbox" value=""/>
+                            <p>Intel i3</p>
+                        </label>
+                        <label>
+                            <input type="checkbox" value=""/>
+                            <p>AMD A10</p>
+                        </label>
+                        <label>
+                            <input type="checkbox" value=""/>
+                            <p>AMD A6</p>
+                        </label>
+                        <label>
+                            <input type="checkbox" value=""/>
+                            <p>AMD A8</p>
+                        </label>
+                        <label>
+                            <input type="checkbox" value=""/>
+                            <p>AMD A4</p>
+                        </label>
+
+                    </div>   
+
+
+                    <div class="checkbox" id="checkbox">
+                        <h4><p>Taile d'ecran</p></h4> 
+                        <label>
+                            <input type="checkbox" value=""/>
+                            <p>17"&nbsp;&nbsp;&nbsp;&nbsp;</p>   
+                        </label>
+
+                        <label>
+                            <input type="checkbox" value=""/>
+                            <p>15"&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                        </label>
+                        <label>
+                            <input type="checkbox" value=""/>
+                            <p>14"&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                        </label>
+                        <label>
+                            <input type="checkbox" value=""/>
+                            <p>13"&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                        </label>
+
+                    </div>
+
+
                 </div>
-                <div class="col-md-6">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">produit name</div>
-                        <div class="panel-body row">
-                            <div class="col-md-6"><h3>1000,00 €</h3></div>
-                            <div class="col-md-6" style="padding:inherit"> <button type="submit" style="text-shadow: black 5px 3px 3px;color: floralwhite" class="btn btn-danger  col-md-9">Ajout au panier</button></div>
-                        </div>
-                        <ul class="list-group" style="padding:inherit">
-                            <li class="list-group-item" >
-                                <div>marque: ASUS</div>
-                                <div>coleur: black</div>
-                                <div>etat: neuf</div>
-                                <div>PN: 2341245125</div>
-                            </li>
+                <div class="col middle-column-home " >
 
+                    <h:form>
+                        <ui:repeat value="#{articleManager.articleList}" var="item" size="4">
 
-                            <li class="list-group-item">
-                                <div class="row">
-                                    <div class="col-md-2">
-                                        <i class="fa fa-3x fa-ambulance "></i>
-                                    </div>
-                                    <div class="col-md-8">
-                                        <h4>livraison OFFERTE</h4>
-                                    </div>
+                            <div class="col-md-12 border" style="background-color:white">
 
+                                <div  style=" padding: 10px">
+                                    <h:commandLink action="#{articleManager.getArticle(item.idArticle)}"><p>#{item.nomArticle}</p></h:commandLink>                                                                        
                                 </div>
 
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+                                <div class="row" >
+                                    <div class="col-md-4" style=" margin: 0px 0px 30px 0px">
+                                        <img src="../resources/img/1.JPG" class="img-responsive img-rounded img-thumbnail"/>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <p>#{item.descripArticle}</p>
+                                    </div>
 
-            <div>
-                <ul class="nav nav-pills">
-                    <li class="active" href="#description" data-toggle="tab"><a href="#description">Description</a></li>
-                    <li><a href="#note" data-toggle="tab">Note</a></li> 
-                </ul>
-            </div>
-            <div id="myTabContent" class="tab-content"  style=" margin-bottom: 50px">
-                <div class="tab-pane fade in active" id="description">
-                    <div class="table-responsive">
-                        <table class="table">
+                                    <div class="col-md-4">
+                                        <div class="col-md-12"><h2>#{item.prixVenteArticle} €</h2></div>
 
-                            <thead>
-                                <tr>
-                                    <th>composants</th>
-                                    <th>description</th>
+                                        <div class="col-md-12"> <h:commandButton action="#{panierManager.addArticle(item)}" style="text-shadow: black 5px 3px 3px;color: floralwhite" class="btn btn-danger  col-md-9" value="Ajouter au panier" /></div>                                
+                                        <div class="col-md-12" style=" margin: 10px 0px 10px 0px">
+                                            <div class="col-md-2 row">
+                                                <i class="fa fa-2x fa-ambulance "></i>
+                                            </div>
+                                            <div class="col-md-9 col-md-offset-1">
+                                                <h5><p>livraison graduit</p></h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>cpu</td>
-                                    <td>AMD A10</td>
+                            </div>
 
-                                </tr>
-                                <tr>
-                                    <td>cpu</td>
-                                    <td>AMD A10</td>
+                        </ui:repeat>
+                    </h:form>
 
-                                </tr>
-                                <tr>
-                                    <td>cpu</td>
-                                    <td>AMD A10</td>
-
-                                </tr>
-                                <tr>
-                                    <td>cpu</td>
-                                    <td>AMD A10</td>
-
-                                </tr>
-                                <tr>
-                                    <td>cpu</td>
-                                    <td>AMD A10</td>
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>  	
-                </div>
-
-                <div class="tab-pane fade" id="note">
-                    <div class="table-responsive">
-                        <table class="table">
-
-                            <thead>
-                                <tr>
-                                    <th>user</th>
-                                    <th>commentaire</th>
-                                    <th>note</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>aa</td>
-                                    <td>very good</td>
-                                    <td>5</td>
-                                </tr>
-                                <tr>
-                                    <td>aa</td>
-                                    <td>very good</td>
-                                    <td>5</td>
-                                </tr>
-                                <tr>
-                                    <td>aa</td>
-                                    <td>very good</td>
-                                    <td>5</td>
-                                </tr>
-                                <tr>
-                                    <td>aa</td>
-                                    <td>very good</td>
-                                    <td>5</td>
-                                </tr>
-                                <tr>
-                                    <td>aa</td>
-                                    <td>very good</td>
-                                    <td>5</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>  	
                 </div>
 
             </div>
+
+
         </div>
-
-
-
 
         <div class="container" style="width: 76%;" >
             <IFRAME id="bottom" onload="autoHeight(id);"  frameBorder="0" scrolling="no" src="bottom.xhtml" width="100%" height="0"></IFRAME>

@@ -31,7 +31,7 @@
 
             <h:form>
                 <div class="row center-block panier">
-                     <div class="col-md-3 col-md-offset-9"><h:commandButton class="btn btn-skin pull-right" action="#{panierManager.viderPanier()}" value="Vider panier"/> </div>
+                    <div class="col-md-3 col-md-offset-9"><h:commandButton class="btn btn-skin pull-right" action="#{panierManager.viderPanier()}" value="Vider panier"/> </div>
                     <table class="table table-hover">
 
 
@@ -59,7 +59,7 @@
                                     <td >
                                         <div class="row" style="padding: 50px">
                                             <div class="col-md-2" >
-                                               <h:commandButton class="btn btn-skin pull-right" action="#{var.decrQuantite()}" value="-"/>
+                                                <h:commandButton class="btn btn-skin pull-right" action="#{var.decrQuantite()}" value="-"/>
                                             </div>
                                             <div class="col-md-2"   style=" margin-right: 6px">
                                                 <h4><p>#{var.quantite}</p></h4>
@@ -76,32 +76,30 @@
                                         </div></td>
                                     <td>
                                         <div class="row" style="padding: 50px">
-                                                <h:commandButton class="btn btn-skin pull-right" action="#{panierManager.deleteArticle(var.article)}" value="×"/>
-                                         </div>
+                                            <h:commandButton class="btn btn-skin pull-right" action="#{panierManager.deleteArticle(var.article)}" value="×"/>
+                                        </div>
                                     </td>
                                 </tr>
 
                             </ui:repeat>
                             <tr><td></td><td></td><td></td><td></td></tr>
                         </tbody>
-                        
+
                     </table>
-                   
+
                     <div class="col-md-3 col-md-offset-9"><h3><p class=" text-danger">Prix Total:  #{panierManager.prixTotal} €</p></h3></div>
-                    <div  class="row" style="padding-top: 60px">
-                        <div class=" col-md-2"><h:commandButton class="btn btn-skin pull-right" action="#{panierManager.continuerAchat()}" value="Continuer mes achats"/></div>
-                        <div class=" col-md-2 col-md-offset-5"><h:commandButton class="btn btn-skin pull-right" action="#{panierManager.validerPanier()}" value="valider ma commande"/></div>
+                    <div  class="row center-block" style="padding-top: 60px; padding-left: 3%">
+                        <div class=" col-md-2"   ><h:commandButton class="btn btn-skin pull-right" action="#{panierManager.continuerAchat()}" value="Continuer mes achats"/></div>
+                        <div class=" col-md-3 col-md-offset-7 "><h:commandButton class="btn btn-skin pull-right" action="#{panierManager.validerPanier()}" value="valider ma commande"/></div>
                     </div>
                 </div>
+            </h:form>     
 
-            </h:form> 
         </div>
-
+        
         <div class="container" style="width: 76%;" >
             <IFRAME id="bottom" onload="autoHeight(id);"  frameBorder="0" scrolling="no" src="bottom.xhtml" width="100%" height="0"></IFRAME>
         </div>
-
-
 
     </h:body>
 
