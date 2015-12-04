@@ -10,10 +10,11 @@ import com.groupecom2015.entitieManager.ArticleFacade;
 import com.groupecom2015.entities.Article;
 import com.groupecom2015.managerBean.util.JsfUtil;
 import java.util.List;
+import java.util.Locale;
 import javax.annotation.ManagedBean;
 import javax.ejb.EJB;
-import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Named;
 import javax.faces.model.SelectItem;
 
 /**
@@ -30,7 +31,8 @@ public class ArticleManager {
     @EJB
     private ArticleFacade articleFacade;
     private int auxStock, auxIdArticle;
-
+    private List<Article> articleFiltre;
+    
     public ArticleManager() {
         article = new Article();
         this.articleList = null;
@@ -111,4 +113,23 @@ public class ArticleManager {
     public SelectItem[] getItemsAvailableSelectOne() {
         return JsfUtil.getSelectItems(articleFacade.findAll(), true);
     }    
+    
+    public boolean filtreParPrix(Object value, Object filter, Locale locale){
+        String filterText = (filter == null) ? null : filter.toString().trim();
+        if(filterText == null||filterText.equals("")) {
+            return true;
+        }
+        if(value == null) {
+            return false;
+        } 
+        return ((Comparable) value).compareTo(Integer.valueOf(filterText)) > 0;
+    }
+    
+     public void setFiltreArticle(List<Article> filtreArticle) {
+        this.articleFiltre = filtreArticle;
+    }
+    
+     public List<Article> getArticleFiltre(){
+         return articleFiltre;
+     }
 }
