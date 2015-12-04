@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <h:outputStylesheet name="./css/style.css"/>  
+        <h:outputStylesheet name="./css/bootstrap.css"/>
+        <h:outputStylesheet name="./css/bootstrap.min.css"/>
+
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
+        <h:outputScript name="./js/jquery-2.1.4.min.js"/>
+        <h:outputScript name="./js/bootstrap.js"/> 
+        <h:outputScript name="./js/my.js"/>  
+
+    </h:head>
+    <h:body style="background-color:#F9F9F9">
+
+        <div class="container" style="width: 76%;" >
+            <IFRAME id="top" onload="autoHeight(id);"  frameBorder="0" scrolling="no" src="top.xhtml" width="100%" height="0"></IFRAME>
+        </div>
+
+        <div class="container main" style="width: 77%; padding-top: 0.8%;">
+
+            <ol class="breadcrumb center-block col"  style="background-color:white; width: 99%;">
+                <li><a href="index.xhtml">Search</a></li>
+                <li class="active">"xxx"</li>
+
+            </ol>
+
+            <div class="row center-block">
+
+                <div class="col left-column" >
+                    
+                    <div class="checkbox" id="checkbox">
+                        <h4><p>marque</p></h4>
+                        <label style=" width: 100%">
+                            <input type="checkbox" value=""/>
+                            <p>lenovo</p>   
+                        </label>
+
+                        <label>
+                            <input type="checkbox" value=""/>
+                            <p>apple&nbsp;&nbsp;&nbsp;</p>
+                        </label>
+                        <label>
+                            <input type="checkbox" value=""/>
+                            <p>acer&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                        </label>
+                        <label>
+                            <input type="checkbox" value=""/>
+                            <p>sony</p>
+                        </label>
+
+                    </div>  
+                   
+                    <div class="checkbox" id="checkbox">
+                        <h4><p>CPU</p></h4>
+                        <label>
+                            <input type="checkbox" value=""/>
+                            <p>Intel i7</p>   
+                        </label>
+
+                        <label>
+                            <input type="checkbox" value=""/>
+                            <p>Intel i5</p>
+                        </label>
+                        <label>
+                            <input type="checkbox" value=""/>
+                            <p>Intel i3</p>
+                        </label>
+                        <label>
+                            <input type="checkbox" value=""/>
+                            <p>AMD A10</p>
+                        </label>
+                        <label>
+                            <input type="checkbox" value=""/>
+                            <p>AMD A6</p>
+                        </label>
+                        <label>
+                            <input type="checkbox" value=""/>
+                            <p>AMD A8</p>
+                        </label>
+                        <label>
+                            <input type="checkbox" value=""/>
+                            <p>AMD A4</p>
+                        </label>
+
+                    </div>   
+
+                   
+                    <div class="checkbox" id="checkbox">
+                        <h4><p>Taile d'ecran</p></h4> 
+                        <label>
+                            <input type="checkbox" value=""/>
+                            <p>17"&nbsp;&nbsp;&nbsp;&nbsp;</p>   
+                        </label>
+
+                        <label>
+                            <input type="checkbox" value=""/>
+                            <p>15"&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                        </label>
+                        <label>
+                            <input type="checkbox" value=""/>
+                            <p>14"&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                        </label>
+                        <label>
+                            <input type="checkbox" value=""/>
+                            <p>13"&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                        </label>
+
+                    </div>
+
+
+                </div>
+                <div class="col middle-column-home " >
+                    <ui:repeat value="#{articleManager.articleList}" var="item">
+
+                        <div class="col-md-12 border" style="background-color:white">
+                           
+                            
+                            <div  style=" padding: 10px">
+                                <h4>#{item.nomArticle}</h4>
+                            </div>
+
+                            <div class="row" >
+                                <div class="col-md-4" style=" margin: 0px 0px 30px 0px">
+                                    <img src="../resources/img/1.JPG" class="img-responsive img-rounded img-thumbnail"/>
+                                </div>
+                                <div class="col-md-4">
+                                    <p>#{item.descripArticle}</p>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="col-md-12"><h2>#{item.prixVenteArticle} €</h2></div>                              
+                                    <div class="col-md-12"> <button type="submit" style="text-shadow: black 5px 3px 3px;color: floralwhite" class="btn btn-danger  col-md-9">Ajout au panier</button></div>                                
+                                    <div class="col-md-12" style=" margin: 10px 0px 10px 0px">
+                                        <div class="col-md-2 row">
+                                            <i class="fa fa-2x fa-ambulance "></i>
+                                        </div>
+                                        <div class="col-md-9 col-md-offset-1">
+                                            <h5><p>livraison graduit</p></h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </ui:repeat>
+                </div>
+
+            </div>
+
+
+        </div>
+
+        <div class="container" style="width: 76%;" >
+            <IFRAME id="bottom" onload="autoHeight(id);"  frameBorder="0" scrolling="no" src="bottom.xhtml" width="100%" height="0"></IFRAME>
+        </div>
+
+
+
+    </h:body>
+
+</html>
