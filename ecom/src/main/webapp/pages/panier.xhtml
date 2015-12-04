@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <h:outputStylesheet name="./css/style.css"/>  
+        <h:outputStylesheet name="./css/bootstrap.css"/>
+        <h:outputStylesheet name="./css/bootstrap.min.css"/>
+
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
+        <h:outputScript name="./js/jquery-2.1.4.min.js"/>
+        <h:outputScript name="./js/bootstrap.js"/> 
+        <h:outputScript name="./js/my.js"/>  
+
+    </h:head>
+    <h:body style="background-color:#F9F9F9">
+
+        <div class="container" style="width: 76%;" >
+            <IFRAME id="top" onload="autoHeight(id);"  frameBorder="0" scrolling="no" src="top.xhtml" width="100%" height="0"></IFRAME>
+        </div>
+
+        <div class="container main" style="width: 77%; padding-top: 0.8%;">
+
+            <ol class="breadcrumb center-block"  style="background-color:white; width: 99%;">
+                <li><a href="index.xhtml">home</a></li>
+                <li class="active">panier</li>
+
+            </ol>
+
+            <h:form>
+                <div class="row center-block panier">
+                     <div class="col-md-3 col-md-offset-9"><h:commandButton class="btn btn-skin pull-right" action="#{panierManager.viderPanier()}" value="Vider panier"/> </div>
+                    <table class="table table-hover">
+
+
+                        <thead>
+                            <tr>
+                                <th>Nom article</th>
+                                <th>Quantité</th>
+                                <th>Prix</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+
+                            <ui:repeat value="#{panierManager.listArt}" var="var">
+                                <tr>
+                                    <td>
+                                        <div>
+                                            <p>#{var.article.nomArticle}</p>
+                                        </div>
+                                        <div>
+                                            <img height="100" width="150" src="../resources/img/1.JPG" class="img-responsive img-rounded img-thumbnail"/>
+                                        </div>          
+                                    </td>
+                                    <td >
+                                        <div class="row" style="padding: 50px">
+                                            <div class="col-md-2" >
+                                               <h:commandButton class="btn btn-skin pull-right" action="#{var.decrQuantite()}" value="-"/>
+                                            </div>
+                                            <div class="col-md-2"   style=" margin-right: 6px">
+                                                <h4><p>#{var.quantite}</p></h4>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <h:commandButton class="btn btn-skin pull-right" action="#{var.incrQuantite()}" value="+"/>
+                                            </div>
+
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="row" style="padding: 50px">
+                                            <p>#{var.article.prixVenteArticle}</p>
+                                        </div></td>
+                                    <td>
+                                        <div class="row" style="padding: 50px">
+                                                <h:commandButton class="btn btn-skin pull-right" action="#{panierManager.deleteArticle(var.article)}" value="×"/>
+                                         </div>
+                                    </td>
+                                </tr>
+
+                            </ui:repeat>
+                            <tr><td></td><td></td><td></td><td></td></tr>
+                        </tbody>
+                        
+                    </table>
+                   
+                    <div class="col-md-3 col-md-offset-9"><h3><p class=" text-danger">Prix Total:  #{panierManager.prixTotal} €</p></h3></div>
+                    <div  class="row" style="padding-top: 60px">
+                        <div class=" col-md-2"><h:commandButton class="btn btn-skin pull-right" action="#{panierManager.continuerAchat()}" value="Continuer mes achats"/></div>
+                        <div class=" col-md-2 col-md-offset-5"><h:commandButton class="btn btn-skin pull-right" action="#{panierManager.validerPanier()}" value="valider ma commande"/></div>
+                    </div>
+                </div>
+
+            </h:form> 
+        </div>
+
+        <div class="container" style="width: 76%;" >
+            <IFRAME id="bottom" onload="autoHeight(id);"  frameBorder="0" scrolling="no" src="bottom.xhtml" width="100%" height="0"></IFRAME>
+        </div>
+
+
+
+    </h:body>
+
+</html>
