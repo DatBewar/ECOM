@@ -115,14 +115,15 @@
 
                 </div>
                 <div class="col middle-column-home " >
+
                     <h:form>
-                        <ui:repeat value="#{articleManager.articleList}" var="item">
+                        <ui:repeat value="#{articleManager.articleList}" var="item" size="4">
 
                             <div class="col-md-12 border" style="background-color:white">
 
-
                                 <div  style=" padding: 10px">
-                                    <h4>#{item.nomArticle}</h4>
+                                    <h:commandLink action="">#{item.nomArticle}</h:commandLink>
+                                                                        
                                 </div>
 
                                 <div class="row" >
