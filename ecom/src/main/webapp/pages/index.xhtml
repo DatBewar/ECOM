@@ -52,19 +52,22 @@
                     <h2>PROMOS : JUSQU' À - 50 %</h2>
                 </div>
             </div>
-            
+
             <div class="row">
                 <ui:repeat value="#{articleManager.articleList}" var="item" size="8">
-                   
-                        <div class="col-md-3">
-                         <img src="../resources/img/1.JPG" class="img-responsive img-rounded img-thumbnail"/>
-                         <h3>#{item.nomArticle}</h3>
-                         <p>#{item.descripArticle}</p>
+
+                    <div class="col-md-3 thumbnail" >
+                        <img src="../resources/img/1.JPG" class="img-responsive img-rounded"/>
+                        <div class="caption">
+                            <h4>#{item.nomArticle}</h4>
+                            <p>#{item.descripArticle}</p>
                         </div>
-                   
+
+                    </div>
+
                 </ui:repeat>
             </div>
-            
+
         </div>
 
         <div class="container" style="width: 76%; padding-bottom: 20px">
@@ -75,13 +78,13 @@
             </div>
             <div class="row">
                 <ui:repeat value="#{articleManager.articleList}" var="item" size="8">
-                   
-                        <div class="col-md-3">
-                         <img src="../resources/img/1.JPG" class="img-responsive img-rounded img-thumbnail"/>
-                         <h3>#{item.nomArticle}</h3>
-                         <p>#{item.descripArticle}</p>
-                        </div>
-                   
+
+                    <div class="col-md-3">
+                        <img src="../resources/img/1.JPG" class="img-responsive img-rounded img-thumbnail"/>
+                        <h3>#{item.nomArticle}</h3>
+                        <p>#{item.descripArticle}</p>
+                    </div>
+
                 </ui:repeat>
             </div>
         </div>

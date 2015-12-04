@@ -32,7 +32,7 @@
             <div class="row center-block">
 
                 <div class="col left-column" >
-                    
+
                     <div class="checkbox" id="checkbox">
                         <h4><p>marque</p></h4>
                         <label style=" width: 100%">
@@ -54,7 +54,7 @@
                         </label>
 
                     </div>  
-                   
+
                     <div class="checkbox" id="checkbox">
                         <h4><p>CPU</p></h4>
                         <label>
@@ -89,7 +89,7 @@
 
                     </div>   
 
-                   
+
                     <div class="checkbox" id="checkbox">
                         <h4><p>Taile d'ecran</p></h4> 
                         <label>
@@ -115,40 +115,45 @@
 
                 </div>
                 <div class="col middle-column-home " >
-                    <ui:repeat value="#{articleManager.articleList}" var="item">
 
-                        <div class="col-md-12 border" style="background-color:white">
-                           
-                            
-                            <div  style=" padding: 10px">
-                                <h4>#{item.nomArticle}</h4>
-                            </div>
+                    <h:form>
+                        <ui:repeat value="#{articleManager.articleList}" var="item" size="4">
 
-                            <div class="row" >
-                                <div class="col-md-4" style=" margin: 0px 0px 30px 0px">
-                                    <img src="../resources/img/1.JPG" class="img-responsive img-rounded img-thumbnail"/>
-                                </div>
-                                <div class="col-md-4">
-                                    <p>#{item.descripArticle}</p>
+                            <div class="col-md-12 border" style="background-color:white">
+
+                                <div  style=" padding: 10px">
+                                    <h:commandLink action="">#{item.nomArticle}</h:commandLink>
+                                                                        
                                 </div>
 
-                                <div class="col-md-4">
-                                    <div class="col-md-12"><h2>#{item.prixVenteArticle} €</h2></div>                              
-                                    <div class="col-md-12"> <button type="submit" style="text-shadow: black 5px 3px 3px;color: floralwhite" class="btn btn-danger  col-md-9">Ajout au panier</button></div>                                
-                                    <div class="col-md-12" style=" margin: 10px 0px 10px 0px">
-                                        <div class="col-md-2 row">
-                                            <i class="fa fa-2x fa-ambulance "></i>
-                                        </div>
-                                        <div class="col-md-9 col-md-offset-1">
-                                            <h5><p>livraison graduit</p></h5>
+                                <div class="row" >
+                                    <div class="col-md-4" style=" margin: 0px 0px 30px 0px">
+                                        <img src="../resources/img/1.JPG" class="img-responsive img-rounded img-thumbnail"/>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <p>#{item.descripArticle}</p>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="col-md-12"><h2>#{item.prixVenteArticle} €</h2></div>
+
+                                        <div class="col-md-12"> <h:commandButton action="#{panierManager.addArticle(item)}" style="text-shadow: black 5px 3px 3px;color: floralwhite" class="btn btn-danger  col-md-9" value="Ajouter au panier" /></div>                                
+                                        <div class="col-md-12" style=" margin: 10px 0px 10px 0px">
+                                            <div class="col-md-2 row">
+                                                <i class="fa fa-2x fa-ambulance "></i>
+                                            </div>
+                                            <div class="col-md-9 col-md-offset-1">
+                                                <h5><p>livraison graduit</p></h5>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
 
-                        </div>
+                        </ui:repeat>
+                    </h:form>
 
-                    </ui:repeat>
                 </div>
 
             </div>

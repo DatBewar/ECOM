@@ -60,6 +60,10 @@ public class ArticleManager {
         }
         return articleList;
     }
+    
+    public List<Article> getArticleList(int db, int fin) {
+        return articleFacade.getArticleFrom(db, fin);
+    }
 
     public void setArticleList(List<Article> articleList) {
         this.articleList = articleList;
@@ -131,5 +135,9 @@ public class ArticleManager {
     
      public List<Article> getArticleFiltre(){
          return articleFiltre;
+     }
+     public String getArticle(int idArticle){
+         article = articleFacade.find(idArticle);
+         return "displayCommentaires";
      }
 }
