@@ -52,6 +52,12 @@
                     <p:column>
                         <h:commandButton action="#{articleManager.modifierQuantite(item)}" value="Modifier quantité stock" />               
                     </p:column>
+                   <p:column>
+                       <h:commandLink action="#{articleManager.getArticle(item.idArticle); commentaireManager.afficherCommentaire(item.idArticle)}">
+                           Cliquez
+                       
+                       </h:commandLink>
+                    </p:column>
                 </p:dataTable>
             </h:form>
         </f:view>

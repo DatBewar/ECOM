@@ -69,6 +69,12 @@ public class CompteUserManager implements Serializable {
         //deconnecter();        
         return "index";
     }
+    
+    public String supprimerCompteUser(String email){        
+        compteUserFacade.remove(compteUserFacade.find(email));                
+        return "adminComptes";
+    }
+    
     public CompteUser getCompte() {
         if (compte == null) {
             compte = new CompteUser();
