@@ -10,7 +10,8 @@
     <h:body>
         <f:view>
             <h:form>
-                <h1><h:outputText value="Details de l'article sélectionné"/></h1>
+                <h1>Details de l'article sélectionné</h1>
+                <br/><br/>
                 <h:dataTable value="#{articleManager.article}" var="item" >
                     <h:column>
                         <f:facet name="header">
@@ -60,22 +61,15 @@
                         </f:facet>
                         <h:outputText value="#{item.categorie}"/>
                     </h:column>
-                    <h:column>
-
-                        <h:commandButton action="#{panierManager.ajoutArticle(item)}" value="Ajouter au panier" />
-                         <!--   <f:setPropertyActionListener value="#{item.idArticle}" target="#{panierManager.article.idArticle}" /> 
-                            <f:setPropertyActionListener value="#{item.nomArticle}" target="#{panierManager.article.nomArticle}" /> 
-                            <f:setPropertyActionListener value="#{item.descripArticle}" target="#{panierManager.article.descripArticle}" />
-                            <f:setPropertyActionListener value="#{item.prixVenteArticle}" target="#{panierManager.article.prixAchatArticle}" />
-                        </h:commandButton> -->
-                    </h:column>
                 </h:dataTable>
                 <br></br>
             </h:form>
         </f:view>
         <h2>Tous les commentaires</h2>
         <ui:repeat value="#{commentaireManager.commentaires}" var="item">
-            <h3>#{item.libelle}</h3> <hr/> <br/>
+            <h1>#{item.idCompte.prenom}</h1>
+            <h4><b>Note:</b> #{item.noteCommentaire}</h4>
+            <h3>#{item.libelle}</h3>
         </ui:repeat>        
     </h:body>
 </html>

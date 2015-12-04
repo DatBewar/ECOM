@@ -1,5 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://primefaces.org/ui">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -13,7 +14,7 @@
     </h:head>
     <h:body style="background-color:#F9F9F9">
 
-        <div class="container" style="width: 76%;opacity: 0.8" >
+        <div class="container" style="width: 76%;" >
             <IFRAME id="top" onload="autoHeight(id);"  frameBorder="0" scrolling="no" src="top.xhtml" width="100%" height="0"></IFRAME>
         </div>
 
@@ -46,115 +47,54 @@
 
 
         <div class="container" style="width: 76%;padding-bottom: 10px">
-			<div class="row">
-				<div class="col-md-12">
-					<h2>PROMOS : JUSQU' À - 50 %</h2>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-3">
-					<img src="../resources/img/1.JPG" class="img-responsive img-rounded img-thumbnail"/>
-					<h3>num du produit</h3>
-					<p>Description du produit</p>
-				</div>
-				<div class="col-md-3">
-					<img src="../resources/img/2.JPG" class="img-responsive img-rounded img-thumbnail"/>
-					<h3>num du produit</h3>
-					<p>Description du produit</p>
-				</div>
-				<div class="col-md-3">
-					<img src="../resources/img/3.JPG" class="img-responsive img-rounded img-thumbnail"/>
-					<h3>num du produit</h3>
-					<p>Description du produit</p>
-				</div>
-				<div class="col-md-3">
-					<img src="../resources/img/4.JPG" class="img-responsive img-rounded img-thumbnail"/>
-					<h3>num du produit</h3>
-					<p>Description du produit</p>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-3">
-					<img src="../resources/img/1.JPG" class="img-responsive img-rounded img-thumbnail"/>
-					<h3>num du produit</h3>
-					<p>Description du produit</p>
-				</div>
-				<div class="col-md-3">
-					<img src="../resources/img/2.JPG" class="img-responsive img-rounded img-thumbnail"/>
-					<h3>num du produit</h3>
-					<p>Description du produit</p>
-				</div>
-				<div class="col-md-3">
-					<img src="../resources/img/3.JPG" class="img-responsive img-rounded img-thumbnail"/>
-					<h3>num du produit</h3>
-					<p>Description du produit</p>
-				</div>
-				<div class="col-md-3">
-					<img src="../resources/img/4.JPG" class="img-responsive img-rounded img-thumbnail"/>
-					<h3>num du produit</h3>
-					<p>Description du produit</p>
-				</div>
-			</div>
-	</div>
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>PROMOS : JUSQU' À - 50 %</h2>
+                </div>
+            </div>
 
-	<div class="container" style="width: 76%; padding-bottom: 20px">
-			<div class="row">
-				<div class="col-md-12">
-					<h2>NOS MEILLEURES VENTES</h2>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-3">
-					<img src="../resources/img/1.JPG" class="img-responsive img-rounded img-thumbnail"/>
-					<h3>num du produit</h3>
-					<p>Description du produit</p>
-				</div>
-				<div class="col-md-3">
-					<img src="../resources/img/2.JPG" class="img-responsive img-rounded img-thumbnail"/>
-					<h3>num du produit</h3>
-					<p>Description du produit</p>
-				</div>
-				<div class="col-md-3">
-					<img src="../resources/img/3.JPG" class="img-responsive img-rounded img-thumbnail"/>
-					<h3>num du produit</h3>
-					<p>Description du produit</p>
-				</div>
-				<div class="col-md-3">
-					<img src="../resources/img/4.JPG" class="img-responsive img-rounded img-thumbnail"/>
-					<h3>num du produit</h3>
-					<p>Description du produit</p>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-3">
-					<img src="../resources/img/1.JPG" class="img-responsive img-rounded img-thumbnail"/>
-					<h3>num du produit</h3>
-					<p>Description du produit</p>
-				</div>
-				<div class="col-md-3">
-					<img src="../resources/img/2.JPG" class="img-responsive img-rounded img-thumbnail"/>
-					<h3>num du produit</h3>
-					<p>Description du produit</p>
-				</div>
-				<div class="col-md-3">
-					<img src="../resources/img/3.JPG" class="img-responsive img-rounded img-thumbnail"/>
-					<h3>num du produit</h3>
-					<p>Description du produit</p>
-				</div>
-				<div class="col-md-3">
-					<img src="../resources/img/4.JPG" class="img-responsive img-rounded img-thumbnail"/>
-					<h3>num du produit</h3>
-					<p>Description du produit</p>
-				</div>
-			</div>
-	</div>
+            <div class="row">
+                <ui:repeat value="#{articleManager.articleList}" var="item" size="8">
 
-        <div class="container" style="width: 76%;opacity: 0.8" >
+                    <div class="col-md-3 thumbnail" >
+                        <img src="../resources/img/1.JPG" class="img-responsive img-rounded"/>
+                        <div class="caption">
+                            <h4>#{item.nomArticle}</h4>
+                            <p>#{item.descripArticle}</p>
+                        </div>
+
+                    </div>
+
+                </ui:repeat>
+            </div>
+
+        </div>
+
+        <div class="container" style="width: 76%; padding-bottom: 20px">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>NOS MEILLEURES VENTES</h2>
+                </div>
+            </div>
+            <div class="row">
+                <ui:repeat value="#{articleManager.articleList}" var="item" size="8">
+
+                    <div class="col-md-3">
+                        <img src="../resources/img/1.JPG" class="img-responsive img-rounded img-thumbnail"/>
+                        <h3>#{item.nomArticle}</h3>
+                        <p>#{item.descripArticle}</p>
+                    </div>
+
+                </ui:repeat>
+            </div>
+        </div>
+
+        <div class="container" style="width: 76%;" >
             <IFRAME id="bottom" onload="autoHeight(id);"  frameBorder="0" scrolling="no" src="bottom.xhtml" width="100%" height="0"></IFRAME>
         </div>
 
-        
-        
+
+
     </h:body>
 
 </html>
