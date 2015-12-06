@@ -33,12 +33,15 @@ INSERT INTO ecomBd.Article (idArticle, descripArticle, nomArticle, prixAchatArti
 INSERT INTO ecomBd.Article (idArticle, descripArticle, nomArticle, prixAchatArticle, prixVenteArticle, stockArticle, categorieId) 
 	VALUES (50021, "Souris sans fil bluetooth", "Souris hp" , 50, 90, 20, 1002);
 
-INSERT INTO ecomBd.CompteUser (NOM, PRENOM, email, adresse, idCompte, motDePasse, telephone) 
-	VALUES ("tom", "smith", "tom.smith@yahoo.com", "New York", 91000, "tom.smith", "0612345678");
-INSERT INTO ecomBd.CompteUser (NOM, PRENOM, email, adresse, idCompte, motDePasse, telephone) 
-	VALUES ("azerty", "azerty","azerty@gmail.com", "Paris", 92000, "azerty", "0612345678");
-INSERT INTO ecomBd.CompteUser (NOM, PRENOM, email, adresse, idCompte, motDePasse, telephone) 
-	VALUES ("qwerty","qwerty","qwerty@hotmail.com", "Grenoble", 93000, "qwerty", "0612345678");
+INSERT INTO ecomBd.CompteUser (NOM, PRENOM, email, adresse, idCompte, motDePasse, telephone, typeCompte) 
+	VALUES ("tom", "smith", "tom.smith@yahoo.com", "New York", 91000, "tom.smith", "0612345678","client");
+INSERT INTO ecomBd.CompteUser (NOM, PRENOM, email, adresse, idCompte, motDePasse, telephone, typeCompte) 
+	VALUES ("azerty", "azerty","azerty@gmail.com", "Paris", 92000, "azerty", "0612345678","client");
+INSERT INTO ecomBd.CompteUser (NOM, PRENOM, email, adresse, idCompte, motDePasse, telephone, typeCompte) 
+	VALUES ("qwerty","qwerty","qwerty@hotmail.com", "Grenoble", 93000, "qwerty", "0612345678","client");
+
+INSERT INTO ecomBd.CompteUser (NOM, PRENOM, email, adresse, idCompte, motDePasse, telephone, typeCompte) 
+	VALUES ("ADMIN","AdminPrenom","admin@admin.com", "Grenoble", 38400, "admin", "0612345678","client");
 
 INSERT INTO ecomBd.Commande (idCommande, dateCommande) 
 	VALUES (45000, '2015-11-13');
