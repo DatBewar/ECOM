@@ -17,6 +17,8 @@
                 <h1><h:outputText value=""/></h1>
                 <p:dataTable value="#{articleManager.getArticleList()}" var="item" paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
                  paginator="true" rows="5" style="margin-bottom:20px">
+                    
+                   
                     <p:column>
                         <f:facet name="header">
                             <h:outputText value="Id "/>
@@ -68,4 +70,3 @@
     </script>
     </h:body>
 </html>
-
