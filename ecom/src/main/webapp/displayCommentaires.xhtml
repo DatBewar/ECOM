@@ -65,11 +65,12 @@
                 <br></br>
             </h:form>
         </f:view>
+        <hr/>
         <h2>Tous les commentaires</h2>
-        <ui:repeat value="#{commentaireManager.commentaires}" var="item">
-            <h1>#{item.idCompte.prenom}</h1>
+        <ui:repeat value="#{commentaireManager.afficherCommentaire(articleManager.article.idArticle)}" var="item">
+            <h3>#{item.idCompte.prenom}</h3>
             <h4><b>Note:</b> #{item.noteCommentaire}</h4>
-            <h3>#{item.libelle}</h3>
+            <h5>#{item.libelle}</h5>
         </ui:repeat>        
     </h:body>
 </html>

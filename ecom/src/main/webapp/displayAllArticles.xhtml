@@ -11,13 +11,10 @@
 
         <br/> <br/> <br/>
         <b>La liste de tous les Articles</b> <hr/>
-
         <f:view>
             <h:form>
                 <h1><h:outputText value=""/></h1>
-                <p:dataTable value="#{articleManager.getArticleList()}" var="item">
-                    
-                   
+                <p:dataTable value="#{articleManager.getArticleList()}" var="item">                                      
                     <p:column>
                         <f:facet name="header">
                             <h:outputText value="Id "/>
@@ -53,10 +50,9 @@
                         <h:commandButton action="#{articleManager.modifierQuantite(item)}" value="Modifier quantité stock" />               
                     </p:column>
                    <p:column>
-                       <h:commandLink action="#{articleManager.getArticle(item.idArticle); commentaireManager.afficherCommentaire(item.idArticle)}">
-                           Cliquez
-                       
-                       </h:commandLink>
+                       <p:commandLink action="#{articleManager.getArticle(item.idArticle)}">
+                           Afficher article + commentaire                       
+                       </p:commandLink>
                     </p:column>
                 </p:dataTable>
             </h:form>
