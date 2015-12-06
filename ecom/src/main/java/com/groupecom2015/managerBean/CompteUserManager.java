@@ -72,7 +72,7 @@ public class CompteUserManager implements Serializable {
     
     public String supprimerCompteUser(String email){        
         compteUserFacade.remove(compteUserFacade.find(email));                
-        return "adminComptes";
+        return "displayCompteUser";
     }
     
     public CompteUser getCompte() {
