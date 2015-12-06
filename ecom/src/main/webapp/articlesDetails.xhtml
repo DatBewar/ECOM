@@ -63,7 +63,8 @@
             <p:contentFlow value="#{photoManager.findPhotosByIdArticle(id)}" var="image"> 
                 <p:graphicImage value="#{image.pathPhoto}" styleClass="content" />
                 <div class="caption">#{image.idPhoto}.JPG</div>
-            </p:contentFlow>
+                        </p:contentFlow>
+      
         </f:view>
     </h:body>
 </html>
