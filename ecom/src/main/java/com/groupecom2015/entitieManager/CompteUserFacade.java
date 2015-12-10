@@ -18,8 +18,9 @@ import javax.persistence.Query;
  */
 @Stateless
 public class CompteUserFacade extends AbstractFacade<CompteUser> {
+
     @PersistenceContext(unitName = "com.groupecom2015_ecom_war_1.0-SNAPSHOTPU")
-    private EntityManager em;
+    private EntityManager em;    
 
     @Override
     protected EntityManager getEntityManager() {
@@ -29,32 +30,34 @@ public class CompteUserFacade extends AbstractFacade<CompteUser> {
     public CompteUserFacade() {
         super(CompteUser.class);
     }
-        
-    //Fiston, to find an account by Email
-    public CompteUser findByEmail(String email){
+
+    //Fiston, to find an account by Mail
+    public CompteUser findByEmail(String email) {
         List<CompteUser> comptes;
-        Query q = em.createQuery("SELECT c FROM CompteUser c WHERE c.email ='"+email+"'");       
-        comptes = q.getResultList();     
+        Query q = em.createQuery("SELECT c FROM CompteUser c WHERE c.email ='" + email + "'");
+        comptes = q.getResultList();
         return comptes.get(0);
     }
-    //Fiston, to find an account by Email
-    public CompteUser findById(int idCompte){        
+
+    //Fiston, to find an account by Mail
+    public CompteUser findById(int idCompte) {
         List<CompteUser> comptes;
-        Query q = em.createQuery("SELECT c FROM CompteUser c WHERE c.idCompte = "+idCompte+"");       
-        comptes = q.getResultList();     
+        Query q = em.createQuery("SELECT c FROM CompteUser c WHERE c.idCompte = " + idCompte + "");
+        comptes = q.getResultList();
         return comptes.get(0);
     }
+
     //Fiston, Authentification 
-    public boolean connect(CompteUser c){
+    public boolean connect(CompteUser c) {
         CompteUser compte = find(c.getEmail());
-        if(compte == null) return false;
-        else{
-            if(compte.getMotDePasse().equals(c.getMotDePasse())){
+        if (compte == null) {
+            return false;
+        } else {
+            if (compte.getMotDePasse().equals(c.getMotDePasse())) {
                 return true;
-            }
-            else{
+            } else {
                 return false;
             }
         }
-    }
+    }    
 }

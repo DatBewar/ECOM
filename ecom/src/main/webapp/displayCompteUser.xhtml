@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title>Liste des comptes</title>
@@ -14,9 +15,8 @@
         <h:form>
                 <h:panelGroup id="messagePanel" layout="block">
                     <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-                </h:panelGroup>
-                <h:outputText escape="false" value="Aucun compte dans la base de données" rendered="#{compteUserManager.comptes.rowCount == 0}"/>
-                <h:panelGroup rendered="#{compteUserManager.comptes.rowCount > 0}">                    
+                </h:panelGroup>                
+                <h:panelGroup >                    
                     <h:dataTable value="#{compteUserManager.comptes}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
                         <h:column>
                             <f:facet name="header">
@@ -64,7 +64,13 @@
                             <f:facet name="header">
                                 <h:outputText value="Type Compte"/>
                             </f:facet>
-                            <h:outputText value=""/>
+                            <h:outputText value="#{item.typeCompte}"/>                            
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Action"/>
+                            </f:facet>
+                            <h:commandButton action="#{compteUserManager.adminSupprimerCompteUser(item.email)}" value="Supprimer"/>
                         </h:column>
                     </h:dataTable>
                 </h:panelGroup>

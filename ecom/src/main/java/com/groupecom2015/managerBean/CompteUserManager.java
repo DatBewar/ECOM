@@ -6,6 +6,7 @@ import com.groupecom2015.managerBean.util.PaginationHelper;
 import com.groupecom2015.entitieManager.CompteUserFacade;
 import com.groupecom2015.managerBean.util.SessionManager;
 import java.io.Serializable;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
@@ -22,10 +23,9 @@ import javax.faces.model.SelectItem;
 public class CompteUserManager implements Serializable {
 
     private CompteUser compte;
-    private DataModel comptes = null;
+    private List<CompteUser> comptes = null;
     @EJB
     private CompteUserFacade compteUserFacade;
-    private PaginationHelper pagination;
 
     public CompteUserManager() {
     }
@@ -38,6 +38,14 @@ public class CompteUserManager implements Serializable {
         this.compteUserFacade = compteUserFacade;
     }
 
+    public void setCompte(CompteUser compte) {
+        this.compte = compte;
+    }
+
+    public void setComptes(List<CompteUser> comptes) {
+        this.comptes = comptes;
+    }
+
     public String addUser() {
         compteUserFacade.create(compte);
         return "messageInscription";
@@ -46,9 +54,9 @@ public class CompteUserManager implements Serializable {
     public String connecter() {
         if (compte.getEmail() != null && compte.getMotDePasse() != null) {
             boolean valide = compteUserFacade.connect(compte);
-            if (valide){
+            if (valide) {
                 SessionManager session = SessionManager.getInstance();
-                session.set("email",compte.getEmail());
+                session.set("email", compte.getEmail());
                 return "deconnecter";
             }
         }
@@ -57,24 +65,34 @@ public class CompteUserManager implements Serializable {
 
     public String deconnecter() {
         SessionManager session = SessionManager.getInstance();
-        session.set("email",null);
+        session.set("email", null);
         compte = null;
         return "login";
     }
-    public String supprimerCompteUser(){
+
+    public String supprimerCompteUser() {
         SessionManager session = SessionManager.getInstance();
         String email = session.get("email").toString();
         compteUserFacade.remove(compteUserFacade.find(email));
-        compte = null;
-        //deconnecter();        
+        compte = null;        
         return "index";
     }
-    
-    public String supprimerCompteUser(String email){        
-        compteUserFacade.remove(compteUserFacade.find(email));                
+
+    public String adminSupprimerCompteUser(String email) {
+        if (email.isEmpty()) {
+            return "";
+        } else {
+            compteUserFacade.remove(compteUserFacade.find(email));
+            comptes = compteUserFacade.findAll();
+            return "displayCompteUser";
+        }
+    }
+
+    public String supprimerCompteUser(String email) {
+        compteUserFacade.remove(compteUserFacade.find(email));
         return "displayCompteUser";
     }
-    
+
     public CompteUser getCompte() {
         if (compte == null) {
             compte = new CompteUser();
@@ -84,32 +102,9 @@ public class CompteUserManager implements Serializable {
 
     private CompteUserFacade getFacade() {
         return compteUserFacade;
-    }
+    }  
 
-    public PaginationHelper getPagination() {
-        if (pagination == null) {
-            pagination = new PaginationHelper(10) {
-
-                @Override
-                public int getItemsCount() {
-                    return getFacade().count();
-                }
-
-                @Override
-                public DataModel createPageDataModel() {
-                    return new ListDataModel(getFacade().findRange(new int[]{getPageFirstItem(), getPageFirstItem() + getPageSize()}));
-                }
-            };
-        }
-        return pagination;
-    }
-
-    public String prepareList() {
-        recreateModel();
-        return "displayCompteUser";
-    }
-
-    public String prepareEdit() {        
+    public String prepareEdit() {
         compte = compteUserFacade.find(compte.getEmail());
         return "modifierCompteUser";
     }
@@ -123,65 +118,15 @@ public class CompteUserManager implements Serializable {
         }
     }
 
-    public DataModel getComptes() {
+    public List<CompteUser> getComptes() {
         if (comptes == null) {
-            comptes = getPagination().createPageDataModel();
+            comptes = compteUserFacade.findAll();
         }
         return comptes;
-    }
+    }    
 
-    private void recreateModel() {
-        comptes = null;
-    }
-
-    public SelectItem[] getItemsAvailableSelectMany() {
-        return JsfUtil.getSelectItems(compteUserFacade.findAll(), false);
-    }
-
-    public SelectItem[] getItemsAvailableSelectOne() {
-        return JsfUtil.getSelectItems(compteUserFacade.findAll(), true);
-    }
-
-    public CompteUser getCompteUser(java.lang.String id) {
+    public CompteUser getCompteUser(String id) {
         return compteUserFacade.find(id);
     }
-
-    @FacesConverter(forClass = CompteUser.class)
-    public static class compteUserManagerConverter implements Converter {
-
-        @Override
-        public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
-            if (value == null || value.length() == 0) {
-                return null;
-            }
-            CompteUserManager controller = (CompteUserManager) facesContext.getApplication().getELResolver().
-                    getValue(facesContext.getELContext(), null, "compteUserManager");
-            return controller.getCompteUser(getKey(value));
-        }
-
-        String getKey(String value) {
-            java.lang.String key;
-            key = value;
-            return key;
-        }
-
-        String getStringKey(String value) {
-            StringBuilder sb = new StringBuilder();
-            sb.append(value);
-            return sb.toString();
-        }
-
-        @Override
-        public String getAsString(FacesContext facesContext, UIComponent component, Object object) {
-            if (object == null) {
-                return null;
-            }
-            if (object instanceof CompteUser) {
-                CompteUser o = (CompteUser) object;
-                return getStringKey(o.getEmail());
-            } else {
-                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + CompteUser.class.getName());
-            }
-        }
-    }
+        
 }
