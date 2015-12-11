@@ -1,8 +1,6 @@
 package com.groupecom2015.managerBean;
 
 import com.groupecom2015.entities.CompteUser;
-import com.groupecom2015.managerBean.util.JsfUtil;
-import com.groupecom2015.managerBean.util.PaginationHelper;
 import com.groupecom2015.entitieManager.CompteUserFacade;
 import com.groupecom2015.managerBean.util.SessionManager;
 import java.io.Serializable;
@@ -10,26 +8,19 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
-import javax.faces.component.UIComponent;
-import javax.faces.context.FacesContext;
-import javax.faces.convert.Converter;
-import javax.faces.convert.FacesConverter;
-import javax.faces.model.DataModel;
-import javax.faces.model.ListDataModel;
-import javax.faces.model.SelectItem;
 
 @Named("compteUserManager")
 @SessionScoped
 public class CompteUserManager implements Serializable {
 
-    private CompteUser compte;
+    private CompteUser compte = null;
     private List<CompteUser> comptes = null;
     @EJB
     private CompteUserFacade compteUserFacade;
 
     public CompteUserManager() {
     }
-
+    
     public CompteUserFacade getCompteUserFacade() {
         return compteUserFacade;
     }
@@ -56,7 +47,9 @@ public class CompteUserManager implements Serializable {
             boolean valide = compteUserFacade.connect(compte);
             if (valide) {
                 SessionManager session = SessionManager.getInstance();
+                session.set("prenom", compte.getPrenom());
                 session.set("email", compte.getEmail());
+                session.set("idCompteUser", compte.getIdCompte());
                 return "deconnecter";
             }
         }

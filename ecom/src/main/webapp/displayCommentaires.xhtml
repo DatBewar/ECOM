@@ -65,13 +65,20 @@
                 <br></br>
             </h:form>
         </f:view>
+        <i>Moyenne de vote: #{articleManager.getRate(articleManager.article.idArticle)}</i>
+        <hr/>
+        <div class="rating">
+            <span onclick="#{commentaireManager.rateArticle(articleManager.article,1)}">☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+        </div>
         <hr/>
         <h2>Tous les commentaires</h2>
         <ui:repeat value="#{commentaireManager.afficherCommentaire(articleManager.article.idArticle)}" var="item">
             <h3>#{item.idCompte.prenom}</h3>
             <h4><b>Note:</b> #{item.noteCommentaire}</h4>
             <h5>#{item.libelle}</h5>
-        </ui:repeat>        
+        </ui:repeat>     
+
+
     </h:body>
 </html>
 

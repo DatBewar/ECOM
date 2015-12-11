@@ -7,6 +7,7 @@ package com.groupecom2015.entities;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -71,7 +72,7 @@ public class Article implements Serializable {
     @Column(name = "prixVenteArticle")
     private float prixVenteArticle;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idArticle")
-    private Collection<Commentaire> commentaireCollection;
+    private List<Commentaire> commentaireCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "article")
     private Collection<LigneDeCommande> ligneDeCommandeCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idArticle")
@@ -147,11 +148,11 @@ public class Article implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Commentaire> getCommentaireCollection() {
+    public List<Commentaire> getCommentaireCollection() {
         return commentaireCollection;
     }
 
-    public void setCommentaireCollection(Collection<Commentaire> commentaireCollection) {
+    public void setCommentaireCollection(List<Commentaire> commentaireCollection) {
         this.commentaireCollection = commentaireCollection;
     }
 

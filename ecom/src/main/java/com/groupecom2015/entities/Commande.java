@@ -54,7 +54,9 @@ public class Commande implements Serializable {
     private Date dateCommande;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "commande")
     private Collection<LigneDeCommande> ligneDeCommandeCollection;
-
+    @Column(name = "idCompteUser")
+    private Integer idCompteUser;
+    
     public Commande() {
     }
 
@@ -73,6 +75,14 @@ public class Commande implements Serializable {
 
     public void setIdCommande(Integer idCommande) {
         this.idCommande = idCommande;
+    }
+
+    public Integer getIdCompteUser() {
+        return idCompteUser;
+    }
+
+    public void setIdCompteUser(Integer idCompteUser) {
+        this.idCompteUser = idCompteUser;
     }
 
     public Date getDateCommande() {

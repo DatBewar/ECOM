@@ -16,12 +16,24 @@ and open the template in the editor.
         <h1>Mes commandes</h1>
         <h:form>
             <br/><br/>
-            <h:dataTable value="" var="item" >
+            <h:dataTable value="#{commandeManager.mesCommande()}" var="item" >
                 <h:column>
                     <f:facet name="header">
                         <h:outputText value="ID Commande"/>
                     </f:facet>
-                    <h:outputText value=""/>
+                    <h:outputText value="#{item.idCommande}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Date commande"/>
+                    </f:facet>
+                    <h:outputText value="#{item.dateCommande}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Ligne commande"/>
+                    </f:facet>
+                    <h:outputText value="#{item.ligneDeCommandeCollection}"/>
                 </h:column>
             </h:dataTable>
             <br></br>

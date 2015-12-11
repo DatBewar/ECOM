@@ -8,7 +8,9 @@ package com.groupecom2015.managerBean;
 
 import com.groupecom2015.entitieManager.ArticleFacade;
 import com.groupecom2015.entities.Article;
+import com.groupecom2015.entities.Commentaire;
 import com.groupecom2015.managerBean.util.JsfUtil;
+import java.util.Collection;
 import java.util.List;
 import java.util.Locale;
 import javax.annotation.ManagedBean;
@@ -139,5 +141,13 @@ public class ArticleManager {
      public String getArticle(int idArticle){
          article = articleFacade.find(idArticle);
          return "displayCommentaires";
+     }
+     
+     public void getRate(int idArticle){
+         Article a = articleFacade.find(idArticle);
+         List<Commentaire> c = a.getCommentaireCollection();
+         int rate = 0, count = 0;
+         
+         
      }
 }

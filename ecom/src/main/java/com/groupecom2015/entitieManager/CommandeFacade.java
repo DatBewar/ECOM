@@ -7,6 +7,7 @@ package com.groupecom2015.entitieManager;
 
 import com.groupecom2015.entities.Commande;
 import java.util.Date;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -33,9 +34,17 @@ public class CommandeFacade extends AbstractFacade<Commande> {
 
     public Commande getCommandeByDate(Date date) {
         Query q = em.createQuery("SELECT c FROM Commande c WHERE c.dateCommande = :dateCommande");
-        q.setParameter("dateCommande", date);
-               
+        q.setParameter("dateCommande", date);               
         return (Commande)q.getSingleResult();
-             
+    }
+    
+    //Recuperer les commande par compte utilisateur
+    public List<Commande> findMyCommande(int idCompteUser){        
+        List<Commande> cmd;
+        String query = "SELECT c FROM Commande c WHERE c.idCompteUser = "+idCompteUser;
+        System.out.println(query+"\n *********************************************");
+        Query q = em.createQuery(query);
+        cmd = q.getResultList();
+        return cmd;
     }
 }

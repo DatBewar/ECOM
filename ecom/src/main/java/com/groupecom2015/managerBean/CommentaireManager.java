@@ -59,4 +59,11 @@ public class CommentaireManager {
         commentaires = commentaireFacade.findByArticle(article);
         return commentaires;
     }
+    
+    public void rateArticle(Article a, int value){
+        Commentaire c = new Commentaire();
+        c.setIdArticle(a);
+        c.setNoteCommentaire(value);
+        commentaireFacade.create(c);
+    }
 }

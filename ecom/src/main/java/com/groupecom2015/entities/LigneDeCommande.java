@@ -130,6 +130,5 @@ public class LigneDeCommande implements Serializable {
     @Override
     public String toString() {
         return "com.groupecom2015.entities.LigneDeCommande[ ligneDeCommandePK=" + ligneDeCommandePK + " ]";
-    }
-    
+    }   
 }

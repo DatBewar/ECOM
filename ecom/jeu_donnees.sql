@@ -43,8 +43,10 @@ INSERT INTO ecomBd.CompteUser (NOM, PRENOM, email, adresse, idCompte, motDePasse
 INSERT INTO ecomBd.CompteUser (NOM, PRENOM, email, adresse, idCompte, motDePasse, telephone, typeCompte) 
 	VALUES ("ADMIN","AdminPrenom","admin@admin.com", "Grenoble", 38400, "admin", "0612345678","client");
 
-INSERT INTO ecomBd.Commande (idCommande, dateCommande) 
-	VALUES (45000, '2015-11-13');
+INSERT INTO ecomBd.Commande (idCommande, dateCommande, idCompteUser) 
+	VALUES (45000, '2015-11-13',38400);
+INSERT INTO ecomBd.Commande (idCommande, dateCommande, idCompteUser) 
+	VALUES (45001, '2015-12-09',92000);
 
 INSERT INTO ecomBd.LigneDeCommande(prixVente, quantite, idArticle, idCommande)
 	VALUES(300, 1, 5001, 45000);
