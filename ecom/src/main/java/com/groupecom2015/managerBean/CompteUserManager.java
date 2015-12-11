@@ -40,7 +40,7 @@ public class CompteUserManager implements Serializable {
 
     public String addUser() {
         compteUserFacade.create(compte);
-        return "messageInscription";
+        return "login";
     }
 
     public String connecter() {
@@ -48,13 +48,16 @@ public class CompteUserManager implements Serializable {
             boolean valide = compteUserFacade.connect(compte);
             if (valide) {
                 compte = compteUserFacade.findByEmail(compte.getEmail());
-                SessionManager session = SessionManager.getInstance();
-                session.set("prenom", compte.getPrenom());
-                session.set("email", compte.getEmail());
-                session.set("idCompteUser", compte.getIdCompte());
-                return "deconnecter";
+                return "index";
             }
         }
+        return "login";
+    }
+    public String verifier(){
+        SessionManager session = SessionManager.getInstance();
+        if(compte.getEmail()!=null){
+            return "generation";
+        }  
         return "login";
     }
 
