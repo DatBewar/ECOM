@@ -39,12 +39,17 @@
                     <div class="row">
                         <h:form target="_top">
                            <div class="col-md-4 ">
-                               <h:commandLink action="#{compteUserManager.verifier()}" ><i class="fa fa-4x fa-fw fa-user"></i></h:commandLink>
+                               <h:commandLink action="#{compteUserManager.verifier()}" >
+                                   <i class="fa fa-4x fa-fw fa-user"></i>                                   
+                               </h:commandLink>
+                               <h5>#{compteUserManager.compte.prenom}</h5>
                            </div> 
                         </h:form>
                         
                         <div class="col-md-4 ">
-                            <a target="_top" href="panier.xhtml"><i class="fa fa-4x fa-fw fa-cart-plus"></i></a>
+                            <a target="_top" href="panier.xhtml">
+                                <i class="fa fa-4x fa-fw fa-cart-plus"></i><br/>                                
+                            </a>
                         </div>
                     </div>
 
