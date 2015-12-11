@@ -1,60 +1,60 @@
 #logo {
-	padding: 30px 0px 10px 0;
+    padding: 30px 0px 10px 0;
 }
 #search {
-	padding: 80px 10px 10px 0;
+    padding: 80px 10px 10px 0;
 }
 #small-icon {
-	padding: 70px 0 10px 0;
+    padding: 70px 0 10px 0;
 }
 #body {
-	background-color: #F9F9F9;
+    background-color: #F9F9F9;
 }
 #loginbg {
-        width: 100%;
-	height: 100%;
-	background-image: url(../img/img-bg.jpg);
-	background-size:cover;
+    width: 100%;
+    height: 100%;
+    background-image: url(../img/img-bg.jpg);
+    background-size:cover;
 }
 #login {
-	padding: 15% 0px 0px 0px;
-	text-align: right;
+    padding: 15% 0px 0px 0px;
+    text-align: right;
 }
 
 #loginbg #login h1 {
-	padding: 10% 10% 0px 0px;
-	color: #E8E8E8;
-	line-height: 1.1em;
-	font-size: 50px;
+    padding: 10% 10% 0px 0px;
+    color: #E8E8E8;
+    line-height: 1.1em;
+    font-size: 50px;
 }
 
 #loginbg #login form {
-	padding: 10% 0 0px 0px;
-	
+    padding: 10% 0 0px 0px;
+
 }
 
 #registerbg {
-	width: 100%;
-	height: 100%;
-	background-image: url(../img/img-bg.jpg);
-	background-size:cover;
+    width: 100%;
+    height: 100%;
+    background-image: url(../img/img-bg.jpg);
+    background-size:cover;
 }
 #register {
-	padding: 15% 0px 50% 0px;
-	text-align: right;
+    padding: 15% 0px 50% 0px;
+    text-align: right;
 }
 
 #registerbg #register h1 {
-	padding: 10% 10% 0px 0px;
-	color: #E8E8E8;
-	line-height: 1.1em;
-	font-size: 50px;
+    padding: 10% 10% 0px 0px;
+    color: #E8E8E8;
+    line-height: 1.1em;
+    font-size: 50px;
 }
 
 .btn {
-	color: #fff;
-	background-color: #2E6DA4;
-	transition: all .3s ease-in-out;
+    color: #fff;
+    background-color: #2E6DA4;
+    transition: all .3s ease-in-out;
 }
 
 
@@ -67,7 +67,7 @@
     width: 74%;
 }
 #produit{
-   display: inline-block;
+    display: inline-block;
     max-width: auto;
     height: 300px;
     padding: 4px;
@@ -78,7 +78,7 @@
     -webkit-transition: all .2s ease-in-out;
     -o-transition: all .2s ease-in-out;
     transition: all .2s ease-in-out;
-        
+
 }
 
 .middle-column-home {
@@ -99,15 +99,15 @@
     border-radius: 4px;
 }
 .border{
-   margin-bottom:5px;
+    margin-bottom:5px;
     border: 1px solid  #E8E8E8;
     border-radius: 4px; 
-    
+
 }
 
 #checkbox label{
     width: 100%;
-    
+
 }
 
 #checkbox{
@@ -126,4 +126,41 @@
     border: 1px solid #eaeaea;
     background-color: #fff;
     border-radius: 4px;
+}
+
+.ui-datalist-content {
+
+}
+.ui-widget-content {
+    border: 0px!important;
+
+}
+
+.ui-paginator {
+
+ padding-left: 50%!important;
+
+}
+
+
+.ui-widget-header {
+    border:0px!important;
+    background: #fff !important;
+}
+
+.ui-datalist-data{
+    padding: 0 0 0 0!important; 
+}
+
+.ui-state-default{
+    border: 1px solid #ddd!important; 
+}
+
+.ui-state-default {
+   background:  #fff!important;
+   color: #adadad!important;
+}
+
+.ui-state-active{
+    color: #555!important;
 }

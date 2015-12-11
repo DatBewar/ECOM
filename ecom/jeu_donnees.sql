@@ -31,7 +31,27 @@ INSERT INTO ecomBd.Article (idArticle, descripArticle, nomArticle, prixAchatArti
 INSERT INTO ecomBd.Article (idArticle, descripArticle, nomArticle, prixAchatArticle, prixVenteArticle, stockArticle, categorieId) 
 	VALUES (5003, "Souris avec cable USB", "Souris hp" , 15, 30, 200, 1003);
 INSERT INTO ecomBd.Article (idArticle, descripArticle, nomArticle, prixAchatArticle, prixVenteArticle, stockArticle, categorieId) 
-	VALUES (50021, "Souris sans fil bluetooth", "Souris hp" , 50, 90, 20, 1002);
+	VALUES (5004, "Souris sans fil bluetooth", "Souris hp h33" , 50, 90, 20, 1002);
+INSERT INTO ecomBd.Article (idArticle, descripArticle, nomArticle, prixAchatArticle, prixVenteArticle, stockArticle, categorieId) 
+	VALUES (5005, "Souris sans fil bluetooth", "Souris hp h22" , 50, 40, 20, 1002);
+INSERT INTO ecomBd.Article (idArticle, descripArticle, nomArticle, prixAchatArticle, prixVenteArticle, stockArticle, categorieId) 
+	VALUES (5006, "Souris sans fil bluetooth", "Souris hp h44" , 50, 50, 20, 1002);
+INSERT INTO ecomBd.Article (idArticle, descripArticle, nomArticle, prixAchatArticle, prixVenteArticle, stockArticle, categorieId) 
+	VALUES (5007, "Souris sans fil bluetooth", "Souris hp h55" , 50, 60, 20, 1002);
+INSERT INTO ecomBd.Article (idArticle, descripArticle, nomArticle, prixAchatArticle, prixVenteArticle, stockArticle, categorieId) 
+	VALUES (5008, "Souris sans fil bluetooth", "Souris hp h66" , 50, 23, 20, 1002);
+INSERT INTO ecomBd.Article (idArticle, descripArticle, nomArticle, prixAchatArticle, prixVenteArticle, stockArticle, categorieId) 
+	VALUES (5009, "Souris sans fil bluetooth", "Souris hp h77" , 50, 12, 20, 1002);
+INSERT INTO ecomBd.Article (idArticle, descripArticle, nomArticle, prixAchatArticle, prixVenteArticle, stockArticle, categorieId) 
+	VALUES (5025, "Souris sans fil bluetooth", "Souris hp h88" , 50, 34, 20, 1002);
+INSERT INTO ecomBd.Article (idArticle, descripArticle, nomArticle, prixAchatArticle, prixVenteArticle, stockArticle, categorieId) 
+	VALUES (5019, "Souris sans fil bluetooth", "Souris hp h99" , 50, 45, 20, 1002);
+INSERT INTO ecomBd.Article (idArticle, descripArticle, nomArticle, prixAchatArticle, prixVenteArticle, stockArticle, categorieId) 
+	VALUES (5039, "Souris sans fil bluetooth", "Souris hp h10" , 50, 45, 20, 1002);
+INSERT INTO ecomBd.Article (idArticle, descripArticle, nomArticle, prixAchatArticle, prixVenteArticle, stockArticle, categorieId) 
+	VALUES (5049, "Souris sans fil bluetooth", "Souris hp h23" , 50, 45, 20, 1002);
+INSERT INTO ecomBd.Article (idArticle, descripArticle, nomArticle, prixAchatArticle, prixVenteArticle, stockArticle, categorieId) 
+	VALUES (5059, "Souris sans fil bluetooth", "Souris hp h34" , 50, 45, 20, 1002);
 
 INSERT INTO ecomBd.CompteUser (NOM, PRENOM, email, adresse, idCompte, motDePasse, telephone, typeCompte) 
 	VALUES ("tom", "smith", "tom.smith@yahoo.com", "New York", 91000, "tom.smith", "0612345678","client");
