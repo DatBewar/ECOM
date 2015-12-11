@@ -4,6 +4,7 @@ import com.groupecom2015.entities.CompteUser;
 import com.groupecom2015.entitieManager.CompteUserFacade;
 import com.groupecom2015.managerBean.util.SessionManager;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
@@ -13,8 +14,8 @@ import javax.inject.Named;
 @SessionScoped
 public class CompteUserManager implements Serializable {
 
-    private CompteUser compte = null;
-    private List<CompteUser> comptes = null;
+    private CompteUser compte = new CompteUser();
+    private List<CompteUser> comptes = new ArrayList<>();
     @EJB
     private CompteUserFacade compteUserFacade;
 
@@ -43,9 +44,10 @@ public class CompteUserManager implements Serializable {
     }
 
     public String connecter() {
-        if (compte.getEmail() != null && compte.getMotDePasse() != null) {
+        if (compte.getEmail() != null && compte.getMotDePasse() != null){            
             boolean valide = compteUserFacade.connect(compte);
             if (valide) {
+                compte = compteUserFacade.findByEmail(compte.getEmail());
                 SessionManager session = SessionManager.getInstance();
                 session.set("prenom", compte.getPrenom());
                 session.set("email", compte.getEmail());
@@ -120,6 +122,5 @@ public class CompteUserManager implements Serializable {
 
     public CompteUser getCompteUser(String id) {
         return compteUserFacade.find(id);
-    }
-        
+    }       
 }

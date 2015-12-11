@@ -7,8 +7,10 @@ package com.groupecom2015.entities;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -53,7 +55,7 @@ public class Commande implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateCommande;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "commande")
-    private Collection<LigneDeCommande> ligneDeCommandeCollection;
+    private List<LigneDeCommande> ligneDeCommandeCollection = new ArrayList<>();
     @Column(name = "idCompteUser")
     private Integer idCompteUser;
     
@@ -94,11 +96,11 @@ public class Commande implements Serializable {
     }
 
     @XmlTransient
-    public Collection<LigneDeCommande> getLigneDeCommandeCollection() {
+    public List<LigneDeCommande> getLigneDeCommandeCollection() {
         return ligneDeCommandeCollection;
     }
 
-    public void setLigneDeCommandeCollection(Collection<LigneDeCommande> ligneDeCommandeCollection) {
+    public void setLigneDeCommandeCollection(List<LigneDeCommande> ligneDeCommandeCollection) {
         this.ligneDeCommandeCollection = ligneDeCommandeCollection;
     }
 
@@ -126,5 +128,4 @@ public class Commande implements Serializable {
     public String toString() {
         return "com.groupecom2015.entities.Commande[ idCommande=" + idCommande + " ]";
     }
-
 }

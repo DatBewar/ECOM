@@ -6,6 +6,7 @@
 package com.groupecom2015.entities;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -33,7 +34,7 @@ public class Message implements Serializable {
     @Id
     @Basic(optional = false)
     @NotNull
-    @Column(name = "ID")
+    @Column(name = "ID")    
     private Long id;
     @Size(max = 255)
     @Column(name = "MESSAGE")

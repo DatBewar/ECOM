@@ -6,6 +6,7 @@
 package com.groupecom2015.entitieManager;
 
 import com.groupecom2015.entities.Commande;
+import com.groupecom2015.managerBean.util.SessionManager;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -40,9 +41,9 @@ public class CommandeFacade extends AbstractFacade<Commande> {
     
     //Recuperer les commande par compte utilisateur
     public List<Commande> findMyCommande(int idCompteUser){        
-        List<Commande> cmd;
+        List<Commande> cmd = null;
         String query = "SELECT c FROM Commande c WHERE c.idCompteUser = "+idCompteUser;
-        System.out.println(query+"\n *********************************************");
+        System.out.println(query+"\n \n \n Ma requete \n ******************");
         Query q = em.createQuery(query);
         cmd = q.getResultList();
         return cmd;

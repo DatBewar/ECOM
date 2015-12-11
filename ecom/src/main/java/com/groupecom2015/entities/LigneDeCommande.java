@@ -129,6 +129,6 @@ public class LigneDeCommande implements Serializable {
 
     @Override
     public String toString() {
-        return "com.groupecom2015.entities.LigneDeCommande[ ligneDeCommandePK=" + ligneDeCommandePK + " ]";
+        return this.article.getNomArticle()+"\n"+this.commande.getDateCommande()+"\n"+this.prixVente+"\n"+this.quantite;
     }   
 }

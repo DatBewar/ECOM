@@ -8,6 +8,7 @@ package com.groupecom2015.managerBean;
 import com.groupecom2015.entitieManager.CommandeFacade;
 import com.groupecom2015.entities.Commande;
 import com.groupecom2015.entities.CompteUser;
+import com.groupecom2015.entities.LigneDeCommande;
 import com.groupecom2015.managerBean.util.SessionManager;
 import java.io.Serializable;
 import java.util.List;
@@ -59,10 +60,12 @@ public class CommandeManager implements Serializable{
         commandeFacade.create(c);
     }
     
-    public List<Commande> mesCommande(){
-        SessionManager session = SessionManager.getInstance();
-        int idCompte = (int) session.get("idCompteUser");
-        commandes = commandeFacade.findMyCommande(idCompte);
+    public List<Commande> mesCommande(CompteUser c){
+        commandes = commandeFacade.findMyCommande(c.getIdCompte());
         return commandes;      
+    }
+    public List<LigneDeCommande> getLigneDeCommandes(int idCommande){
+        List<LigneDeCommande> ligneDeCommandes = commandeFacade.find(idCommande).getLigneDeCommandeCollection();        
+        return ligneDeCommandes;
     }
 }
