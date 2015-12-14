@@ -121,16 +121,13 @@
                     </div>
                     <h:form>
                         <p:dataList value="#{articleManager.getArticleList()}" var="item" type="unordered" itemType="none" paginator="true" rows="5">
-
                             <h:panelGrid >
-
-                                <h:commandLink style=" color: black" action="#{articleManager.getArticle(item.idArticle)}">
+                                <h:commandLink style=" color: black" action="#{articleManager.getArticleByID(item.idArticle)}">
                                     <div class="col-md-12 border" style="background-color:white">
 
                                         <div  style=" padding: 10px">
                                             <p>#{item.nomArticle}</p>                                                                        
                                         </div>
-
                                         <div class="row" >
                                             <div class="col-md-4" style=" margin: 0px 0px 30px 0px">
                                                 <img src="../resources/img/1.JPG" class="img-responsive img-rounded img-thumbnail"/>
@@ -159,16 +156,8 @@
                             </h:panelGrid>
                         </p:dataList>
                     </h:form>
-
-
-
-
-
                 </div>
-
             </div>
-
-
         </div>
 
         <div class="container" style="width: 76%;" >

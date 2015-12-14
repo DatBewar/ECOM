@@ -57,9 +57,9 @@ public class ArticleManager {
     }
 
     public List<Article> getArticleList() {
-        if (articleList == null) {
+        /*if (articleList == null) {
             articleList = articleFacade.getAllArticle();
-        }
+        }*/
         return articleList;
     }
     
@@ -89,6 +89,7 @@ public class ArticleManager {
     }
 
     public void setArticleById(int id){
+        article = new Article();
         article = articleFacade.find(id);        
     }
 
@@ -99,6 +100,7 @@ public class ArticleManager {
     //Fiston, une recherche avancée par les mots clés
     public String getArticlesByKeyWords() {
         articleList = articleFacade.findByKeyWords(article.getNomArticle());
+        article = new Article();
         return "searchResult";
     }
 
@@ -138,7 +140,7 @@ public class ArticleManager {
      public List<Article> getArticleFiltre(){
          return articleFiltre;
      }
-     public String getArticle(int idArticle){
+     public String getArticleByID(int idArticle){
          article = articleFacade.find(idArticle);
          return "displayCommentaires";
      }
@@ -146,8 +148,6 @@ public class ArticleManager {
      public void getRate(int idArticle){
          Article a = articleFacade.find(idArticle);
          List<Commentaire> c = a.getCommentaireCollection();
-         int rate = 0, count = 0;
-         
-         
+         int rate = 0, count = 0;        
      }
 }
