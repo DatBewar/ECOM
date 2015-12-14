@@ -42,7 +42,9 @@
                                <h:commandLink action="#{compteUserManager.verifier()}" >
                                    <i class="fa fa-4x fa-fw fa-user"></i>                                   
                                </h:commandLink>
-                               <h5>#{compteUserManager.compte.prenom}</h5>
+                               <h:commandLink action="#{compteUserManager.deconnecter()}">
+                                   Logout, <i>#{compteUserManager.compte.prenom}</i>
+                               </h:commandLink>
                            </div> 
                         </h:form>
                         
