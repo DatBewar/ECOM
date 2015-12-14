@@ -16,18 +16,18 @@ public class CompteUserManager implements Serializable {
 
     private CompteUser compte = new CompteUser();
     private List<CompteUser> comptes = new ArrayList<>();
-    private boolean isClient = false;
+    private String isClient = "none";
     @EJB
     private CompteUserFacade compteUserFacade;
 
     public CompteUserManager() {
     }
 
-    public boolean isIsClient() {
+    public String getIsClient() {
         return isClient;
     }
 
-    public void setIsClient(boolean isClient) {
+    public void setIsClient(String isClient) {
         this.isClient = isClient;
     }
     
@@ -65,13 +65,13 @@ public class CompteUserManager implements Serializable {
     public String verifier(){
         if(compte.getEmail()!=null){
             if(compte.getTypeCompte().equals("admin")){
-                isClient = false;
+                isClient = "none";
             }
             else{
-                isClient = true;
+                isClient = "";
             }
             return "generation";
-        }  
+        }
         return "login";
     }
 
