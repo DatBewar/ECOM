@@ -56,7 +56,7 @@
             <div class="row">
                 <h:form>
                     <ui:repeat value="#{articleManager.articleList}" var="item" size="8">
-                        <h:commandLink style=" color: black" action="#{articleManager.getArticle(item.idArticle)}">
+                        <h:commandLink style=" color: black" action="#{articleManager.getArticleByID(item.idArticle)}">
                             <div class="col-md-3 thumbnail" >
                                 <img src="../resources/img/1.JPG" class="img-responsive img-rounded"/>
                                 <div class="caption">
@@ -82,7 +82,7 @@
 
                 <h:form>
                     <ui:repeat value="#{articleManager.articleList}" var="item" size="8">
-                        <h:commandLink style=" color: black" action="#{articleManager.getArticle(item.idArticle)}">
+                        <h:commandLink style=" color: black" action="#{articleManager.getArticleByID(item.idArticle)}">
                             <div class="col-md-3">
                                 <img src="../resources/img/1.JPG" class="img-responsive img-rounded img-thumbnail"/>
                                 <h3>#{item.nomArticle}</h3>
