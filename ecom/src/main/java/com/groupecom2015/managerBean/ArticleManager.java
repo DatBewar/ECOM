@@ -108,8 +108,8 @@ public class ArticleManager {
         return "modifierQuantite";
     }
 
-    public String updateArticle(){           
-        Article aux = articleFacade.find(article.getIdArticle());
+    public String updateArticle(int idArticle){           
+        Article aux = articleFacade.find(idArticle);
         int updatedStock = aux.getStockArticle() + auxStock;
         aux.setStockArticle(updatedStock);
         articleFacade.edit(aux);

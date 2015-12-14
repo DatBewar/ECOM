@@ -158,7 +158,7 @@
                             <h1><h:outputText value=""/></h1>
                             <p:dataTable  class=" form-group" value="#{articleManager.getArticleList()}" var="item" paginatorTemplate=" {PreviousPageLink} {PageLinks} {NextPageLink} "
                                          paginator="true" rows="5" style="margin-bottom:20px">
-
+                               
                                 <p:column>
                                     <f:facet name="header">
                                         <h:outputText value="Nom "/>
@@ -181,10 +181,17 @@
                                     <h:inputText class=" form-control" value="#{item.stockArticle}"/>
                                     
                                 </p:column> 
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Quantité a ajouter"/>
+                                    </f:facet>
+                                    <h:inputText class=" form-control" value="#{articleManager.auxStock}"/>
+                                    
+                                </p:column> 
 
                                 <p:column>
                                     <h:commandLink>
-                                        <i class="fa fa-1x fa-fw fa-check"></i>                                   
+                                        <i class="fa fa-1x fa-fw fa-check" action="#{articleManager.updateArticle(item.idArticle)}"></i>                                   
                                     </h:commandLink>
                                     <h:commandLink>
                                         <i class="fa fa-1x fa-fw fa-times "></i>                                   
