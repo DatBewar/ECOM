@@ -16,8 +16,11 @@ import java.util.Locale;
 import javax.annotation.ManagedBean;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.faces.model.SelectItem;
+import org.primefaces.event.RowEditEvent;
 
 /**
  *
@@ -120,7 +123,7 @@ public class ArticleManager {
       Article aux = articleFacade.find(idArticle);
       articleFacade.remove(aux);
 
-}
+    }
      public void setFiltreArticle(List<Article> filtreArticle) {
         this.articleFiltre = filtreArticle;
     }
@@ -138,4 +141,15 @@ public class ArticleManager {
          List<Commentaire> c = a.getCommentaireCollection();
          int rate = 0, count = 0;        
      }
+     
+     public void onRowEdit(RowEditEvent event) {
+       
+        Article ac = (Article)event.getObject();
+        articleFacade.edit(ac);
+        
+    }
+     
+      public void onRowCancel(RowEditEvent event) {
+       
+    }
 }

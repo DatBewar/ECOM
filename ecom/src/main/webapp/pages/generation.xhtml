@@ -1,5 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://primefaces.org/ui">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -154,51 +155,39 @@
                     </div>
                     <div class="tab-pane fade" id="gestionArticles">
 
+
                         <h:form>
-                            <h1><h:outputText value=""/></h1>
-                            <p:dataTable  class=" form-group" value="#{articleManager.getArticleList()}" var="item" paginatorTemplate=" {PreviousPageLink} {PageLinks} {NextPageLink} "
-                                         paginator="true" rows="5" style="margin-bottom:20px">
-                               
-                                <p:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="Nom "/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.nomArticle}"/>
-                                </p:column>
 
-                                <p:column>
-                                     <f:facet name="header">
-                                        <h:outputText value="Prix "/>
-                                    </f:facet>
-                                    <h:inputText  class=" form-control" value="#{item.prixVenteArticle}">
-                                        <f:convertNumber currencySymbol="€" type="currency"/>
-                                    </h:inputText>
-                                </p:column>
-                                <p:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="Quantité"/>
-                                    </f:facet>
-                                    <h:inputText class=" form-control" value="#{item.stockArticle}"/>
-                                    
-                                </p:column> 
-                                <p:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="Quantité a ajouter"/>
-                                    </f:facet>
-                                    <h:inputText class=" form-control" value="#{articleManager.auxStock}"/>
-                                    
-                                </p:column> 
+                            <p:dataTable id="cars1" var="item" value="#{articleManager.getArticleList()}" editable="true" style="margin-bottom:20px">
 
-                                <p:column>
-                                    <h:commandLink>
-                                        <i class="fa fa-1x fa-fw fa-check" action="#{articleManager.updateArticle(item.idArticle)}"></i>                                   
-                                    </h:commandLink>
-                                    <h:commandLink>
-                                        <i class="fa fa-1x fa-fw fa-times " action="#{articleManager.surprimer(item.idArticle)}"></i>                                   
-                                    </h:commandLink>
-                                </p:column>
+                                <p:ajax event="rowEdit" listener="#{articleManager.onRowEdit}"  />
+                                <p:ajax event="rowEditCancel" listener="#{articleManager.onRowCancel}" />
 
+                                <p:column headerText="Nom">
+                                    <p:cellEditor>
+                                        <f:facet name="output"><h:outputText value="#{item.nomArticle}" /></f:facet>
+                                        <f:facet name="input"><p:inputText value="#{item.nomArticle}" style="width:100%" label="nom"/></f:facet>
+                                    </p:cellEditor>
+                                </p:column>
+                                <p:column headerText="Prix">
+                                    <p:cellEditor>
+                                        <f:facet name="output"><h:outputText value="#{item.prixVenteArticle}" /></f:facet>
+                                        <f:facet name="input"><p:inputText value="#{item.prixVenteArticle}" style="width:100%" label="prix"/></f:facet>
+                                    </p:cellEditor>
+                                </p:column>
+                                <p:column headerText="qualite">
+                                    <p:cellEditor>
+                                        <f:facet name="output"><h:outputText value="#{item.stockArticle}" /></f:facet>
+                                        <f:facet name="input"><p:inputText value="#{item.stockArticle}" style="width:100%" label="prix"/></f:facet>
+                                    </p:cellEditor>
+                                </p:column>
+                                <p:column style="width:32px">
+                                    <p:rowEditor />
+                                </p:column>
                             </p:dataTable>
+
+
+
                         </h:form>
 
                     </div>
