@@ -23,10 +23,10 @@
                     
                     <h:form target="_top">
                         <div class="col-md-10">
-                            <h:inputText class="form-control" id="nomCategorie" value="#{articleManager.article.nomArticle}"  required="true" requiredMessage="Nom article nécesaire."/>
+                            <h:inputText class="form-control" id="nomCategorie" value="#{articleBackingBean.nomArticle}"  required="true" requiredMessage="Nom article nécesaire."/>
                         </div>
                         <div class="col-md-2">
-                            <h:commandButton style="text-shadow: black 5px 3px 3px;color: floralwhite;" class="btn btn-skin pull-right" action="#{articleManager.getArticlesByKeyWords}" value="Rechercher"/>
+                            <h:commandButton style="text-shadow: black 5px 3px 3px;color: floralwhite;" class="btn btn-skin pull-right" action="#{articleBackingBean.getArticlesByKeyWords}" value="Rechercher"/>
                         </div>
 
 

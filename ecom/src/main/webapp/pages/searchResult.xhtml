@@ -120,9 +120,9 @@
                         <div></div>
                     </div>
                     <h:form>
-                        <p:dataList value="#{articleManager.getArticleList()}" var="item" type="unordered" itemType="none" paginator="true" rows="5">
+                        <p:dataList value="#{articleBackingBean.list}" var="item" type="unordered" itemType="none" paginator="true" rows="5">
                             <h:panelGrid >
-                                <h:commandLink style=" color: black" action="#{articleManager.getArticleByID(item.idArticle)}">
+                                <h:commandLink style=" color: black" action="#{articleBackingBean.getArticleByID(item)}">
                                     <div class="col-md-12 border" style="background-color:white">
 
                                         <div  style=" padding: 10px">
