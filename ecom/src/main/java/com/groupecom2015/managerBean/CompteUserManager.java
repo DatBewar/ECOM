@@ -9,13 +9,14 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
+import org.primefaces.event.RowEditEvent;
 
 @Named("compteUserManager")
 @SessionScoped
 public class CompteUserManager implements Serializable {
 
-    private CompteUser compte = new CompteUser();
-    private List<CompteUser> comptes = new ArrayList<>();
+    private CompteUser compte;
+    private List<CompteUser> comptes;
     private String isClient = "none";
     private String isAdmin = "none";
     private String isLogin = "none";
@@ -23,8 +24,22 @@ public class CompteUserManager implements Serializable {
     @EJB
     private CompteUserFacade compteUserFacade;
 
-    public CompteUserManager() {
+    public CompteUserManager(){
+        comptes = null;
+        compte = new CompteUser();
     }
+
+    public List<CompteUser> getComptes() {
+        if(comptes == null){
+            comptes = compteUserFacade.findAll();
+        }
+        return comptes;
+    }
+
+    public void setComptes(List<CompteUser> comptes) {
+        this.comptes = comptes;
+    }
+    
 
     public String getIsNotLogin() {
         return isNotLogin;
@@ -57,7 +72,7 @@ public class CompteUserManager implements Serializable {
     public void setIsClient(String isClient) {
         this.isClient = isClient;
     }
-    
+
     public CompteUserFacade getCompteUserFacade() {
         return compteUserFacade;
     }
@@ -68,11 +83,7 @@ public class CompteUserManager implements Serializable {
 
     public void setCompte(CompteUser compte) {
         this.compte = compte;
-    }
-
-    public void setComptes(List<CompteUser> comptes) {
-        this.comptes = comptes;
-    }
+    }    
 
     public String addUser() {
         compteUserFacade.create(compte);
@@ -80,36 +91,36 @@ public class CompteUserManager implements Serializable {
     }
 
     public String connecter() {
-        if (compte.getEmail() != null && compte.getMotDePasse() != null){            
+        if (compte.getEmail() != null && compte.getMotDePasse() != null) {
             boolean valide = compteUserFacade.connect(compte);
             if (valide) {
                 compte = compteUserFacade.findByEmail(compte.getEmail());
                 return "index";
-            }
+            }            
         }
+        compte = new CompteUser();
         return "login";
     }
-    public void verifierLogin(){
-         if(compte.getEmail()!=null){
-             this.isLogin ="";
-             this.isNotLogin="none";
-         }
-         else
-         {
-             this.isNotLogin="";
-             this.isLogin ="none";
-         }
+
+    public void verifierLogin() {
+        if (compte.getEmail() != null) {
+            this.isLogin = "";
+            this.isNotLogin = "none";
+        } else {
+            this.isNotLogin = "";
+            this.isLogin = "none";
+        }
     }
-    public String verifier(){
-        if(compte.getEmail()!=null){
-            
-            if(compte.getTypeCompte().equals("admin")){
+
+    public String verifier() {
+        if (compte.getEmail() != null) {
+
+            if (compte.getTypeCompte().equals("admin")) {
                 isClient = "none";
                 isAdmin = "";
-            }
-            else{
+            } else {
                 isClient = "";
-                isAdmin ="none";
+                isAdmin = "none";
             }
             return "generation";
         }
@@ -127,7 +138,7 @@ public class CompteUserManager implements Serializable {
         SessionManager session = SessionManager.getInstance();
         String email = session.get("email").toString();
         compteUserFacade.remove(compteUserFacade.find(email));
-        compte = null;        
+        compte = null;
         return "index";
     }
 
@@ -148,14 +159,14 @@ public class CompteUserManager implements Serializable {
 
     public CompteUser getCompte() {
         if (compte == null) {
-            compte = new CompteUser();
+            compte = new CompteUser();           
         }
         return compte;
     }
 
     private CompteUserFacade getFacade() {
         return compteUserFacade;
-    }  
+    }
 
     public String prepareEdit() {
         compte = compteUserFacade.find(compte.getEmail());
@@ -165,20 +176,21 @@ public class CompteUserManager implements Serializable {
     public String update() {
         try {
             getFacade().edit(compte);
-            return "displayCompteUser";
+            return "generation";
         } catch (Exception e) {
             return null;
         }
-    }
-
-    public List<CompteUser> getComptes() {
-        if (comptes == null) {
-            comptes = compteUserFacade.findAll();
-        }
-        return comptes;
     }    
 
     public CompteUser getCompteUser(String id) {
         return compteUserFacade.find(id);
-    }       
+    }
+
+    public void onRowEdit(RowEditEvent event) {
+        CompteUser cu = (CompteUser) event.getObject();
+        compteUserFacade.edit(cu);
+    }
+
+    public void onRowCancel(RowEditEvent event) {
+    }
 }

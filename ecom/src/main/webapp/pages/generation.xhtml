@@ -49,7 +49,6 @@
                                 <div class="form-group" style="text-align: left;">
                                     <h:outputLabel  value="Email:" for="email" />     
                                     <h:inputText  readonly="true" id="email" class="form-control" value="#{compteUserManager.compte.email}" title="Email" required="true" requiredMessage="The Email field is required."/>
-
                                 </div>
                                 <div class="form-group" style="text-align: left;">
                                     <h:outputLabel  value="Password" for="password" />
@@ -83,9 +82,7 @@
                                 </div>
 
                                 <div class="form-group" style="text-align: left;">
-                                    <h:commandButton class="btn btn-skin pull-right"  value="motifier"></h:commandButton>
-
-
+                                    <h:commandButton class="btn btn-skin pull-right"  value="motifier" action="#{compteUserManager.update()}"></h:commandButton>
                                 </div>
 
                             </div>
@@ -251,40 +248,33 @@
                     
                     
                      <div class="tab-pane fade" id="gestionCompte">
-
-
                         <h:form>
-
                             <p:dataTable id="cars1" var="item" paginator="true"  rows="5" paginatorPosition="top"  value="#{compteUserManager.comptes}" editable="true" style="margin-bottom:20px">
-
                                 <p:ajax event="rowEdit" listener="#{compteUserManager.onRowEdit}"  />
                                 <p:ajax event="rowEditCancel" listener="#{compteUserManager.onRowCancel}" />
 
                                 <p:column headerText="Nom">
                                     <p:cellEditor>
+                                        <f:facet name="output"><h:outputText value="#{item.nom}" /></f:facet>
+                                        <f:facet name="input"><p:inputText value="#{item.nom}" style="width:100%" label="Nom"/></f:facet>
+                                    </p:cellEditor>
+                                </p:column>
+                                <p:column headerText="Prénom">
+                                    <p:cellEditor>
+                                        <f:facet name="output"><h:outputText value="#{item.prenom}" /></f:facet>
+                                        <f:facet name="input"><p:inputText value="#{item.prenom}" style="width:100%" label="Prénom"/></f:facet>
+                                    </p:cellEditor>
+                                </p:column>
+                                <p:column headerText="Email">
+                                    <p:cellEditor>
                                         <f:facet name="output"><h:outputText value="#{item.email}" /></f:facet>
-                                        <f:facet name="input"><p:inputText value="#{item.email}" style="width:100%" label="Libellé"/></f:facet>
-                                    </p:cellEditor>
-                                </p:column>
-                                <p:column headerText="Prix">
-                                    <p:cellEditor>
-                                        <f:facet name="output"><h:outputText value="#{item.uniteCaracteristique}" /></f:facet>
-                                        <f:facet name="input"><p:inputText value="#{item.uniteCaracteristique}" style="width:100%" label="Unité"/></f:facet>
-                                    </p:cellEditor>
-                                </p:column>
-                                <p:column headerText="qualite">
-                                    <p:cellEditor>
-                                        <f:facet name="output"><h:outputText value="#{item.valeurCaracteristique}" /></f:facet>
-                                        <f:facet name="input"><p:inputText value="#{item.valeurCaracteristique}" style="width:100%" label="Valuer"/></f:facet>
+                                        <f:facet name="input"><p:inputText value="#{item.email}" style="width:100%" label="Email"/></f:facet>
                                     </p:cellEditor>
                                 </p:column>
                                 <p:column style="width:56px">
                                     <p:rowEditor />
                                 </p:column>
                             </p:dataTable>
-
-
-
                         </h:form>
 
                     </div>
