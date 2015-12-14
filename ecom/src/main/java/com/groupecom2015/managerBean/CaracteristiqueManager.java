@@ -6,6 +6,7 @@
 package com.groupecom2015.managerBean;
 
 import com.groupecom2015.entitieManager.CaracteristiqueFacade;
+import com.groupecom2015.entities.Article;
 import com.groupecom2015.entities.Caracteristique;
 import java.util.List;
 import javax.annotation.ManagedBean;
@@ -13,6 +14,7 @@ import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
 import javax.enterprise.context.RequestScoped;
+import org.primefaces.event.RowEditEvent;
 
 /**
  *
@@ -56,5 +58,14 @@ public class CaracteristiqueManager {
         caracteristiqueFacade.remove(caracteristique);
     }
     
-    
+     public void onRowEdit(RowEditEvent event) {
+       
+        Caracteristique ac = (Caracteristique)event.getObject();
+        caracteristiqueFacade.edit(ac);
+        
+    }
+     
+      public void onRowCancel(RowEditEvent event) {
+       
+    }
 }
