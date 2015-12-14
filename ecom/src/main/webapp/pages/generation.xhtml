@@ -29,7 +29,7 @@
                     <li style="display:#{compteUserManager.isClient}"><a href="#MesCommands" data-toggle="tab">Mes Commands</a></li>
                     <li style="display:#{compteUserManager.isAdmin}"><a href="#article" data-toggle="tab">Ajouter Article</a></li>
                     <li style="display:#{compteUserManager.isAdmin}"><a href="#category" data-toggle="tab">Ajouter Category</a></li>
-                    <li style="display:#{compteUserManager.isAdmin}"><a href="#" data-toggle="tab">Gestion Articles</a></li>
+                    <li style="display:#{compteUserManager.isAdmin}"><a href="#gestionArticles" data-toggle="tab">Gestion Articles</a></li>
                     <li style="display:#{compteUserManager.isAdmin}"><a href="#" data-toggle="tab">Gestion Caracteristique</a></li>
                     <li style="display:#{compteUserManager.isAdmin}"><a href="#" data-toggle="tab">Gestion Compte</a></li>
 
@@ -151,6 +151,49 @@
                                 </div>
                             </div>
                         </h:form>
+                    </div>
+                    <div class="tab-pane fade" id="gestionArticles">
+
+                        <h:form>
+                            <h1><h:outputText value=""/></h1>
+                            <p:dataTable  class=" form-group" value="#{articleManager.getArticleList()}" var="item" paginatorTemplate=" {PreviousPageLink} {PageLinks} {NextPageLink} "
+                                         paginator="true" rows="5" style="margin-bottom:20px">
+
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Nom "/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.nomArticle}"/>
+                                </p:column>
+
+                                <p:column>
+                                     <f:facet name="header">
+                                        <h:outputText value="Prix "/>
+                                    </f:facet>
+                                    <h:inputText  class=" form-control" value="#{item.prixVenteArticle}">
+                                        <f:convertNumber currencySymbol="€" type="currency"/>
+                                    </h:inputText>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Quantité"/>
+                                    </f:facet>
+                                    <h:inputText class=" form-control" value="#{item.stockArticle}"/>
+                                    
+                                </p:column> 
+
+                                <p:column>
+                                    <h:commandLink>
+                                        <i class="fa fa-1x fa-fw fa-check"></i>                                   
+                                    </h:commandLink>
+                                    <h:commandLink>
+                                        <i class="fa fa-1x fa-fw fa-times "></i>                                   
+                                    </h:commandLink>
+                                </p:column>
+
+                            </p:dataTable>
+                        </h:form>
+
                     </div>
 
                 </div>
