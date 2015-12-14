@@ -57,15 +57,15 @@ public class ArticleManager {
     }
 
     public List<Article> getArticleList() {
-        /*if (articleList == null) {
+        if (articleList == null) {
             articleList = articleFacade.getAllArticle();
-        }*/
+        }
         return articleList;
     }
     
-    public List<Article> getArticleList(int db, int fin) {
+    /*public List<Article> getArticleList(int db, int fin) {
         return articleFacade.getArticleFrom(db, fin);
-    }
+    }*/
 
     public void setArticleList(List<Article> articleList) {
         this.articleList = articleList;
@@ -89,7 +89,6 @@ public class ArticleManager {
     }
 
     public void setArticleById(int id){
-        article = new Article();
         article = articleFacade.find(id);        
     }
 
@@ -99,8 +98,7 @@ public class ArticleManager {
 
     //Fiston, une recherche avancée par les mots clés
     public String getArticlesByKeyWords() {
-        articleList = articleFacade.findByKeyWords(article.getNomArticle());
-        article = new Article();
+        articleList = articleFacade.findByKeyWords(article.getNomArticle());        
         return "searchResult";
     }
 
