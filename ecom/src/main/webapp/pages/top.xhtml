@@ -25,7 +25,6 @@
                         <div class="col-md-10">
                             <h:inputText class="form-control" id="nomCategorie" value="#{articleManager.article.nomArticle}"  required="true" requiredMessage="Nom article nécesaire."/>
                         </div>
-                        #{compteUserManager.isClient}
                         <div class="col-md-2">
                             <h:commandButton style="text-shadow: black 5px 3px 3px;color: floralwhite;" class="btn btn-skin pull-right" action="#{articleManager.getArticlesByKeyWords}" value="Rechercher"/>
                         </div>
