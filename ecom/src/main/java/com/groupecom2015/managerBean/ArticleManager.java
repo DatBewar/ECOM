@@ -115,22 +115,12 @@ public class ArticleManager {
         articleFacade.edit(aux);
         return "displayAllArticles";
     }
+    
+   public void surprimer(int idArticle){
+      Article aux = articleFacade.find(idArticle);
+      articleFacade.remove(aux);
 
-    public SelectItem[] getItemsAvailableSelectOne() {
-        return JsfUtil.getSelectItems(articleFacade.findAll(), true);
-    }    
-    
-    public boolean filtreParPrix(Object value, Object filter, Locale locale){
-        String filterText = (filter == null) ? null : filter.toString().trim();
-        if(filterText == null||filterText.equals("")) {
-            return true;
-        }
-        if(value == null) {
-            return false;
-        } 
-        return ((Comparable) value).compareTo(Integer.valueOf(filterText)) > 0;
-    }
-    
+}
      public void setFiltreArticle(List<Article> filtreArticle) {
         this.articleFiltre = filtreArticle;
     }
