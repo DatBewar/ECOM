@@ -10,7 +10,7 @@
         <h:outputScript name="./js/bootstrap.js"/>  
 
     </h:head>
-    <h:body style="background-color:#F9F9F9" >
+    <h:body style="background-color:#F9F9F9" onload="#{compteUserManager.verifierLogin()}" >
         <header>
 
             <div class="row">
@@ -19,15 +19,15 @@
                 </div>
 
                 <div id="search"  class="col-md-7 row">
-                    
-                    
+
+
                     <h:form target="_top">
                         <div class="col-md-10">
                             <h:inputText class="form-control" id="nomCategorie" value="#{articleBackingBean.nomArticle}"  required="true" requiredMessage="Nom article nécesaire."/>
                         </div>
                         <div class="col-md-2">
                             <h:commandButton style="text-shadow: black 5px 3px 3px;color: floralwhite;" class="btn btn-skin pull-right" action="#{articleBackingBean.getArticlesByKeyWords}" value="Rechercher"/>
-                        </div>
+                       </div>
 
 
                     </h:form>
@@ -38,23 +38,38 @@
                 <div class="col-md-2 " id="small-icon">
                     <div class="row">
                         <h:form target="_top">
-                           <div class="col-md-4 ">
-                               <h:commandLink action="#{compteUserManager.verifier()}" >
-                                   <i class="fa fa-4x fa-fw fa-user"></i>                                   
-                               </h:commandLink>
-                               <h:commandLink action="#{compteUserManager.deconnecter()}">
-                                   <h5>Logout, <i>#{compteUserManager.compte.prenom}</i></h5>
-                               </h:commandLink>
-                           </div> 
+                            <div class="col-md-4 col-md-offset-1 ">
+                                <h:commandLink action="#{compteUserManager.verifier()}" >
+                                    <i class="fa fa-4x fa-fw fa-user"></i>                                   
+                                </h:commandLink>
+
+                            </div> 
                         </h:form>
-                        
-                        <div class="col-md-4 ">
+
+                        <div class="col-md-4 col-md-offset-2">
                             <a target="_top" href="panier.xhtml">
                                 <i class="fa fa-4x fa-fw fa-cart-plus"></i><br/>                                
                             </a>
                         </div>
-                    </div>
 
+
+                    </div>
+                    <h:form target="_top">
+                        <h:commandLink action="#{compteUserManager.deconnecter()}">
+                            <div style=" display:#{compteUserManager.isLogin}">
+                                <i   class="fa fa-1x fa-fw fa-power-off"/>
+                                <i style="color: #ce8483"> Hi:#{compteUserManager.compte.prenom}</i>
+                            </div>
+
+                        </h:commandLink>
+
+
+                        <h:commandLink action="#{compteUserManager.verifier()}" >
+                            <div style=" display:#{compteUserManager.isNotLogin}">
+                                <i >please login</i>
+                            </div>                             
+                        </h:commandLink>
+                    </h:form>
                 </div>
 
             </div>

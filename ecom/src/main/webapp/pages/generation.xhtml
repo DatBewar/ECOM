@@ -1,5 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://primefaces.org/ui">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -25,14 +26,15 @@
 
             <div class="row">
                 <ul id="myTab" class="nav nav-pills nav-stacked col-md-3 " style="padding-left: 40px;">
-                    <li class="active" style=" display: "><a href="#article" data-toggle="tab">Mon Compte</a></li>
-                    <li  style=" display:#{compteUserManager.isClient} "><a href="#" data-toggle="tab">Mes Commands</a></li>
-                    <li  style=" display: "><a href="#article" data-toggle="tab">Ajouter Article</a></li>
-                    <li><a href="#category" data-toggle="tab">Ajouter Category</a></li>
-                    <li><a href="#" data-toggle="tab">Gestion Articles</a></li>
-                    <li><a href="#" data-toggle="tab">Gestion Caracteristique</a></li>
-                    <li><a href="#" data-toggle="tab">Gestion Compte</a></li>
-                    
+                    <li class="active"  ><a href="#MonCompte" data-toggle="tab">Mon Compte</a></li>
+                    <li style="display:#{compteUserManager.isClient}"><a href="#MesCommands" data-toggle="tab">Mes commands</a></li>
+                    <li style="display:#{compteUserManager.isAdmin}"><a href="#article" data-toggle="tab">Ajouter crticle</a></li>
+                    <li style="display:#{compteUserManager.isAdmin}"><a href="#category" data-toggle="tab">Ajouter category</a></li>
+                    <li style="display:#{compteUserManager.isAdmin}"><a href="#ajoutCaracteristique" data-toggle="tab">Ajouter caracteristique</a></li>
+                    <li style="display:#{compteUserManager.isAdmin}"><a href="#gestionArticles" data-toggle="tab">Gestion Articles</a></li>
+                    <li style="display:#{compteUserManager.isAdmin}"><a href="#gestionCaracteristique" data-toggle="tab">Gestion Caracteristique</a></li>
+                    <li style="display:#{compteUserManager.isAdmin}"><a href="#gestionCompte" data-toggle="tab">Gestion Compte</a></li>
+
 
 
                 </ul>
@@ -41,7 +43,53 @@
 
 
                 <div id="myTabContent" class="tab-content col-md-8" style="padding-left: 70px">
-                    <div class="tab-pane fade in active" id="article">
+                    <div class=" tab-pane fade in active" id="MonCompte">
+                        <h:form>
+                            <div class="col-md-10">
+                                <div class="form-group" style="text-align: left;">
+                                    <h:outputLabel  value="Email:" for="email" />     
+                                    <h:inputText  readonly="true" id="email" class="form-control" value="#{compteUserManager.compte.email}" title="Email" required="true" requiredMessage="The Email field is required."/>
+                                </div>
+                                <div class="form-group" style="text-align: left;">
+                                    <h:outputLabel  value="Password" for="password" />
+                                    <h:inputSecret class="form-control" id="motDePasse" value="#{compteUserManager.compte.motDePasse}" title="MotDePasse" required="true" requiredMessage="The MotDePasse field is required."/>
+
+                                </div>
+
+                                <div class="form-group" style="text-align: left;">
+
+                                    <h:outputLabel  value="Nom" for="Nom" />
+                                    <h:inputText class="form-control" id="nom" value="#{compteUserManager.compte.nom}" title="Nom" required="true" requiredMessage="The Nom field is required."/>
+
+                                </div>
+                                <div class="form-group" style="text-align: left;">
+                                    <h:outputLabel  value="Prenom" for="Prenom" />
+                                    <h:inputText class="form-control" id="prenom" value="#{compteUserManager.compte.prenom}" title="Prenom" required="true" requiredMessage="The Prenom field is required."/>
+
+                                </div>
+
+                                <div class="form-group" style="text-align: left;">
+                                    <h:outputLabel  value="Telephone:" for="telephone" />
+                                    <h:inputText class="form-control" id="telephone" value="#{compteUserManager.compte.telephone}" title="Telephone" required="true" requiredMessage="The Telephone field is required."/>
+
+                                </div>
+
+                                <div class="form-group" style="text-align: left;">
+
+                                    <h:outputLabel  value="Adresse:" for="adresse" />
+                                    <h:inputTextarea class="form-control" rows="3" cols="30" id="adresse" value="#{compteUserManager.compte.adresse}" title="Adresse" required="true" requiredMessage="The Adresse field is required."/>
+
+                                </div>
+
+                                <div class="form-group" style="text-align: left;">
+                                    <h:commandButton class="btn btn-skin pull-right"  value="motifier" action="#{compteUserManager.update()}"></h:commandButton>
+                                </div>
+
+                            </div>
+                        </h:form>
+
+                    </div>
+                    <div class="tab-pane fade" id="article">
                         <h:form>
                             <div class="col-md-10 col-md-offset-1">
                                 <div class="form-group" style="text-align: left;">
@@ -103,7 +151,133 @@
                             </div>
                         </h:form>
                     </div>
-                    <div class="tab-pane fade" id="category"></div>
+                    <div class="tab-pane fade" id="gestionArticles">
+
+
+                        <h:form>
+
+                            <p:dataTable id="cars1" var="item" paginator="true"  rows="5" paginatorPosition="top"  value="#{articleManager.getArticleList()}" editable="true" style="margin-bottom:20px">
+
+                                <p:ajax event="rowEdit" listener="#{articleManager.onRowEdit}"  />
+                                <p:ajax event="rowEditCancel" listener="#{articleManager.onRowCancel}" />
+
+                                <p:column headerText="Nom">
+                                    <p:cellEditor>
+                                        <f:facet name="output"><h:outputText value="#{item.nomArticle}" /></f:facet>
+                                        <f:facet name="input"><p:inputText value="#{item.nomArticle}" style="width:100%" label="nom"/></f:facet>
+                                    </p:cellEditor>
+                                </p:column>
+                                <p:column headerText="Prix">
+                                    <p:cellEditor>
+                                        <f:facet name="output"><h:outputText value="#{item.prixVenteArticle}" /></f:facet>
+                                        <f:facet name="input"><p:inputText value="#{item.prixVenteArticle}" style="width:100%" label="prix"/></f:facet>
+                                    </p:cellEditor>
+                                </p:column>
+                                <p:column headerText="qualite">
+                                    <p:cellEditor>
+                                        <f:facet name="output"><h:outputText value="#{item.stockArticle}" /></f:facet>
+                                        <f:facet name="input"><p:inputText value="#{item.stockArticle}" style="width:100%" label="prix"/></f:facet>
+                                    </p:cellEditor>
+                                </p:column>
+                                <p:column style="width:56px">
+                                    <p:rowEditor />
+                                </p:column>
+                            </p:dataTable>
+
+
+
+                        </h:form>
+
+                    </div>
+
+                    <div class="tab-pane fade" id="ajoutCaracteristique">
+                        <h:form >
+                           
+                            <h:panelGrid columns="2">
+                                <h:outputLabel value="LibelleCaracteristique:" for="libelleCaracteristique" />
+                                <p:inputText id="libelleCaracteristique" value="#{caracteristiqueManager.caracteristique.libelleCaracteristique}" title="LibelleCaracteristique" required="true" requiredMessage="The LibelleCaracteristique field is required."/>
+                                <h:outputLabel value="UniteCaracteristique:" for="uniteCaracteristique" />
+                                <p:inputText id="uniteCaracteristique" value="#{caracteristiqueManager.caracteristique.uniteCaracteristique}" title="UniteCaracteristique" required="true" requiredMessage="The UniteCaracteristique field is required."/>
+                                <h:outputLabel value="ValeurCaracteristique:" for="valeurCaracteristique" />
+                                <p:inputText id="valeurCaracteristique" value="#{caracteristiqueManager.caracteristique.valeurCaracteristique}" title="ValeurCaracteristique" required="true" requiredMessage="The ValeurCaracteristique field is required."/>
+                                <h:commandButton action="#{caracteristiqueManager.addCaracteristique()}" value="Ajouter" />
+                            </h:panelGrid>
+                        </h:form>
+                    </div>
+                    
+                    
+                    
+                    <div class="tab-pane fade" id="gestionCaracteristique">
+
+
+                        <h:form>
+
+                            <p:dataTable id="cars1" var="item" paginator="true"  rows="5" paginatorPosition="top"  value="#{caracteristiqueManager.allCaracteristique}" editable="true" style="margin-bottom:20px">
+
+                                <p:ajax event="rowEdit" listener="#{caracteristiqueManager.onRowEdit}"  />
+                                <p:ajax event="rowEditCancel" listener="#{caracteristiqueManager.onRowCancel}" />
+
+                                <p:column headerText="Nom">
+                                    <p:cellEditor>
+                                        <f:facet name="output"><h:outputText value="#{item.libelleCaracteristique}" /></f:facet>
+                                        <f:facet name="input"><p:inputText value="#{item.libelleCaracteristique}" style="width:100%" label="Libellé"/></f:facet>
+                                    </p:cellEditor>
+                                </p:column>
+                                <p:column headerText="Prix">
+                                    <p:cellEditor>
+                                        <f:facet name="output"><h:outputText value="#{item.uniteCaracteristique}" /></f:facet>
+                                        <f:facet name="input"><p:inputText value="#{item.uniteCaracteristique}" style="width:100%" label="Unité"/></f:facet>
+                                    </p:cellEditor>
+                                </p:column>
+                                <p:column headerText="qualite">
+                                    <p:cellEditor>
+                                        <f:facet name="output"><h:outputText value="#{item.valeurCaracteristique}" /></f:facet>
+                                        <f:facet name="input"><p:inputText value="#{item.valeurCaracteristique}" style="width:100%" label="Valuer"/></f:facet>
+                                    </p:cellEditor>
+                                </p:column>
+                                <p:column style="width:56px">
+                                    <p:rowEditor />
+                                </p:column>
+                            </p:dataTable>
+
+
+
+                        </h:form>
+
+                    </div>
+                    
+                    
+                     <div class="tab-pane fade" id="gestionCompte">
+                        <h:form>
+                            <p:dataTable id="cars1" var="item" paginator="true"  rows="5" paginatorPosition="top"  value="#{compteUserManager.comptes}" editable="true" style="margin-bottom:20px">
+                                <p:ajax event="rowEdit" listener="#{compteUserManager.onRowEdit}"  />
+                                <p:ajax event="rowEditCancel" listener="#{compteUserManager.onRowCancel}" />
+
+                                <p:column headerText="Nom">
+                                    <p:cellEditor>
+                                        <f:facet name="output"><h:outputText value="#{item.nom}" /></f:facet>
+                                        <f:facet name="input"><p:inputText value="#{item.nom}" style="width:100%" label="Nom"/></f:facet>
+                                    </p:cellEditor>
+                                </p:column>
+                                <p:column headerText="Prénom">
+                                    <p:cellEditor>
+                                        <f:facet name="output"><h:outputText value="#{item.prenom}" /></f:facet>
+                                        <f:facet name="input"><p:inputText value="#{item.prenom}" style="width:100%" label="Prénom"/></f:facet>
+                                    </p:cellEditor>
+                                </p:column>
+                                <p:column headerText="Email">
+                                    <p:cellEditor>
+                                        <f:facet name="output"><h:outputText value="#{item.email}" /></f:facet>
+                                        <f:facet name="input"><p:inputText value="#{item.email}" style="width:100%" label="Email"/></f:facet>
+                                    </p:cellEditor>
+                                </p:column>
+                                <p:column style="width:56px">
+                                    <p:rowEditor />
+                                </p:column>
+                            </p:dataTable>
+                        </h:form>
+
+                    </div>
                 </div>
 
             </div>

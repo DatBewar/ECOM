@@ -16,8 +16,11 @@ import java.util.Locale;
 import javax.annotation.ManagedBean;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.faces.model.SelectItem;
+import org.primefaces.event.RowEditEvent;
 
 /**
  *
@@ -108,29 +111,19 @@ public class ArticleManager {
         return "modifierQuantite";
     }
 
-    public String updateArticle(){           
-        Article aux = articleFacade.find(article.getIdArticle());
+    public String updateArticle(int idArticle){           
+        Article aux = articleFacade.find(idArticle);
         int updatedStock = aux.getStockArticle() + auxStock;
         aux.setStockArticle(updatedStock);
         articleFacade.edit(aux);
         return "displayAllArticles";
     }
+    
+   public void surprimer(int idArticle){
+      Article aux = articleFacade.find(idArticle);
+      articleFacade.remove(aux);
 
-    public SelectItem[] getItemsAvailableSelectOne() {
-        return JsfUtil.getSelectItems(articleFacade.findAll(), true);
-    }    
-    
-    public boolean filtreParPrix(Object value, Object filter, Locale locale){
-        String filterText = (filter == null) ? null : filter.toString().trim();
-        if(filterText == null||filterText.equals("")) {
-            return true;
-        }
-        if(value == null) {
-            return false;
-        } 
-        return ((Comparable) value).compareTo(Integer.valueOf(filterText)) > 0;
     }
-    
      public void setFiltreArticle(List<Article> filtreArticle) {
         this.articleFiltre = filtreArticle;
     }
@@ -148,4 +141,15 @@ public class ArticleManager {
          List<Commentaire> c = a.getCommentaireCollection();
          int rate = 0, count = 0;        
      }
+     
+     public void onRowEdit(RowEditEvent event) {
+       
+        Article ac = (Article)event.getObject();
+        articleFacade.edit(ac);
+        
+    }
+     
+      public void onRowCancel(RowEditEvent event) {
+       
+    }
 }

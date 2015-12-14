@@ -18,8 +18,7 @@ import javax.inject.Named;
  */
 @Named(value = "categorieManager")
 @RequestScoped
-public class CategorieManager {
-
+public class CategorieManager{
     @EJB
     private CategorieFacade categorieFacade;
     private Categorie categorie;

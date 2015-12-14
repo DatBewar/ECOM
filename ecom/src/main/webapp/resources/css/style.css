@@ -153,14 +153,14 @@
 }
 
 .ui-state-default{
-    border: 1px solid #ddd!important; 
+    /* border: 1px solid #7B5E5E!important; */
 }
 
 .ui-state-default {
    background:  #fff!important;
-   color: #adadad!important;
+   color: #c4e3f3!important;
 }
 
 .ui-state-active{
-    color: #555!important;
+    color:#204d74!important;
 }

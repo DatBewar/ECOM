@@ -61,7 +61,7 @@ INSERT INTO ecomBd.CompteUser (NOM, PRENOM, email, adresse, idCompte, motDePasse
 	VALUES ("qwerty","qwerty","qwerty@hotmail.com", "Grenoble", 93000, "qwerty", "0612345678","client");
 
 INSERT INTO ecomBd.CompteUser (NOM, PRENOM, email, adresse, idCompte, motDePasse, telephone, typeCompte) 
-	VALUES ("ADMIN","AdminPrenom","admin@admin.com", "Grenoble", 38400, "admin", "0612345678","client");
+	VALUES ("ADMIN","AdminPrenom","admin@admin.com", "Grenoble", 38400, "admin", "0612345678","admin");
 
 INSERT INTO ecomBd.Commande (idCommande, dateCommande) 
 	VALUES (45000, '2015-11-13');
