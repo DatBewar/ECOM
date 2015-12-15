@@ -8,9 +8,11 @@ package com.groupecom2015.managerBean;
 import com.groupecom2015.entitieManager.ArticleFacade;
 import com.groupecom2015.entitieManager.CommandeFacade;
 import com.groupecom2015.entitieManager.LigneDeCommandeFacade;
+import com.groupecom2015.entitieManager.MessageFacade;
 import com.groupecom2015.entities.Article;
 import com.groupecom2015.entities.ArticlePanier;
 import com.groupecom2015.entities.Commande;
+import com.groupecom2015.entities.CompteUser;
 import com.groupecom2015.entities.LigneDeCommande;
 import com.groupecom2015.entities.LigneDeCommandePK;
 import java.util.ArrayList;
@@ -29,6 +31,8 @@ import javax.inject.Named;
 @SessionScoped
 @Stateful
 public class PanierManager {
+    @EJB
+    private MessageFacade messageFacade;
 
     @EJB
     private LigneDeCommandeFacade ligneDeCommandeFacade;
@@ -126,9 +130,13 @@ public class PanierManager {
                 articleFacade.edit(article);
             }
         }
+       // messageFacade.sendBuyingConfirmationEmail(listArt, cu);
         listArt.clear();
 
         return "index";
+    }
+    public void sendconfirmationEmail(CompteUser cu){
+        messageFacade.sendBuyingConfirmationEmail(listArt, cu);
     }
 
     /*
