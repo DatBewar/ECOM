@@ -29,6 +29,58 @@ public class ArticleBackingBean implements Serializable {
     private String nomArticle;
     private Article article;
     private List<Article> list;
+    private String disponible = "";
+    private String epuise = "none";
+    private String presEpuise = "none";
+    
+    
+
+    public void verifierStatue(int id){
+        
+        article = articleFacade.find(id); 
+        
+        int nombreA = article.getStockArticle();
+        if(nombreA > 0&&nombreA < 10){
+            presEpuise = "";
+            epuise = "none";
+            disponible = "";
+        }
+        else if(nombreA == 0){
+            epuise = "";
+            presEpuise = "none";
+            disponible = "none";
+        }
+        else{
+            presEpuise = "none";
+            epuise = "none";
+            disponible = "";
+        }
+        
+    }
+
+    public String getDisponible() {
+        return disponible;
+    }
+
+    public void setDisponible(String disponible) {
+        this.disponible = disponible;
+    }
+
+    public String getEpuise() {
+        return epuise;
+    }
+
+    public void setEpuise(String epuise) {
+        this.epuise = epuise;
+    }
+
+    public String getPresEpuise() {
+        return presEpuise;
+    }
+
+    public void setPresEpuise(String presEpuise) {
+        this.presEpuise = presEpuise;
+    }
     public String getNomArticle() {
         return nomArticle;
     }
