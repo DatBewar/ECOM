@@ -115,12 +115,9 @@
 
                 </div>
                 <div class="col middle-column-home " >
-                    <div class="col-md-12" style="background-color:white">
-                        <div><h5><p style="color:gray">Résultat par page: <a href="#" style="color:gray">10</a> - <a href="#" style="color:gray">20</a> - <a href="#" style="color:gray">30</a></p></h5></div>
-                        <div></div>
-                    </div>
+                    
                     <h:form>
-                        <p:dataList value="#{articleBackingBean.list}" var="item" type="unordered" itemType="none" paginator="true" rows="5">
+                        <p:dataList value="#{articleBackingBean.list}" rowsPerPageLabel="Résultat par page:" rowsPerPageTemplate="5,10,15,20"  var="item" type="unordered" itemType="none" paginator="true" rows="5">
                             <h:panelGrid >
                                 <h:commandLink style=" color: black" action="#{articleBackingBean.getArticleByID(item)}">
                                     <div class="col-md-12 border" style="background-color:white">
@@ -139,7 +136,7 @@
                                             <div class="col-md-4">
                                                 <div class="col-md-12"><h2>#{item.prixVenteArticle} €</h2></div>
 
-                                                <div class="col-md-12"> <h:commandButton action="#{panierManager.addArticle(item)}" style="text-shadow: black 5px 3px 3px;color: floralwhite" class="btn btn-danger  col-md-9" value="Ajouter au panier" /></div>                                
+                                                <div class="col-md-12"> <h:commandButton action="#{panierManager.addArticle(item)}"  class="btn btn-skin  col-md-9" value="Ajouter au panier" /></div>                                
                                                 <div class="col-md-12" style=" margin: 10px 0px 10px 0px">
                                                     <div class="col-md-2 row">
                                                         <i class="fa fa-2x fa-ambulance "></i>

@@ -10,6 +10,10 @@
 #body {
     background-color: #F9F9F9;
 }
+
+/*==================================
+ pour les pages login et register
+==================================*/
 #loginbg {
     width: 100%;
     height: 100%;
@@ -50,16 +54,51 @@
     line-height: 1.1em;
     font-size: 50px;
 }
-
+/*=================
+    pour botton
+=================*/
 .btn {
     color: #fff;
     background-color: #2E6DA4;
     transition: all .3s ease-in-out;
+   
+}
+.btn:hover{
+    color: #c0c0c0 !important;
 }
 
+/*========================
+ pour panier table
+========================*/
+/*.table>thead>tr>th{
+    padding: 8px 70px !important;
+    line-height: 1.42857143;
+}*/
 
+.panier {
+    width: 100%;
+    margin-right: 0;
+    padding: 20px;
+    border: 1px solid #eaeaea;
+    background-color: #fff;
+    border-radius: 4px;
+}
+.panier-th{
+    padding:0 60px !important; 
+}
+/*=====================
+ page generation
+=====================*/
+
+.tab-top{
+    padding-top: 20px;
+}
 #myTab,#myTabContent{
-    padding: 50px 0% 0px 0px;
+    padding: 10px 0% 0px 0px;
+}
+#myTabContent label{
+    
+    color: #245580;
 }
 
 #pub{
@@ -119,15 +158,10 @@
     float: left;
 }
 
-.panier {
-    width: 100%;
-    margin-right: 0;
-    padding: 20px;
-    border: 1px solid #eaeaea;
-    background-color: #fff;
-    border-radius: 4px;
-}
 
+/*================================
+ override css de primeFace
+================================*/
 .ui-datalist-content {
 
 }
@@ -137,9 +171,7 @@
 }
 
 .ui-paginator {
-
- padding-left: 50%!important;
-
+    text-align: left!important;
 }
 
 
@@ -152,15 +184,53 @@
     padding: 0 0 0 0!important; 
 }
 
-.ui-state-default{
-    /* border: 1px solid #7B5E5E!important; */
-}
-
 .ui-state-default {
    background:  #fff!important;
-   color: #c4e3f3!important;
+   /* color: #28a4c9!important; */
 }
 
 .ui-state-active{
-    color:#204d74!important;
+    color: #337ab7!important;
+   
+}
+
+.ui-paginator-rpp-label{
+    padding-left: 40%;
+}
+
+.ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield {
+    background: #ffffff;
+    -moz-box-shadow: inset 0 2px 2px #eaeaea !important;
+    -webkit-box-shadow: inset 0 2px 2px #eaeaea !important;
+    box-shadow: inset 0 2px 2px #ffffff;
+    color: #313131;
+}
+
+.ui-datatable thead th{
+     
+    border-top-style: none !important;
+    border-right-style: none !important;
+    border-bottom-style: solid !important;
+    border-left-style: none !important;
+    
+}
+
+.ui-datatable table{
+    
+    border-width: 1px !important;
+    border-color: #afd9ee !important;
+    border-style: solid !important;
+}
+
+.ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight{
+    background: #ddd;
+}
+
+.ui-datatable-tablewrapper{
+    padding-top: 10px !important;
+}
+
+ .ui-datatable tbody td, .ui-datatable tfoot td {
+   
+    border-style: none !important;
 }

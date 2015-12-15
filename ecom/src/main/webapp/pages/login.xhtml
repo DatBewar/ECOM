@@ -21,23 +21,23 @@
 						<div class="col-md-10">
 							<div class="form-group" style="text-align: left;">
                                                  
-                                                                <h:outputLabel style="color: whitesmoke;" value="Username:" for="email" />
+                                                                <h:outputLabel style="color: whitesmoke;" value="Votre email：" for="email" />
                                                                 <h:inputText id="email" class="form-control" value="#{compteUserManager.compte.email}" title="Email" required="true" requiredMessage="The Email field is required."/>
 								
 							</div>
 							<div class="form-group" style="text-align: left;">
-								<h:outputLabel style="color: whitesmoke;" value="Password" for="password" />
+								<h:outputLabel style="color: whitesmoke;" value="Mot de passe:" for="password" />
                                                                 <h:inputSecret class="form-control" id="password" value="#{compteUserManager.compte.motDePasse}" title="MotDePasse" required="true" requiredMessage="The MotDePasse field is required."/>
 							</div>
 
 							<div class="form-group" style="text-align: left;">
 
 								<div class="col-md-6">
-									<a href="register.xhtml"><h4>register</h4></a>
+									<a href="register.xhtml"><h4>S'inscrire</h4></a>
 
 								</div>
 								<div class="col-md-6">
-                                                                        <h:commandButton class="btn btn-skin pull-right" action="#{compteUserManager.connecter()}" value="login"></h:commandButton>
+                                                                        <h:commandButton class="btn btn-skin pull-right" action="#{compteUserManager.connecter()}" value="Connexion"></h:commandButton>
 								</div>
 
 							</div>
