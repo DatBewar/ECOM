@@ -32,6 +32,7 @@
             <artifactId>primefaces</artifactId>
             <version>5.0</version>
         </dependency>
+        
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
