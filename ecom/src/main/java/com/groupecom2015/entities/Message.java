@@ -39,7 +39,34 @@ public class Message implements Serializable {
     @Size(max = 255)
     @Column(name = "MESSAGE")
     private String message;
+    @Basic(optional = false)
+    @NotNull
+    @Size(max = 255)
+    @Column(name = "subject")
+    private String subject;
+    @Basic(optional = false)
+    @NotNull
+    @Size(max = 255)
+    @Column(name = "destination")
+    private String destination;
 
+    public String getSubject() {
+        return subject;
+    }
+
+    public void setSubject(String subject) {
+        this.subject = subject;
+    }
+
+    public String getDestination() {
+        return destination;
+    }
+
+    public void setDestination(String destination) {
+        this.destination = destination;
+    }
+    
+        
     public Message() {
     }
 

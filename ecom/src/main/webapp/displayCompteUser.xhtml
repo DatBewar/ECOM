@@ -9,6 +9,22 @@
         <title>Liste des comptes</title>
     </h:head>
     <h:body>
+        <h:form>
+                <h1><h:outputText value="Envoyer mail à tous les clients"/></h1>
+                <h:panelGrid columns="2">
+                  
+                        <h:outputLabel value="Subject :" for="subject"/>
+                        <h:inputText id="subject" value="#{messageManager.msg.subject}" required="true" requiredMessage="Specify the subject"/>
+                    
+                        <h:outputLabel value="To :"/>
+                        <h:outputLabel value="All Users"/>                
+                    <h:outputLabel value="Message : " for="message" />
+                    <h:inputTextarea cols="30" rows="10" id="message" value="#{messageManager.msg.message}" title="message" required="true" requiredMessage="The message field is required."/>
+                  
+                    <h:commandButton action="#{messageManager.sendMailToAllClients()}" value="Send"/>
+                </h:panelGrid>
+            </h:form>
+        <br /><br/><br/>
         <h1>
             <h:outputText value="Tous les comptes"></h:outputText>
         </h1>
