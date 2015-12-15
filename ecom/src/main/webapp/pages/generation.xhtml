@@ -19,7 +19,7 @@
         <div class="container" style="width:73.5%;padding: 2px 0 100px 0;opacity: 0.8;background-color: white">
 
             <ol class="breadcrumb"  style="background-color:white">
-                <li><a href="index.xhtml">Home</a></li>
+                <li><a href="index.xhtml">Accueil</a></li>
                 <li class="active">Compte</li>
 
             </ol>
@@ -45,7 +45,7 @@
                 <div id="myTabContent" class="tab-content col-md-8" style="padding-left: 70px">
                     <div class=" tab-pane fade in active" id="MonCompte">
                         <h:form>
-                            <div class="col-md-10">
+                            <div class="col-md-10 col-md-offset-1">
                                 <div class="form-group" style="text-align: left;">
                                     <h:outputLabel  value="Email:" for="email" />     
                                     <h:inputText  readonly="true" id="email" class="form-control" value="#{compteUserManager.compte.email}" title="Email" required="true" requiredMessage="The Email field is required."/>
@@ -93,12 +93,12 @@
                         <h:form>
                             <div class="col-md-10 col-md-offset-1">
                                 <div class="form-group" style="text-align: left;">
-                                    <h:outputLabel  style="color: #245580;" value="ArticleName:" for="nomArticle" />
+                                    <h:outputLabel   value="ArticleName:" for="nomArticle" />
                                     <h:inputText id="nomArticle" class="form-control"  value="#{articleManager.article.nomArticle}" title="NomArticle" required="true" requiredMessage="The NomArticle field is required."/>
 
                                 </div>
                                 <div class="form-group" style="text-align: left;">
-                                    <h:outputLabel  style="color: #245580;" value="Categorie:" for="idCategorie" />
+                                    <h:outputLabel   value="Categorie:" for="idCategorie" />
                                     <h:selectOneMenu  class="form-control" id="idCategorie" value="#{articleManager.article.categorie}" converter="categorieConverter" title="IdCategorie" required="true" requiredMessage="The IdCategorie field is required.">
                                         <f:selectItems  value="#{categorieManager.listCategorie}" var="cat" itemLabel="#{cat.nomCategorie}" itemValue="#{cat}" />
                                     </h:selectOneMenu>
@@ -108,21 +108,21 @@
 
 
                                 <div class="form-group" style="text-align: left;">
-                                    <h:outputLabel style="color: #245580;" value="StockArticle:" for="stockArticle" />
+                                    <h:outputLabel  value="StockArticle:" for="stockArticle" />
                                     <h:inputText class="form-control" id="stockArticle" value="#{articleManager.article.stockArticle}" title="StockArticle" required="true" requiredMessage="The StockArticle field is required."/>
                                 </div>
                                 <div class="form-group" style="text-align: left;">
-                                    <h:outputLabel style="color: #245580;" value="PrixAchatArticle:" for="prixAchatArticle" />
+                                    <h:outputLabel value="PrixAchatArticle:" for="prixAchatArticle" />
                                     <h:inputText class="form-control"  id="prixAchatArticle" value="#{articleManager.article.prixAchatArticle}" title="PrixAchatArticle" required="true" requiredMessage="The PrixAchatArticle field is required."/>
 
                                 </div>
                                 <div class="form-group" style="text-align: left;">
-                                    <h:outputLabel style="color: #245580;" value="PrixVenteArticle:" for="prixVenteArticle" />
+                                    <h:outputLabel  value="PrixVenteArticle:" for="prixVenteArticle" />
                                     <h:inputText class="form-control"  id="prixVenteArticle" value="#{articleManager.article.prixVenteArticle}" title="PrixVenteArticle" required="true" requiredMessage="The PrixVenteArticle field is required."/>
                                 </div>
 
                                 <div class="form-group" style="text-align: left;">
-                                    <h:outputLabel style="color: #245580;" value="DescripArticle:" for="descripArticle" />
+                                    <h:outputLabel  value="DescripArticle:" for="descripArticle" />
                                     <h:inputTextarea rows="4" cols="30" class="form-control" id="descripArticle" value="#{articleManager.article.descripArticle}" title="DescripArticle" required="true" requiredMessage="The DescripArticle field is required."/>
                                 </div>
 
@@ -152,11 +152,8 @@
                         </h:form>
                     </div>
                     <div class="tab-pane fade" id="gestionArticles">
-
-
                         <h:form>
-
-                            <p:dataTable id="cars1" var="item" paginator="true"  rows="5" paginatorPosition="top"  value="#{articleManager.getArticleList()}" editable="true" style="margin-bottom:20px">
+                            <p:dataTable id="cars1" var="item" paginator="true" rowsPerPageTemplate="5,10,15,20"  rows="5" paginatorPosition="top"  value="#{articleManager.getArticleList()}" editable="true" style="margin-bottom:20px">
 
                                 <p:ajax event="rowEdit" listener="#{articleManager.onRowEdit}"  />
                                 <p:ajax event="rowEditCancel" listener="#{articleManager.onRowCancel}" />
@@ -183,36 +180,42 @@
                                     <p:rowEditor />
                                 </p:column>
                             </p:dataTable>
-
-
-
                         </h:form>
 
                     </div>
 
                     <div class="tab-pane fade" id="ajoutCaracteristique">
                         <h:form >
-                           
-                            <h:panelGrid columns="2">
-                                <h:outputLabel value="LibelleCaracteristique:" for="libelleCaracteristique" />
-                                <p:inputText id="libelleCaracteristique" value="#{caracteristiqueManager.caracteristique.libelleCaracteristique}" title="LibelleCaracteristique" required="true" requiredMessage="The LibelleCaracteristique field is required."/>
-                                <h:outputLabel value="UniteCaracteristique:" for="uniteCaracteristique" />
-                                <p:inputText id="uniteCaracteristique" value="#{caracteristiqueManager.caracteristique.uniteCaracteristique}" title="UniteCaracteristique" required="true" requiredMessage="The UniteCaracteristique field is required."/>
-                                <h:outputLabel value="ValeurCaracteristique:" for="valeurCaracteristique" />
-                                <p:inputText id="valeurCaracteristique" value="#{caracteristiqueManager.caracteristique.valeurCaracteristique}" title="ValeurCaracteristique" required="true" requiredMessage="The ValeurCaracteristique field is required."/>
-                                <h:commandButton action="#{caracteristiqueManager.addCaracteristique()}" value="Ajouter" />
-                            </h:panelGrid>
+
+                             <div class="col-md-10 col-md-offset-1">
+                                <div class="form-group" style="text-align: left;">
+                                    <h:outputLabel value="LibelleCaracteristique:" for="libelleCaracteristique" />
+                                    <p:inputText id="libelleCaracteristique" class="form-control"  value="#{caracteristiqueManager.caracteristique.libelleCaracteristique}" title="LibelleCaracteristique" required="true" requiredMessage="The LibelleCaracteristique field is required."/>
+                                </div>
+                                <div class="form-group" style="text-align: left;">
+                                    <h:outputLabel value="UniteCaracteristique:" for="uniteCaracteristique" />
+                                    <p:inputText id="uniteCaracteristique" class="form-control" value="#{caracteristiqueManager.caracteristique.uniteCaracteristique}" title="UniteCaracteristique" required="true" requiredMessage="The UniteCaracteristique field is required."/>
+                                </div>
+                                <div class="form-group" style="text-align: left;">
+                                    <h:outputLabel value="ValeurCaracteristique:" for="valeurCaracteristique" />
+                                    <p:inputText id="valeurCaracteristique" class="form-control"  value="#{caracteristiqueManager.caracteristique.valeurCaracteristique}" title="ValeurCaracteristique" required="true" requiredMessage="The ValeurCaracteristique field is required."/>
+                                </div>
+                                <div class="form-group" style="text-align: left;">
+                                    <h:commandButton class="btn btn-skin pull-right" action="#{caracteristiqueManager.addCaracteristique()}" value="Ajouter" />
+                                </div>
+                                
+                             </div>
                         </h:form>
                     </div>
-                    
-                    
-                    
+
+
+
                     <div class="tab-pane fade" id="gestionCaracteristique">
 
 
                         <h:form>
 
-                            <p:dataTable id="cars1" var="item" paginator="true"  rows="5" paginatorPosition="top"  value="#{caracteristiqueManager.allCaracteristique}" editable="true" style="margin-bottom:20px">
+                            <p:dataTable id="cars1" var="item" paginator="true" rowsPerPageTemplate="5,10,15,20" rows="5" paginatorPosition="top"  value="#{caracteristiqueManager.allCaracteristique}" editable="true" style="margin-bottom:20px">
 
                                 <p:ajax event="rowEdit" listener="#{caracteristiqueManager.onRowEdit}"  />
                                 <p:ajax event="rowEditCancel" listener="#{caracteristiqueManager.onRowCancel}" />
@@ -245,11 +248,11 @@
                         </h:form>
 
                     </div>
-                    
-                    
-                     <div class="tab-pane fade" id="gestionCompte">
+
+
+                    <div class="tab-pane fade" id="gestionCompte">
                         <h:form>
-                            <p:dataTable id="cars1" var="item" paginator="true"  rows="5" paginatorPosition="top"  value="#{compteUserManager.comptes}" editable="true" style="margin-bottom:20px">
+                            <p:dataTable id="cars1" var="item" paginator="true" rowsPerPageTemplate="5,10,15,20"  rows="5" paginatorPosition="top"  value="#{compteUserManager.comptes}" editable="true" style="margin-bottom:20px">
                                 <p:ajax event="rowEdit" listener="#{compteUserManager.onRowEdit}"  />
                                 <p:ajax event="rowEditCancel" listener="#{compteUserManager.onRowCancel}" />
 
