@@ -87,7 +87,7 @@ public class MessageFacade extends AbstractFacade<Message> {
     
     
      public void sendMailToAllClients(Message msg){
-        final String from = "umar.uizo@gmail"; //ecomgroupe2015@gmail.com
+        final String from = "ecomgroupe2015@gmail.com"; //ecomgroupe2015@gmail.com
         List<String> listMail = new ArrayList<>();
         listMail = em.createQuery("SELECT email FROM ecomBd.CompteUser").getResultList();
         
@@ -102,7 +102,7 @@ public class MessageFacade extends AbstractFacade<Message> {
         auth = new Authenticator() {
             @Override
             public PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(from, "reezoraMU5813");//groupeecom
+                return new PasswordAuthentication(from, "groupeecom");//groupeecom
             }
         };
  
