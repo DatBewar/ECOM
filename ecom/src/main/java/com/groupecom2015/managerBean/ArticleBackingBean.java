@@ -126,6 +126,10 @@ public class ArticleBackingBean implements Serializable {
          this.article = article;
          return "displayCommentaires";
      }
+    public String getArticleByID1(Article article){
+         this.article = article;
+         return "displayCommentaires_1";
+     }
     
      public String getArticlesByKeyWords() {
         list = articleFacade.findByKeyWords(this.nomArticle);        

@@ -13,7 +13,7 @@
         <h:outputScript name="./js/my.js"/>  
 
     </h:head>
-    <h:body style="background-color:#F9F9F9" onload="#{articleBackingBean.verifierStatue(articleManager.article.idArticle)}">
+    <h:body style="background-color:#F9F9F9" >
 
         <div class="container" style="width: 76%;" >
             <IFRAME id="top" onload="autoHeight(id);"  frameBorder="0" scrolling="no" src="top.xhtml" width="100%" height="0"></IFRAME>
@@ -21,17 +21,17 @@
 
         <div class="container" style="width: 73.7%;background-color:white">
             <h:form>    
-                <ui:repeat value="#{articleManager.article}" var="item">
+                <ui:repeat value="#{articleBackingBean.article}" var="item">
                     <div>
                         <ol class="breadcrumb" style="background-color:white">
                             <li><a href="index.xhtml">Accueil</a></li>
-                            <li> "#{item.nomArticle}"</li>
-                            
+                           
+                            <li class="active">#{item.nomArticle}</li>
                         </ol>
                     </div>
                     <div class="row">
                         <div class="col-md-6" >
-                            <a href="#" title="zoom"><img  id="produit"  src="../resources/img/1.JPG" /></a>
+                            <a href="#" title="zoom"><img  id="produit"  src="../resources/#{item.getOnePicture()}" /></a>
                         </div>
                         <div class="col-md-6"  >
                             <div class="panel panel-default">
@@ -41,15 +41,14 @@
                                     <div class="col-md-6" style="display:#{articleBackingBean.disponible};padding:inherit"><h:commandButton action="#{panierManager.addArticle(item)}"  class="btn btn-skin  col-md-9" value="Ajouter au panier" /></div>
                                     <div class="col-md-6" style=" display:#{articleBackingBean.epuise};padding:inherit"  ><h:commandButton  class="btn btn-skin disabled  col-md-9" value="Ajouter au panier" /></div>
                                 </div>
-                                
+
                                 <div style=" display:#{articleBackingBean.presEpuise};width:95%;margin-left:2.5%" class="alert alert-warning ">Plus que #{item.stockArticle} disponibles </div>
                                 <div style=" display:#{articleBackingBean.epuise};width:95%;margin-left:2.5%"  class="alert alert-warning">Ce produit est epuiseé </div>
                                 <ul class="list-group" style="padding:inherit">
                                     <li class="list-group-item" >
-                                        <div>marque: ASUS</div>
-                                        <div>coleur: black</div>
-                                        <div>etat: neuf</div>
-                                        <div>PN: 2341245125</div>
+                                        <ui:repeat value="#{articleBackingBean.article.caracteristiques}" var="item" size="4">
+                                            <div><b>#{item.libelleCaracteristique}:</b> #{item.valeurCaracteristique} #{item.uniteCaracteristique}</div>                                            
+                                        </ui:repeat>
                                     </li>
 
 
@@ -89,33 +88,14 @@
                                     <th>description</th>
 
                                 </tr>
-                            </thead>
+                            </thead>                            
                             <tbody>
-                                <tr>
-                                    <td>cpu</td>
-                                    <td>AMD A10</td>
-
-                                </tr>
-                                <tr>
-                                    <td>cpu</td>
-                                    <td>AMD A10</td>
-
-                                </tr>
-                                <tr>
-                                    <td>cpu</td>
-                                    <td>AMD A10</td>
-
-                                </tr>
-                                <tr>
-                                    <td>cpu</td>
-                                    <td>AMD A10</td>
-
-                                </tr>
-                                <tr>
-                                    <td>cpu</td>
-                                    <td>AMD A10</td>
-
-                                </tr>
+                                <ui:repeat value="#{articleBackingBean.article.caracteristiques}" var="item">
+                                    <tr>
+                                        <td>#{item.libelleCaracteristique}</td>
+                                        <td><i>#{item.valeurCaracteristique} #{item.uniteCaracteristique}</i></td>
+                                    </tr>                                           
+                                </ui:repeat>                                
                             </tbody>
                         </table>
                     </div>  	
@@ -133,12 +113,10 @@
                                     <th>note</th>
                                 </tr>
                             </thead>
-
                             <tbody>
-                                <ui:repeat value="#{commentaireManager.afficherCommentaire(articleManager.article.idArticle)}" var="item">
-
+                                <ui:repeat value="#{commentaireManager.afficherCommentaire(articleBackingBean.article.idArticle)}" var="item">
                                     <tr>
-                                        <td>#{item.idCompte.prenom}</td>
+                                        <td><b>#{item.idCompte.prenom}</b></td>
                                         <td>#{item.noteCommentaire}</td>
                                         <td>#{item.libelle}</td>
                                     </tr>
@@ -147,16 +125,11 @@
                         </table>
                     </div>  	
                 </div>
-
             </div>
         </div>
 
         <div class="container" style="width: 76%;" >
             <IFRAME id="bottom" onload="autoHeight(id);"  frameBorder="0" scrolling="no" src="bottom.xhtml" width="100%" height="0"></IFRAME>
         </div>
-
-
-
     </h:body>
-
 </html>
