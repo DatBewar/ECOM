@@ -28,13 +28,14 @@
                 <ul id="myTab" class="nav nav-pills nav-stacked col-md-3 " style="padding-left: 40px;">
                     <li class="active"  ><a href="#MonCompte" data-toggle="tab">Mon Compte</a></li>
                     <li style="display:#{compteUserManager.isClient}"><a href="#MesCommands" data-toggle="tab">Mes commands</a></li>
-                    <li style="display:#{compteUserManager.isClient}"><a href="#AideEtContact" data-toggle="tab">Aide&Contact</a></li>
+                    <li style="display:#{compteUserManager.isClient}"><a href="#AideEtContact" data-toggle="tab">Aide&amp;Contact</a></li>
                     <li style="display:#{compteUserManager.isAdmin}"><a href="#article" data-toggle="tab">Ajouter crticle</a></li>
                     <li style="display:#{compteUserManager.isAdmin}"><a href="#category" data-toggle="tab">Ajouter category</a></li>
                     <li style="display:#{compteUserManager.isAdmin}"><a href="#ajoutCaracteristique" data-toggle="tab">Ajouter caracteristique</a></li>
                     <li style="display:#{compteUserManager.isAdmin}"><a href="#gestionArticles" data-toggle="tab">Gestion Articles</a></li>
                     <li style="display:#{compteUserManager.isAdmin}"><a href="#gestionCaracteristique" data-toggle="tab">Gestion Caracteristique</a></li>
                     <li style="display:#{compteUserManager.isAdmin}"><a href="#gestionCompte" data-toggle="tab">Gestion Compte</a></li>
+                    <li style="display:#{compteUserManager.isAdmin}"><a href="#systemMessage" data-toggle="tab">System de Message</a></li>
 
 
 
@@ -104,9 +105,6 @@
                                         <f:selectItems  value="#{categorieManager.listCategorie}" var="cat" itemLabel="#{cat.nomCategorie}" itemValue="#{cat}" />
                                     </h:selectOneMenu>
                                 </div>
-
-
-
 
                                 <div class="form-group" style="text-align: left;">
                                     <h:outputLabel  value="StockArticle:" for="stockArticle" />
@@ -188,7 +186,7 @@
                     <div class="tab-pane fade" id="ajoutCaracteristique">
                         <h:form >
 
-                             <div class="col-md-10 col-md-offset-1">
+                            <div class="col-md-10 col-md-offset-1">
                                 <div class="form-group" style="text-align: left;">
                                     <h:outputLabel value="LibelleCaracteristique:" for="libelleCaracteristique" />
                                     <p:inputText id="libelleCaracteristique" class="form-control"  value="#{caracteristiqueManager.caracteristique.libelleCaracteristique}" title="LibelleCaracteristique" required="true" requiredMessage="The LibelleCaracteristique field is required."/>
@@ -204,8 +202,8 @@
                                 <div class="form-group" style="text-align: left;">
                                     <h:commandButton class="btn btn-skin pull-right" action="#{caracteristiqueManager.addCaracteristique()}" value="Ajouter" />
                                 </div>
-                                
-                             </div>
+
+                            </div>
                         </h:form>
                     </div>
 
@@ -279,6 +277,64 @@
                                     <p:rowEditor />
                                 </p:column>
                             </p:dataTable>
+                        </h:form>
+
+                    </div>
+
+                    <div class="tab-pane fade" id="systemMessage">
+
+                        <h:form>
+                            <div class="col-md-10 col-md-offset-1">
+                                <div class="form-group" style="text-align: left;">
+                                    <h:outputLabel value="Subject :" for="subject"/>
+                                    <h:inputText id="subject" class="form-control" value="#{messageManager.msg.subject}" required="true" requiredMessage="Specify the subject"/>
+                                </div>
+                                <div class="form-group" style="text-align: left;">
+                                    <h:outputLabel value="To :"/>
+                                    <h:outputLabel class="form-control" value="All Users"/> 
+                                </div>
+                                <div class="form-group" style="text-align: left;">
+                                    <h:outputLabel value="Message : " for="message" />
+                                    <h:inputTextarea class="form-control" cols="30" rows="10" id="message" value="#{messageManager.msg.message}" title="message" required="true" requiredMessage="The message field is required."/>
+                                </div>
+                                <div class="form-group" style="text-align: left;">
+                                    <h:commandButton class="btn btn-skin pull-right" action="#{messageManager.sendMailToAllClients()}" value="Send"/>
+                                </div>
+                            </div> 
+                        </h:form>
+
+                    </div>
+                    
+                    
+                      <div class="tab-pane fade" id="AideEtContact">
+
+                        <h:form>
+                            <div class="col-md-10 col-md-offset-1">
+                                <div class="form-group" style="text-align: left;">
+                                      <h:outputLabel value="Subject :" for="subject"/>
+                        <h:inputText id="subject" class="form-control" value="#{messageManager.msg.subject}" required="true" requiredMessage="Specify the subject"/>
+                                </div>
+                                <div class="form-group" style="text-align: left;">
+                                      <h:outputLabel value="Your mail adress : " for="destination"/>
+                        <h:inputText id="destination" class="form-control" value="#{messageManager.msg.destination}" required="true" requiredMessage="specify your adress mails"/>
+                                </div>
+                                <div class="form-group" style="text-align: left;">
+                                    <h:outputLabel value="Message : " for="message" />
+                    <h:inputTextarea cols="30" rows="10" class="form-control" id="message" value="#{messageManager.msg.message}" title="message" required="true" requiredMessage="The message field is required."/>
+                                    
+                                </div>
+                                <div class="form-group" style="text-align: left;">
+                                    <h:commandButton class="btn btn-skin pull-right" action="#{messageManager.sendMailtoAdmin()}" value="Send"/>
+                                </div>
+                                
+                               
+                    
+                      
+                  
+                    
+                  
+                  
+                            </div> 
                         </h:form>
 
                     </div>
