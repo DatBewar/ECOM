@@ -57,7 +57,7 @@
                 <h:form>
                     <ui:repeat value="#{articleManager.articleList}" var="item" size="8">
                         <h:commandLink style=" color: black" action="#{articleBackingBean.getArticleByID(item)}">
-                            <div class="col-md-3 thumbnail" >
+                            <div class="col-md-3 col-sm-6 thumbnail" >
                                 <img src="../resources/img/1.JPG" class="img-responsive img-rounded"/>
                                 <div class="caption">
                                     <h4>#{item.nomArticle}</h4>
@@ -83,9 +83,9 @@
                 <h:form>
                     <ui:repeat value="#{articleManager.articleList}" var="item" size="8">
                         <h:commandLink style=" color: black" action="#{articleBackingBean.getArticleByID(item)}">
-                            <div class="col-md-3">
+                            <div class="col-md-3 col-sm-6">
                                 <img src="../resources/img/1.JPG" class="img-responsive img-rounded img-thumbnail"/>
-                                <h3>#{item.nomArticle}</h3>
+                                <h4>#{item.nomArticle}</h4>
                                 <p>#{item.descripArticle}</p>
                             </div>
                         </h:commandLink>
