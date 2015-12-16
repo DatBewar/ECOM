@@ -29,6 +29,14 @@ public class MessageManager {
     public MessageManager() {
         msg = new Message();
     }
+
+    public MessageFacade getMessageFacade() {
+        return messageFacade;
+    }
+
+    public void setMessageFacade(MessageFacade messageFacade) {
+        this.messageFacade = messageFacade;
+    }
     
       public Message getMsg() {
         return msg;
