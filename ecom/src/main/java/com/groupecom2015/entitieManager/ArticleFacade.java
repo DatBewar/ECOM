@@ -63,8 +63,12 @@ public class ArticleFacade extends AbstractFacade<Article> {
     public List<Article> findByKeyWords(String keyWords){
         List<Article> articles;
         //String strQuery ="SELECT * FROM Article descripArticle like %"+keyWords+"% or nom like %"+keyWord+"%";
+        String strQuery ="SELECT DISTINCT a FROM Article a WHERE a.nomArticle LIKE '%"+keyWords+"%' OR a.descripArticle LIKE '%"+keyWords+"%' ";
+        
+        /*
         String strQuery ="SELECT DISTINCT a FROM Article a,Categorie c WHERE a.nomArticle LIKE '%"+keyWords+"%' OR a.descripArticle LIKE '%"+keyWords+"%' "
                 + " OR c.nomCategorie  LIKE '%"+keyWords+"%' and c = a.categorie ";
+        */
         Query q = em.createQuery(strQuery);        
         articles = q.getResultList();
         System.out.println(strQuery+"\n"+articles.size()+"\n Notre resultat");

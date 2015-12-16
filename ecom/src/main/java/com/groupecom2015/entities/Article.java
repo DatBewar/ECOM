@@ -6,7 +6,7 @@
 package com.groupecom2015.entities;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -17,6 +17,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -74,18 +75,28 @@ public class Article implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idArticle")
     private List<Commentaire> commentaireCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "article")
-    private Collection<LigneDeCommande> ligneDeCommandeCollection;
+    private List<LigneDeCommande> ligneDeCommandeCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idArticle")
-    private Collection<Photo> photoCollection;
+    private List<Photo> photoCollection;
     @JoinColumn(name = "categorieId", referencedColumnName = "idCategorie")
     @ManyToOne(optional = false)
     private Categorie categorie;
+    @ManyToMany
+    private List<Caracteristique> caracteristiques = new ArrayList<>();
 
     public Article() {
     }
 
     public Article(Integer idArticle) {
         this.idArticle = idArticle;
+    }
+
+    public List<Caracteristique> getCaracteristiques() {
+        return caracteristiques;
+    }
+
+    public void setCaracteristiques(List<Caracteristique> caracteristiques) {
+        this.caracteristiques = caracteristiques;
     }
 
     public Article(Integer idArticle, String nomArticle, String descripArticle, int stockArticle, float prixAchatArticle, float prixVenteArticle) {
@@ -157,20 +168,20 @@ public class Article implements Serializable {
     }
 
     @XmlTransient
-    public Collection<LigneDeCommande> getLigneDeCommandeCollection() {
+    public List<LigneDeCommande> getLigneDeCommandeCollection() {
         return ligneDeCommandeCollection;
     }
 
-    public void setLigneDeCommandeCollection(Collection<LigneDeCommande> ligneDeCommandeCollection) {
+    public void setLigneDeCommandeCollection(List<LigneDeCommande> ligneDeCommandeCollection) {
         this.ligneDeCommandeCollection = ligneDeCommandeCollection;
     }
 
     @XmlTransient
-    public Collection<Photo> getPhotoCollection() {
+    public List<Photo> getPhotoCollection() {
         return photoCollection;
     }
 
-    public void setPhotoCollection(Collection<Photo> photoCollection) {
+    public void setPhotoCollection(List<Photo> photoCollection) {
         this.photoCollection = photoCollection;
     }
 
@@ -181,7 +192,9 @@ public class Article implements Serializable {
     public void setCategorie(Categorie categorie) {
         this.categorie = categorie;
     }
-
+    public String getOnePicture(){        
+        return photoCollection.get(0).getPathPhoto();
+    }
     @Override
     public int hashCode() {
         int hash = 0;

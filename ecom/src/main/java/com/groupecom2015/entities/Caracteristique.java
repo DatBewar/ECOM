@@ -6,12 +6,15 @@
 package com.groupecom2015.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -52,6 +55,8 @@ public class Caracteristique implements Serializable {
     @NotNull
     @Column(name = "valeurCaracteristique")
     private int valeurCaracteristique;
+    @ManyToMany(mappedBy = "caracteristiques")
+    private List<Article> articles = new ArrayList<>();
 
     public Caracteristique() {
     }
@@ -65,6 +70,14 @@ public class Caracteristique implements Serializable {
         this.libelleCaracteristique = libelleCaracteristique;
         this.uniteCaracteristique = uniteCaracteristique;
         this.valeurCaracteristique = valeurCaracteristique;
+    }
+
+    public List<Article> getArticles() {
+        return articles;
+    }
+
+    public void setArticles(List<Article> articles) {
+        this.articles = articles;
     }
 
     public Integer getIdCaracteristique() {

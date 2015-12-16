@@ -52,18 +52,16 @@
                     <h2>PROMOS : JUSQU' À - 50 %</h2>
                 </div>
             </div>
-
             <div class="row">
                 <h:form>
                     <ui:repeat value="#{articleManager.articleList}" var="item" size="8">
                         <h:commandLink style=" color: black" action="#{articleBackingBean.getArticleByID(item)}">
                             <div class="col-md-3 thumbnail" >
-                                <img src="../resources/img/1.JPG" class="img-responsive img-rounded"/>
+                                <img style="width: 200px;height: 130px" src="../resources/#{item.getOnePicture()}" class="img-responsive img-rounded"/>
                                 <div class="caption">
                                     <h4>#{item.nomArticle}</h4>
-                                    <p>#{item.descripArticle}</p>
+                                    <p>#{item.descripArticle.subSequence(0,50)} ...</p>
                                 </div>
-
                             </div>
                         </h:commandLink>
                     </ui:repeat>
@@ -84,9 +82,9 @@
                     <ui:repeat value="#{articleManager.articleList}" var="item" size="8">
                         <h:commandLink style=" color: black" action="#{articleBackingBean.getArticleByID(item)}">
                             <div class="col-md-3">
-                                <img src="../resources/img/1.JPG" class="img-responsive img-rounded img-thumbnail"/>
+                                <img style="width: 200px;height: 130px" src="../resources/#{item.getOnePicture()}" class="img-responsive img-rounded"/>
                                 <h3>#{item.nomArticle}</h3>
-                                <p>#{item.descripArticle}</p>
+                                <p>#{item.descripArticlesubSequence(0,50)}</p>
                             </div>
                         </h:commandLink>
                     </ui:repeat>
