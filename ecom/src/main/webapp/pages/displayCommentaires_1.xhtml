@@ -24,8 +24,7 @@
                 <ui:repeat value="#{articleBackingBean.article}" var="item">
                     <div>
                         <ol class="breadcrumb" style="background-color:white">
-                            <li><a href="index.xhtml">Accueil</a></li>
-                           
+                            <li><a href="index.xhtml">Accueil</a></li>                           
                             <li class="active">#{item.nomArticle}</li>
                         </ol>
                     </div>
@@ -50,8 +49,6 @@
                                             <div><b>#{item.libelleCaracteristique}:</b> #{item.valeurCaracteristique} #{item.uniteCaracteristique}</div>                                            
                                         </ui:repeat>
                                     </li>
-
-
                                     <li class="list-group-item">
                                         <div class="row">
                                             <div class="col-md-2">
@@ -60,9 +57,7 @@
                                             <div class="col-md-8">
                                                 <h4>livraison OFFERTE</h4>
                                             </div>
-
                                         </div>
-
                                     </li>
                                 </ul>
                             </div>
