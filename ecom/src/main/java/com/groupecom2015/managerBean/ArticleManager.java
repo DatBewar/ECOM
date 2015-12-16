@@ -133,7 +133,7 @@ public class ArticleManager {
      }
      public String getArticleByID(int idArticle){
          article = articleFacade.find(idArticle);
-         return "displayCommentaires";
+         return "displayCommentaires_1";
      }
      
      public void getRate(int idArticle){

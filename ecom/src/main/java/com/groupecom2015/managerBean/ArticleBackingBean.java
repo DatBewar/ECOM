@@ -26,7 +26,7 @@ public class ArticleBackingBean implements Serializable {
     private ArticleFacade articleFacade;
 
     private int idArticle;
-    private String nomArticle;
+    private String nomArticle = "";
     private Article article;
     private List<Article> list;
     private String disponible = "";
