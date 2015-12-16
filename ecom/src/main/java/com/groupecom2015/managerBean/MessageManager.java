@@ -37,10 +37,10 @@ public class MessageManager {
     public void setMsg(Message msg) {
         this.msg = msg;
     }
-    public String sendMailtoAdmin(){
+    public void sendMailtoAdmin(){
        // messageFacade.create(msg);
         messageFacade.sendEmailToAdmin(msg);
-        return "messageSent";
+        //return "messageSent";
 }
     public void sendMailToAllClients(){
         messageFacade.sendMailToAllClients(msg);

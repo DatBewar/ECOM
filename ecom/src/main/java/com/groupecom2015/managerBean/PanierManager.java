@@ -31,6 +31,7 @@ import javax.inject.Named;
 @SessionScoped
 @Stateful
 public class PanierManager {
+
     @EJB
     private MessageFacade messageFacade;
 
@@ -44,6 +45,24 @@ public class PanierManager {
     private ArticleFacade articleFacade;
 
     private List<ArticlePanier> listArt;
+    private String isArtInPanier = "none";
+    private int numPanier;
+
+    public String getIsArtInPanier() {
+        return isArtInPanier;
+    }
+
+    public int getNumPanier() {
+        return numPanier;
+    }
+
+    public void setNumPanier(int numPanier) {
+        this.numPanier = numPanier;
+    }
+
+    public void setIsArtInPanier(String isArtInPanier) {
+        this.isArtInPanier = isArtInPanier;
+    }
 
     public PanierManager() {
 
@@ -66,6 +85,19 @@ public class PanierManager {
             prixTotal += (l.getArticle().getPrixVenteArticle() * l.getQuantite());
         }
         return prixTotal;
+    }
+
+    public void verifierPanier() {
+        this.numPanier = 0;
+         for (ArticlePanier l : listArt) {
+           this.numPanier = this.numPanier + l.getQuantite();
+        }
+        
+        if (numPanier != 0) {
+            isArtInPanier = "";
+        } else {
+            isArtInPanier = "none";
+        }
     }
 
     public String addArticle(Article article) {
@@ -130,12 +162,13 @@ public class PanierManager {
                 articleFacade.edit(article);
             }
         }
-       // messageFacade.sendBuyingConfirmationEmail(listArt, cu);
+        // messageFacade.sendBuyingConfirmationEmail(listArt, cu);
         listArt.clear();
 
         return "index";
     }
-    public void sendconfirmationEmail(CompteUser cu){
+
+    public void sendconfirmationEmail(CompteUser cu) {
         messageFacade.sendBuyingConfirmationEmail(listArt, cu);
     }
 

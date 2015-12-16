@@ -10,12 +10,13 @@
         <h:outputScript name="./js/bootstrap.js"/>  
 
     </h:head>
-    <h:body style="background-color:#F9F9F9" onload="#{compteUserManager.verifierLogin()}" >
+    <h:body style="background-color:#F9F9F9" onload="#{compteUserManager.verifierLogin()}; #{panierManager.verifierPanier()};" >
+  
         <header>
 
             <div class="row">
                 <div class="col-md-3">
-                    <a  target="_top" href="index.xhtml" title="return to index"><img id="logo" src="../resources/img/logo.png" /></a>
+                    <a  target="_top" href="index.xhtml" title="return to index"><img  id="logo" src="../resources/img/logo.png" /></a>
                 </div>
 
                 <div id="search"  class="col-md-7 row">
@@ -45,11 +46,21 @@
 
                             </div> 
                         </h:form>
+                        
+                         
+                               
+                         
 
-                        <div class="col-md-4 col-md-offset-2">
-                            <a target="_top" href="panier.xhtml">
+                        <div class="col-md-4 col-md-offset-2" style=" position:  relative"    >
+                           
+                            <div style=" position:  absolute">
+                                <a  target="_top" href="panier.xhtml">
                                 <i class="fa fa-4x fa-fw fa-cart-plus"></i><br/>                                
-                            </a>
+                                </a>
+                            </div>
+                            <div class="circle" style=" display: #{panierManager.isArtInPanier}; position:  absolute; top: 4px; left: 22px; padding-top: 2px; color: white">
+                                <center>#{panierManager.numPanier}</center>
+                            </div>
                         </div>
 
 

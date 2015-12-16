@@ -61,14 +61,14 @@
     color: #fff;
     background-color: #2E6DA4;
     transition: all .3s ease-in-out;
-   
+
 }
 .btn:hover{
     color: #c0c0c0 !important;
 }
 
 /*========================
- pour panier table
+ pour panier 
 ========================*/
 /*.table>thead>tr>th{
     padding: 8px 70px !important;
@@ -86,6 +86,13 @@
 .panier-th{
     padding:0 60px !important; 
 }
+
+.circle {
+    border-radius: 50%;
+    width: 20px;
+    height: 20px; 
+    background-color: #b92c28
+}
 /*=====================
  page generation
 =====================*/
@@ -97,7 +104,7 @@
     padding: 10px 0% 0px 0px;
 }
 #myTabContent label{
-    
+
     color: #245580;
 }
 
@@ -185,13 +192,13 @@
 }
 
 .ui-state-default {
-   background:  #fff!important;
-   /* color: #28a4c9!important; */
+    background:  #fff!important;
+    /* color: #28a4c9!important; */
 }
 
 .ui-state-active{
     color: #337ab7!important;
-   
+
 }
 
 .ui-paginator-rpp-label{
@@ -207,16 +214,16 @@
 }
 
 .ui-datatable thead th{
-     
+
     border-top-style: none !important;
     border-right-style: none !important;
     border-bottom-style: solid !important;
     border-left-style: none !important;
-    
+
 }
 
 .ui-datatable table{
-    
+
     border-width: 1px !important;
     border-color: #afd9ee !important;
     border-style: solid !important;
@@ -230,7 +237,7 @@
     padding-top: 10px !important;
 }
 
- .ui-datatable tbody td, .ui-datatable tfoot td {
-   
+.ui-datatable tbody td, .ui-datatable tfoot td {
+
     border-style: none !important;
 }
