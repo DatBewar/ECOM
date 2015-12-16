@@ -1,55 +1,96 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://primefaces.org/ui">
-	<h:head>
-		<meta charset="utf-8"/>
-		<meta name="viewport" content="width=device-width, initial-scale=1"/>
-                <h:outputStylesheet name="./css/style.css"/>  
-                <h:outputStylesheet name="./css/bootstrap.css"/> 
-                <h:outputScript name="./js/jquery-2.1.4.min.js"/>
-                <h:outputScript name="./js/bootstrap.js"/>      
-	</h:head>
-	<h:body id="loginbg">
-                <section >
-			<div id="login">
+    <h:head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <h:outputStylesheet name="./css/style.css"/>  
+        <h:outputStylesheet name="./css/bootstrap.css"/>
+        
+        <h:outputScript name="./js/jquery-2.1.4.min.js"/>
+        <h:outputScript name="./js/bootstrap.js"/>
+        <link href="//cdn.bootcss.com/bootstrap-validator/0.5.3/css/bootstrapValidator.css" rel="stylesheet"/>
+        <script  type="text/javascript" src="//cdn.bootcss.com/bootstrap-validator/0.5.3/js/bootstrapValidator.min.js"></script>
+        <script  type="text/javascript" src="//cdn.bootcss.com/bootstrap-validator/0.5.3/js/language/be_FR.js"></script>
 
-				<div class="col-md-5 col-md-offset-1">
-					<h1>Welcome to E-com</h1>
-				</div>
-				<div class="col-md-4 col-md-offset-2">
-					<h:form>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('.registerForm').bootstrapValidator({
+                    message: 'This value is not valid',
+                    feedbackIcons: {
+                        valid: 'glyphicon glyphicon-ok',
+                        invalid: 'glyphicon glyphicon-remove',
+                        validating: 'glyphicon glyphicon-refresh'
+                    },
+                    fields: {
+                        "login:motDePasse": {
+                           
+                            validators: {
+                                notEmpty: {
+                                   
+                                }
+                               
+                            }
+                        },
+                        "login:email": {
+                            validators: {
+                                notEmpty: {
+                                   
+                                },
+                                emailAddress: {
+                                   
+                                }
+                            }
+                        }
+                    }
+                });
+            });
+        </script>
 
-						<div class="col-md-10">
-							<div class="form-group" style="text-align: left;">
-                                                 
-                                                                <h:outputLabel style="color: whitesmoke;" value="Votre email：" for="email" />
-                                                                <h:inputText id="email" class="form-control" value="#{compteUserManager.compte.email}" title="Email" required="true" requiredMessage="The Email field is required."/>
-								
-							</div>
-							<div class="form-group" style="text-align: left;">
-								<h:outputLabel style="color: whitesmoke;" value="Mot de passe:" for="password" />
-                                                                <h:inputSecret class="form-control" id="password" value="#{compteUserManager.compte.motDePasse}" title="MotDePasse" required="true" requiredMessage="The MotDePasse field is required."/>
-							</div>
+    </h:head>
+    <h:body id="loginbg">
+        <section >
+            <div id="login">
 
-							<div class="form-group" style="text-align: left;">
+                <div class="col-md-5 col-md-offset-1">
+                    <h1>Welcome to E-com</h1>
+                </div>
+                <div class="col-md-4 col-md-offset-2">
+                    <h:form class="registerForm" id="login">
 
-								<div class="col-md-6">
-									<a href="register.xhtml"><h4>S'inscrire</h4></a>
+                        <div class="col-md-10">
+                            <div class="form-group" style="text-align: left;">
+                                 <h:outputLabel style="color: whitesmoke;" value="Votre email：" for="email" />
+                                 <h:inputText id="email"  class="form-control" value="#{compteUserManager.compte.email}"/>
+                              
+                            </div>
+                            <div class="form-group" style="text-align: left;">
+                                <h:outputLabel style="color: whitesmoke;" value="Mot de passe:" for="password" />
+                                <h:inputSecret id="motDePasse" class="form-control"  value="#{compteUserManager.compte.motDePasse}"/>
+                               
+                            </div>
 
-								</div>
-								<div class="col-md-6">
-                                                                        <h:commandButton class="btn btn-skin pull-right" action="#{compteUserManager.connecter()}" value="Connexion"></h:commandButton>
-								</div>
+                            <div class="form-group" style="text-align: left;">
 
-							</div>
+                                <div class="col-md-6">
+                                    <a href="register.xhtml"><h4>S'inscrire</h4></a>
 
-						</div>
-					</h:form>
-				</div>
+                                </div>
+                                <div class="col-md-6">
+                                    <h:commandButton class="btn btn-skin pull-right" action="#{compteUserManager.connecter()}" value="Connexion"></h:commandButton>
+                                </div>
 
-			</div>
+                            </div>
 
-		</section>
-		
-	</h:body>
+                        </div>
+                    </h:form>
+
+                   
+                </div>
+
+            </div>
+
+        </section>
+
+    </h:body>
 
 </html>

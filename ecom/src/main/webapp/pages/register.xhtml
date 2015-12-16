@@ -6,7 +6,89 @@
         <h:outputStylesheet name="./css/style.css"/>  
         <h:outputStylesheet name="./css/bootstrap.css"/> 
         <h:outputScript name="./js/jquery-2.1.4.min.js"/>
-        <h:outputScript name="./js/bootstrap.js"/>      
+        <h:outputScript name="./js/bootstrap.js"/>    
+        <link href="//cdn.bootcss.com/bootstrap-validator/0.5.3/css/bootstrapValidator.css" rel="stylesheet"/>
+        <script  type="text/javascript" src="//cdn.bootcss.com/bootstrap-validator/0.5.3/js/bootstrapValidator.min.js"></script>
+        <script  type="text/javascript" src="//cdn.bootcss.com/bootstrap-validator/0.5.3/js/language/be_FR.js"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('.registerForm').bootstrapValidator({
+                    message: 'This value is not valid',
+                    feedbackIcons: {
+                        valid: 'glyphicon glyphicon-ok',
+                        invalid: 'glyphicon glyphicon-remove',
+                        validating: 'glyphicon glyphicon-refresh'
+                    },
+                    fields: {
+                        "register:email": {
+                            validators: {
+                                notEmpty: {
+                                },
+                                emailAddress: {
+                                }
+                            }
+                        },
+                        "register:motDePasse": {
+                            validators: {
+                                notEmpty: {
+                                },
+                                stringLength: {
+                                    min: 6,
+                                    max: 12
+                                }
+
+                            }
+                        },
+                        "register:confirmez": {
+                            validators: {
+                                notEmpty: {
+                                },
+                                stringLength: {
+                                    min: 6,
+                                    max: 12
+                                },
+                                identical: {
+                                    field: 'register:motDePasse',
+                                }
+
+                            }
+                        },
+                        "register:nom": {
+                            validators: {
+                                notEmpty: {
+                                }
+                            }
+                        },
+                        "register:prenom": {
+                            validators: {
+                                notEmpty: {
+                                }
+                            }
+                        },
+                        "register:telephone": {
+                            validators: {
+                                notEmpty: {
+                                },
+                                stringLength: {
+                                    min: 10,
+                                    max: 10
+                                   
+                                }
+                            }
+                        },
+                        "register:adresse": {
+                            validators: {
+                                notEmpty: {
+                                }
+                            }
+                        }
+                    }
+                });
+            });
+
+
+        </script>
     </h:head>
     <h:body id="registerbg">
         <section >
@@ -16,16 +98,21 @@
                     <h1>Welcome to join us</h1>
                 </div>
                 <div class="col-md-4 col-md-offset-2">
-                    <h:form>
+                    <h:form class="registerForm" id="register">
                         <div class="col-md-10">
                             <div class="form-group" style="text-align: left;">
                                 <h:outputLabel style="color: whitesmoke;" value="Email:" for="email" />
-                                <h:inputText id="email" class="form-control" value="#{compteUserManager.compte.email}" title="Email" required="true" requiredMessage="The Email field is required."/>
+                                <h:inputText  class="form-control" id="email" value="#{compteUserManager.compte.email}" title="Email" required="true" requiredMessage="The Email field is required."/>
 
                             </div>
                             <div class="form-group" style="text-align: left;">
                                 <h:outputLabel style="color: whitesmoke;" value="Mot de passe:" for="Mot de passe" />
                                 <h:inputSecret class="form-control" id="motDePasse" value="#{compteUserManager.compte.motDePasse}" title="MotDePasse" required="true" requiredMessage="The MotDePasse field is required."/>
+
+                            </div>
+                            <div class="form-group" style="text-align: left;">
+                                <h:outputLabel style="color: whitesmoke;" value="Confirmez:" for="Mot de passe" />
+                                <h:inputSecret class="form-control" id="confirmez"  value="#{compteUserManager.compte.motDePasse}" title="MotDePasse" required="true" requiredMessage="The MotDePasse field is required."/>
 
                             </div>
 
