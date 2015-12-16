@@ -6,6 +6,7 @@
 package com.groupecom2015.entitieManager;
 
 import com.groupecom2015.entities.CompteUser;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -20,7 +21,7 @@ import javax.persistence.Query;
 public class CompteUserFacade extends AbstractFacade<CompteUser> {
 
     @PersistenceContext(unitName = "com.groupecom2015_ecom_war_1.0-SNAPSHOTPU")
-    private EntityManager em;    
+    private EntityManager em;
 
     @Override
     protected EntityManager getEntityManager() {
@@ -59,5 +60,15 @@ public class CompteUserFacade extends AbstractFacade<CompteUser> {
                 return false;
             }
         }
-    }    
+    }
+
+    public String MD5(String md5) throws Exception {
+        java.security.MessageDigest md = java.security.MessageDigest.getInstance("MD5");
+        byte[] array = md.digest(md5.getBytes());
+        StringBuffer sb = new StringBuffer();
+        for (int i = 0; i < array.length; ++i) {
+            sb.append(Integer.toHexString((array[i] & 0xFF) | 0x100).substring(1, 3));
+        }
+        return sb.toString();
+    }
 }
