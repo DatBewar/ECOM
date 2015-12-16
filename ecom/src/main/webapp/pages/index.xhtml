@@ -57,7 +57,7 @@
                     <ui:repeat value="#{articleManager.articleList}" var="item" size="8">
                         <h:commandLink style=" color: black" action="#{articleBackingBean.getArticleByID(item)}">
                             <div class="col-md-3 thumbnail" >
-                                <img style="width: 200px;height: 130px" src="../resources/#{item.getOnePicture()}" class="img-responsive img-rounded"/>
+                                <img style="width: 200px;height: 130px" src="../resources#{item.getOnePicture()}" class="img-responsive img-rounded"/>
                                 <div class="caption">
                                     <h4>#{item.nomArticle.subSequence(0,16)}</h4>
                                     <p>#{item.descripArticle.subSequence(0,50)} ...</p>
