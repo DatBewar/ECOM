@@ -131,7 +131,7 @@ public class PanierManager {
     }
 
     public String continuerAchat() {
-        return "displayAllArticles";
+        return "index";
     }
 
     public String validerPanier() {
